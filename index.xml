@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>MilleGrilles</title>
+    <link>https://www.millegrilles.com/</link>
+    <description>Recent content on MilleGrilles</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 13 Mar 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://www.millegrilles.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>My first post</title>
+      <link>https://www.millegrilles.com/posts/my-first-post/</link>
+      <pubDate>Thu, 13 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>https://www.millegrilles.com/posts/my-first-post/</guid>
+      <description>&lt;h1 id=&#34;a-post&#34;&gt;A post&lt;/h1&gt;</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://www.millegrilles.com/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://www.millegrilles.com/about/</guid>
+      <description>&lt;h1 id=&#34;about-page&#34;&gt;About page&lt;/h1&gt;</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://www.millegrilles.com/contact/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://www.millegrilles.com/contact/</guid>
+      <description>&lt;p&gt;Contact page&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://www.millegrilles.com/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://www.millegrilles.com/readme/</guid>
+      <description>&lt;p&gt;Tada&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

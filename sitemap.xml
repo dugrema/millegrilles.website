@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://www.millegrilles.com/categories/</loc>
+    <lastmod>2025-03-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.millegrilles.com/tags/hugo/</loc>
+    <lastmod>2025-03-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.millegrilles.com/</loc>
+    <lastmod>2025-03-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.millegrilles.com/posts/my-first-post/</loc>
+    <lastmod>2025-03-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.millegrilles.com/posts/</loc>
+    <lastmod>2025-03-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.millegrilles.com/categories/release-notes/</loc>
+    <lastmod>2025-03-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.millegrilles.com/tags/</loc>
+    <lastmod>2025-03-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.millegrilles.com/about/</loc>
+  </url><url>
+    <loc>https://www.millegrilles.com/contact/</loc>
+  </url><url>
+    <loc>https://www.millegrilles.com/readme/</loc>
+  </url>
+</urlset>
