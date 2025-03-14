@@ -34,14 +34,14 @@
 
 <?xml version="1.0" encoding="utf-8"?>
 
-<rss version="2.0"  xml:lang="en-us"  xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0"  xml:lang="en"  xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         
 
         
 
         
-            <language>en-us</language>
+            <language>en</language>
         
 
         
@@ -53,19 +53,25 @@
         
 
         
-            <atom:link href="https://example.org/documentation/rss.xml" hreflang="en-us" rel="self" type="application/rss+xml"/>
+            <atom:link href="https://example.org/documentation/rss.xml" hreflang="en" rel="self" type="application/rss+xml"/>
         
 
         
             
 
-            <atom:link href="https://example.org/documentation/" hreflang="en-us" rel="alternate" type="text/html"/>
+            <atom:link href="https://example.org/documentation/" hreflang="en" rel="alternate" type="text/html"/>
         
             
 
-            <atom:link href="https://example.org/documentation/rss.xml" hreflang="en-us" rel="alternate" type="application/rss+xml"/>
+            <atom:link href="https://example.org/documentation/rss.xml" hreflang="en" rel="alternate" type="application/rss+xml"/>
         
 
+        
+            
+                <atom:link href="https://example.org/fr/documentation/" hreflang="fr" rel="canonical" type="text/html"/>
+            
+                <atom:link href="https://example.org/fr/documentation/rss.xml" hreflang="fr" rel="alternate" type="application/rss+xml"/>
+            
         
 
         
@@ -113,16 +119,20 @@
                         <link>https://example.org/documentation/certificates/</link>
                     
 
-                    <atom:link href="https://example.org/documentation/certificates/" hreflang="en-us" rel="self" type="text/html"/>
+                    <atom:link href="https://example.org/documentation/certificates/" hreflang="en" rel="self" type="text/html"/>
 
                     
                         
 
                         
 
-                        <atom:link href="https://example.org/documentation/certificates/" hreflang="en-us" rel="alternate" type="text/html"/>
+                        <atom:link href="https://example.org/documentation/certificates/" hreflang="en" rel="alternate" type="text/html"/>
                     
 
+                    
+                        
+                            <atom:link href="https://example.org/fr/documentation/certificates/" hreflang="fr" rel="canonical" type="text/html"/>
+                        
                     
 
                     
@@ -171,16 +181,20 @@
                         <link>https://example.org/documentation/messages/</link>
                     
 
-                    <atom:link href="https://example.org/documentation/messages/" hreflang="en-us" rel="self" type="text/html"/>
+                    <atom:link href="https://example.org/documentation/messages/" hreflang="en" rel="self" type="text/html"/>
 
                     
                         
 
                         
 
-                        <atom:link href="https://example.org/documentation/messages/" hreflang="en-us" rel="alternate" type="text/html"/>
+                        <atom:link href="https://example.org/documentation/messages/" hreflang="en" rel="alternate" type="text/html"/>
                     
 
+                    
+                        
+                            <atom:link href="https://example.org/fr/documentation/messages/" hreflang="fr" rel="canonical" type="text/html"/>
+                        
                     
 
                     

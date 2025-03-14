@@ -1,0 +1,211 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+        
+    
+
+    
+        
+
+        
+            
+        
+    
+
+
+
+
+<?xml version="1.0" encoding="utf-8"?>
+
+<rss version="2.0"  xml:lang="fr"  xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        
+
+        
+
+        
+            <language>fr</language>
+        
+
+        
+            <lastBuildDate>Fri, 14 Mar 2025 12:20:48 UTC</lastBuildDate>
+        
+
+        
+            <link>https://example.org/fr/documentation/</link>
+        
+
+        
+            <atom:link href="https://example.org/fr/documentation/rss.xml" hreflang="fr" rel="self" type="application/rss+xml"/>
+        
+
+        
+            
+
+            <atom:link href="https://example.org/fr/documentation/" hreflang="fr" rel="alternate" type="text/html"/>
+        
+            
+
+            <atom:link href="https://example.org/fr/documentation/rss.xml" hreflang="fr" rel="alternate" type="application/rss+xml"/>
+        
+
+        
+            
+                <atom:link href="https://example.org/documentation/" hreflang="en" rel="canonical" type="text/html"/>
+            
+                <atom:link href="https://example.org/documentation/rss.xml" hreflang="en" rel="alternate" type="application/rss+xml"/>
+            
+        
+
+        
+
+        
+            <title>Documentation · MilleGrilles</title>
+        
+
+        
+
+        
+            
+                <item>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+
+                    
+
+                    
+
+                    
+
+                    
+
+                    
+                    
+                    
+
+                    
+
+                    
+                        <description><![CDATA[<h1 class=h6 id=security-certificates><a class="text-body text-decoration-none" href=#security-certificates>Security certificates</a></h1><p>Voici comment ça marche.</p>]]></description>
+                    
+
+                    
+                        <guid isPermaLink="false">tag:example.org,2025-03-14:/fr/documentation/certificates/</guid>
+                    
+
+                    
+                        <link>https://example.org/fr/documentation/certificates/</link>
+                    
+
+                    <atom:link href="https://example.org/fr/documentation/certificates/" hreflang="fr" rel="self" type="text/html"/>
+
+                    
+                        
+
+                        
+
+                        <atom:link href="https://example.org/fr/documentation/certificates/" hreflang="fr" rel="alternate" type="text/html"/>
+                    
+
+                    
+                        
+                            <atom:link href="https://example.org/documentation/certificates/" hreflang="en" rel="canonical" type="text/html"/>
+                        
+                    
+
+                    
+                        <pubDate>Fri, 14 Mar 2025 12:20:48 UTC</pubDate>
+                    
+
+                    
+                        <title>Certificats</title>
+                    
+                </item>
+            
+        
+            
+                <item>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+
+                    
+
+                    
+
+                    
+
+                    
+
+                    
+                    
+                    
+
+                    
+
+                    
+                        <description><![CDATA[<h1 class=h6 id=structure-des-messages><a class="text-body text-decoration-none" href=#structure-des-messages>Structure des messages</a></h1><p>Voici comment ça marche.</p>]]></description>
+                    
+
+                    
+                        <guid isPermaLink="false">tag:example.org,2025-03-14:/fr/documentation/messages/</guid>
+                    
+
+                    
+                        <link>https://example.org/fr/documentation/messages/</link>
+                    
+
+                    <atom:link href="https://example.org/fr/documentation/messages/" hreflang="fr" rel="self" type="text/html"/>
+
+                    
+                        
+
+                        
+
+                        <atom:link href="https://example.org/fr/documentation/messages/" hreflang="fr" rel="alternate" type="text/html"/>
+                    
+
+                    
+                        
+                            <atom:link href="https://example.org/documentation/messages/" hreflang="en" rel="canonical" type="text/html"/>
+                        
+                    
+
+                    
+                        <pubDate>Fri, 14 Mar 2025 12:20:48 UTC</pubDate>
+                    
+
+                    
+                        <title>Structure des messages</title>
+                    
+                </item>
+            
+        
+    </channel>
+</rss>

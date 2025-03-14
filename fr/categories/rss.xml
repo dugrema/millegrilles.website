@@ -1,0 +1,87 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+        
+    
+
+    
+        
+
+        
+            
+        
+    
+
+
+
+
+<?xml version="1.0" encoding="utf-8"?>
+
+<rss version="2.0"  xml:lang="fr"  xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        
+
+        
+
+        
+            <language>fr</language>
+        
+
+        
+            <lastBuildDate>Fri, 14 Mar 2025 12:20:48 UTC</lastBuildDate>
+        
+
+        
+            <link>https://example.org/fr/categories/</link>
+        
+
+        
+            <atom:link href="https://example.org/fr/categories/rss.xml" hreflang="fr" rel="self" type="application/rss+xml"/>
+        
+
+        
+            
+
+            <atom:link href="https://example.org/fr/categories/" hreflang="fr" rel="alternate" type="text/html"/>
+        
+            
+
+            <atom:link href="https://example.org/fr/categories/rss.xml" hreflang="fr" rel="alternate" type="application/rss+xml"/>
+        
+
+        
+            
+                <atom:link href="https://example.org/categories/" hreflang="en" rel="canonical" type="text/html"/>
+            
+                <atom:link href="https://example.org/categories/rss.xml" hreflang="en" rel="alternate" type="application/rss+xml"/>
+            
+        
+
+        
+
+        
+            <title>Categories · MilleGrilles</title>
+        
+
+        
+
+        
+    </channel>
+</rss>
