@@ -39,28 +39,28 @@
         
 
         
-            <link>https://example.org/</link>
+            <link>https://www.millegrilles.com/</link>
         
 
         
-            <atom:link href="https://example.org/rss.xml" hreflang="en" rel="self" type="application/rss+xml"/>
-        
-
-        
-            
-
-            <atom:link href="https://example.org/" hreflang="en" rel="alternate" type="text/html"/>
-        
-            
-
-            <atom:link href="https://example.org/rss.xml" hreflang="en" rel="alternate" type="application/rss+xml"/>
+            <atom:link href="https://www.millegrilles.com/rss.xml" hreflang="en" rel="self" type="application/rss+xml"/>
         
 
         
             
-                <atom:link href="https://example.org/fr/" hreflang="fr" rel="canonical" type="text/html"/>
+
+            <atom:link href="https://www.millegrilles.com/" hreflang="en" rel="alternate" type="text/html"/>
+        
             
-                <atom:link href="https://example.org/fr/rss.xml" hreflang="fr" rel="alternate" type="application/rss+xml"/>
+
+            <atom:link href="https://www.millegrilles.com/rss.xml" hreflang="en" rel="alternate" type="application/rss+xml"/>
+        
+
+        
+            
+                <atom:link href="https://www.millegrilles.com/fr/" hreflang="fr" rel="canonical" type="text/html"/>
+            
+                <atom:link href="https://www.millegrilles.com/fr/rss.xml" hreflang="fr" rel="alternate" type="application/rss+xml"/>
             
         
 
@@ -102,26 +102,26 @@
                     
 
                     
-                        <guid isPermaLink="false">tag:example.org,2025-03-14:/documentation/certificates/</guid>
+                        <guid isPermaLink="false">tag:www.millegrilles.com,2025-03-14:/documentation/certificates/</guid>
                     
 
                     
-                        <link>https://example.org/documentation/certificates/</link>
+                        <link>https://www.millegrilles.com/documentation/certificates/</link>
                     
 
-                    <atom:link href="https://example.org/documentation/certificates/" hreflang="en" rel="self" type="text/html"/>
-
-                    
-                        
-
-                        
-
-                        <atom:link href="https://example.org/documentation/certificates/" hreflang="en" rel="alternate" type="text/html"/>
-                    
+                    <atom:link href="https://www.millegrilles.com/documentation/certificates/" hreflang="en" rel="self" type="text/html"/>
 
                     
                         
-                            <atom:link href="https://example.org/fr/documentation/certificates/" hreflang="fr" rel="canonical" type="text/html"/>
+
+                        
+
+                        <atom:link href="https://www.millegrilles.com/documentation/certificates/" hreflang="en" rel="alternate" type="text/html"/>
+                    
+
+                    
+                        
+                            <atom:link href="https://www.millegrilles.com/fr/documentation/certificates/" hreflang="fr" rel="canonical" type="text/html"/>
                         
                     
 
@@ -164,26 +164,26 @@
                     
 
                     
-                        <guid isPermaLink="false">tag:example.org,2025-03-14:/documentation/messages/</guid>
+                        <guid isPermaLink="false">tag:www.millegrilles.com,2025-03-14:/documentation/messages/</guid>
                     
 
                     
-                        <link>https://example.org/documentation/messages/</link>
+                        <link>https://www.millegrilles.com/documentation/messages/</link>
                     
 
-                    <atom:link href="https://example.org/documentation/messages/" hreflang="en" rel="self" type="text/html"/>
-
-                    
-                        
-
-                        
-
-                        <atom:link href="https://example.org/documentation/messages/" hreflang="en" rel="alternate" type="text/html"/>
-                    
+                    <atom:link href="https://www.millegrilles.com/documentation/messages/" hreflang="en" rel="self" type="text/html"/>
 
                     
                         
-                            <atom:link href="https://example.org/fr/documentation/messages/" hreflang="fr" rel="canonical" type="text/html"/>
+
+                        
+
+                        <atom:link href="https://www.millegrilles.com/documentation/messages/" hreflang="en" rel="alternate" type="text/html"/>
+                    
+
+                    
+                        
+                            <atom:link href="https://www.millegrilles.com/fr/documentation/messages/" hreflang="fr" rel="canonical" type="text/html"/>
                         
                     
 

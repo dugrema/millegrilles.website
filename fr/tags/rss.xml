@@ -49,28 +49,28 @@
         
 
         
-            <link>https://example.org/fr/tags/</link>
+            <link>https://www.millegrilles.com/fr/tags/</link>
         
 
         
-            <atom:link href="https://example.org/fr/tags/rss.xml" hreflang="fr" rel="self" type="application/rss+xml"/>
-        
-
-        
-            
-
-            <atom:link href="https://example.org/fr/tags/" hreflang="fr" rel="alternate" type="text/html"/>
-        
-            
-
-            <atom:link href="https://example.org/fr/tags/rss.xml" hreflang="fr" rel="alternate" type="application/rss+xml"/>
+            <atom:link href="https://www.millegrilles.com/fr/tags/rss.xml" hreflang="fr" rel="self" type="application/rss+xml"/>
         
 
         
             
-                <atom:link href="https://example.org/tags/" hreflang="en" rel="canonical" type="text/html"/>
+
+            <atom:link href="https://www.millegrilles.com/fr/tags/" hreflang="fr" rel="alternate" type="text/html"/>
+        
             
-                <atom:link href="https://example.org/tags/rss.xml" hreflang="en" rel="alternate" type="application/rss+xml"/>
+
+            <atom:link href="https://www.millegrilles.com/fr/tags/rss.xml" hreflang="fr" rel="alternate" type="application/rss+xml"/>
+        
+
+        
+            
+                <atom:link href="https://www.millegrilles.com/tags/" hreflang="en" rel="canonical" type="text/html"/>
+            
+                <atom:link href="https://www.millegrilles.com/tags/rss.xml" hreflang="en" rel="alternate" type="application/rss+xml"/>
             
         
 
