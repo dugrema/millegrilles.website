@@ -2,6 +2,32 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://www.millegrilles.com/fr/</loc>
+    <lastmod>2025-03-14T19:24:48+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://www.millegrilles.com/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://www.millegrilles.com/fr/"
+                />
+  </url><url>
+    <loc>https://www.millegrilles.com/fr/vision/</loc>
+    <lastmod>2025-03-14T19:24:48+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://www.millegrilles.com/vision/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://www.millegrilles.com/fr/vision/"
+                />
+  </url><url>
     <loc>https://www.millegrilles.com/fr/documentation/certificates/</loc>
     <lastmod>2025-03-14T12:20:48+00:00</lastmod>
     <xhtml:link
@@ -26,19 +52,6 @@
                 rel="alternate"
                 hreflang="fr"
                 href="https://www.millegrilles.com/fr/documentation/"
-                />
-  </url><url>
-    <loc>https://www.millegrilles.com/fr/</loc>
-    <lastmod>2025-03-14T12:20:48+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://www.millegrilles.com/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="fr"
-                href="https://www.millegrilles.com/fr/"
                 />
   </url><url>
     <loc>https://www.millegrilles.com/fr/documentation/messages/</loc>

@@ -35,7 +35,7 @@
         
 
         
-            <lastBuildDate>Fri, 14 Mar 2025 12:20:48 UTC</lastBuildDate>
+            <lastBuildDate>Fri, 14 Mar 2025 19:24:48 UTC</lastBuildDate>
         
 
         
@@ -72,6 +72,80 @@
 
         
 
+        
+            
+                <item>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+
+                    
+
+                    
+
+                    
+
+                    
+
+                    
+                    
+                    
+
+                    
+
+                    
+                        <description><![CDATA[<h1 class=h5 id=vision><a class="text-body text-decoration-none" href=#vision>Vision</a></h1><p>MilleGrilles est un système d&rsquo;information personnel décentralisé et sécuritaire.</p><p>L&rsquo;objectif du projet est la création d&rsquo;applications et protocoles qui :</p><ul><li>conservent de manière chiffrée tous les fichiers et documents,</li><li>contrôlent des appareils,</li><li>réduisent les risques de vols, pertes ou corruptions malicieuses de données,</li><li>exploitent le cloud tout en facilitant le rapatriement local au besoin.</li></ul><p>Mots clés : <strong>décentralisation, sécurité, appareils mobiles, chiffrage, vols, cloud, ransomware</strong>.</p><h2 class=h6 id=sécurité><a class="text-body text-decoration-none" href=#s%c3%a9curit%c3%a9>Sécurité</a></h2><p>MilleGrilles conserve l&rsquo;information au repos de manière chiffrée sans dépendances envers un algorithme externe.
+Les fichiers sont chiffrés en tout temps au repos. Le contenu de la base de données est souvent chiffré par
+l&rsquo;application et ainsi inaccessible à un tiers lorsqu&rsquo;une fuite survient.</p><p>La communication entre les composants serveurs (e.g. reverse proxy, base de données) est chiffrée et sécurisée par
+certificats X.509.</p><p>Les applications web sont protégées par un accès webauth qui utilise les passkeys. MilleGrilles ne supporte pas de
+mots de passe pour ses usagers ce qui élimine tous les problèmes liés au vol et à la réutilisation de mots de passe.</p><h2 class=h6 id=cloud><a class="text-body text-decoration-none" href=#cloud>Cloud</a></h2><p>Des services cloud peuvent être utilisés et sont rappatriés simplement et rapidement au besoin.</p><p>MilleGrilles simplifie le déploiement de fichiers vers des Content Delivery Network (CDN) tout en garantissant la
+sécurité du contenu. Même des erreurs de configuration ou des attaques sur les fournisseurs de service ne peuvent
+pas compromettre le contenu des fichiers hébergés chez un tiers.</p><h2 class=h6 id=accès-mobile><a class="text-body text-decoration-none" href=#acc%c3%a8s-mobile>Accès mobile</a></h2><p>MilleGrilles vise à utiliser pleinement les capacités des appareils mobiles sans avoir à dépendre de fournisseurs
+externes. Les applications MilleGrilles sont disponibles sous forme Web ce qui évite le recours aux App Stores.</p><h2 class=h6 id=copies-de-sécurité><a class="text-body text-decoration-none" href=#copies-de-s%c3%a9curit%c3%a9>Copies de sécurité</a></h2><p>Le contenu des base de données est automatiquement chiffré et archivé à toutes les 30 minutes. Le format des archives
+est agnostic aux base de données utilisées et peut être stocké sans danger sur tout disque non protégé. Les archives
+peuvent agir comme source pour une migration entre différents formats de bases de données ou comme copie de sécurité.</p><p>Note : il est recommandé d&rsquo;utiliser une méthode additionnelle de copie de sécurité (backup) de bases de données pour
+une récupération rapide en cas de problèmes.</p><h2 class=h6 id=migration><a class="text-body text-decoration-none" href=#migration>Migration</a></h2><p>En cas de cession d&rsquo;un produit utilisé (e.g. base de données, système de messagerie, version de système d&rsquo;exploitation),
+une copie de sécurité des données permet en tout temps de récupérer le contenu et de le migrer vers le nouveau produit
+sélectionné.</p>]]></description>
+                    
+
+                    
+                        <guid isPermaLink="false">tag:www.millegrilles.com,2025-03-14:/fr/vision/</guid>
+                    
+
+                    
+                        <link>https://www.millegrilles.com/fr/vision/</link>
+                    
+
+                    <atom:link href="https://www.millegrilles.com/fr/vision/" hreflang="fr" rel="self" type="text/html"/>
+
+                    
+                        
+
+                        
+
+                        <atom:link href="https://www.millegrilles.com/fr/vision/" hreflang="fr" rel="alternate" type="text/html"/>
+                    
+
+                    
+                        
+                            <atom:link href="https://www.millegrilles.com/vision/" hreflang="en" rel="canonical" type="text/html"/>
+                        
+                    
+
+                    
+                        <pubDate>Fri, 14 Mar 2025 19:24:48 UTC</pubDate>
+                    
+
+                    
+                        <title>Vision</title>
+                    
+                </item>
+            
         
             
                 <item>
