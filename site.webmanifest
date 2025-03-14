@@ -1,6 +1,6 @@
 {
-  "name": "My New Hugo Site",
-  "short_name": "My New Hugo Site",
+  "name": "MilleGrilles",
+  "short_name": "MilleGrilles",
   "icons": [
     {
       "src": "/web-app-manifest-192x192.png",
