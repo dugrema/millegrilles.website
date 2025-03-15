@@ -2,6 +2,45 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://www.millegrilles.com/applications/</loc>
+    <lastmod>2025-03-15T12:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://www.millegrilles.com/fr/applications/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://www.millegrilles.com/applications/"
+                />
+  </url><url>
+    <loc>https://www.millegrilles.com/</loc>
+    <lastmod>2025-03-15T12:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://www.millegrilles.com/fr/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://www.millegrilles.com/"
+                />
+  </url><url>
+    <loc>https://www.millegrilles.com/technical/</loc>
+    <lastmod>2025-03-15T12:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://www.millegrilles.com/fr/technical/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://www.millegrilles.com/technical/"
+                />
+  </url><url>
     <loc>https://www.millegrilles.com/documentation/certificates/</loc>
     <lastmod>2025-03-14T12:20:48+00:00</lastmod>
     <xhtml:link
@@ -39,19 +78,6 @@
                 rel="alternate"
                 hreflang="en"
                 href="https://www.millegrilles.com/documentation/messages/"
-                />
-  </url><url>
-    <loc>https://www.millegrilles.com/</loc>
-    <lastmod>2025-03-14T12:20:48+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="fr"
-                href="https://www.millegrilles.com/fr/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://www.millegrilles.com/"
                 />
   </url><url>
     <loc>https://www.millegrilles.com/vision/</loc>

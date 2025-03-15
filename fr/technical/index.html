@@ -120,12 +120,16 @@
 <meta content="#0d6efd" name="theme-color">
 <meta content="width=device-width, initial-scale=1" name="viewport">
 
-<meta property="og:url" content="https://www.millegrilles.com/fr/vision/">
+<meta property="og:url" content="https://www.millegrilles.com/fr/technical/">
   <meta property="og:site_name" content="MilleGrilles">
-  <meta property="og:title" content="Vision">
-  <meta property="og:description" content="Vision MilleGrilles est un système d’information personnel décentralisé et sécuritaire.
-L’objectif du projet est la création d’applications et protocoles qui :
-contrôlent des logiciels et appareils physiques, conservent de manière chiffrée le contenu des fichiers et documents, réduisent les risques dus aux vols, pertes et corruptions malicieuses de données, exploitent le cloud tout en facilitant le rapatriement local au besoin, fonctionnent hors ligne sur un réseau local avec des appareils mobiles comme clients. Mots clés : décentralisation, sécurité, appareils mobiles, chiffrage, vols, cloud, ransomware.">
+  <meta property="og:title" content="Description technique">
+  <meta property="og:description" content="Description technique Bus de communication RabbitMQ
+Certificats de sécurité X.509
+Chiffrage en transit ssl
+Chiffrage au repos Fichiers, archives de backup.
+Algorithmes cryptographiques Pas de AES, SHA ni RSA. Utilisation de Chacha20Poly1305, Blake2 et Ed25519. Algorithmes alternatifs.
+Authentification Webauthn et certificats X.509.
+Autorisation Pas de OAuth, utilisation de valeurs locales dans la base de données et de paramètres custom dans les certificats X.509.">
   <meta property="og:locale" content="fr">
   <meta property="og:type" content="article">
     <meta property="article:published_time" content="2025-03-15T12:00:00+00:00">
@@ -133,15 +137,19 @@ contrôlent des logiciels et appareils physiques, conservent de manière chiffr�
 
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Vision">
-  <meta name="twitter:description" content="Vision MilleGrilles est un système d’information personnel décentralisé et sécuritaire.
-L’objectif du projet est la création d’applications et protocoles qui :
-contrôlent des logiciels et appareils physiques, conservent de manière chiffrée le contenu des fichiers et documents, réduisent les risques dus aux vols, pertes et corruptions malicieuses de données, exploitent le cloud tout en facilitant le rapatriement local au besoin, fonctionnent hors ligne sur un réseau local avec des appareils mobiles comme clients. Mots clés : décentralisation, sécurité, appareils mobiles, chiffrage, vols, cloud, ransomware.">
+  <meta name="twitter:title" content="Description technique">
+  <meta name="twitter:description" content="Description technique Bus de communication RabbitMQ
+Certificats de sécurité X.509
+Chiffrage en transit ssl
+Chiffrage au repos Fichiers, archives de backup.
+Algorithmes cryptographiques Pas de AES, SHA ni RSA. Utilisation de Chacha20Poly1305, Blake2 et Ed25519. Algorithmes alternatifs.
+Authentification Webauthn et certificats X.509.
+Autorisation Pas de OAuth, utilisation de valeurs locales dans la base de données et de paramètres custom dans les certificats X.509.">
 
 
 
     
-        <title>Vision · MilleGrilles</title>
+        <title>Description technique · MilleGrilles</title>
     
 
     
@@ -217,7 +225,7 @@ contrôlent des logiciels et appareils physiques, conservent de manière chiffr�
     
 
 
-<link  crossorigin="anonymous"  href="/css/paige/paige.1de82688eaf993bebe9b9c2b715dfb31da6321a9.min.3b5b583ef4a5c7e93743e15582585c9c2a7621b8fef6c9c7ad4bac50e4781f05.css"  integrity="sha256-O1tYPvSlx&#43;k3Q&#43;FVglhcnCp2Ibj&#43;9snHrUusUOR4HwU="   referrerpolicy="no-referrer"  rel="stylesheet">
+<link  crossorigin="anonymous"  href="/css/paige/paige.24e382f18400b25b171046d96bff14747159ef56.min.3b5b583ef4a5c7e93743e15582585c9c2a7621b8fef6c9c7ad4bac50e4781f05.css"  integrity="sha256-O1tYPvSlx&#43;k3Q&#43;FVglhcnCp2Ibj&#43;9snHrUusUOR4HwU="   referrerpolicy="no-referrer"  rel="stylesheet">
 
 
 
@@ -888,11 +896,18 @@ contrôlent des logiciels et appareils physiques, conservent de manière chiffr�
                 <div class="border rounded" style="padding: 1rem 2rem 0 1rem">
                     <nav id="TableOfContents">
   <ul>
-    <li><a href="#sécurité">Sécurité</a></li>
-    <li><a href="#logiciels-et-appareils">Logiciels et appareils</a></li>
-    <li><a href="#cloud">Cloud</a></li>
-    <li><a href="#accès-mobile">Accès mobile</a></li>
-    <li><a href="#copies-de-sécurité">Copies de sécurité</a></li>
+    <li><a href="#bus-de-communication">Bus de communication</a></li>
+    <li><a href="#certificats-de-sécurité">Certificats de sécurité</a></li>
+    <li><a href="#chiffrage-en-transit">Chiffrage en transit</a></li>
+    <li><a href="#chiffrage-au-repos">Chiffrage au repos</a></li>
+    <li><a href="#algorithmes-cryptographiques">Algorithmes cryptographiques</a></li>
+    <li><a href="#authentification">Authentification</a></li>
+    <li><a href="#autorisation">Autorisation</a></li>
+    <li><a href="#logiciels-infrastructure">Logiciels infrastructure</a>
+      <ul>
+        <li><a href="#bases-de-données">Bases de données</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
                 </div>
@@ -1048,49 +1063,381 @@ contrôlent des logiciels et appareils physiques, conservent de manière chiffr�
         
     
         
+            
+        
+    
+        
     
         
     
         
     
-
-    
-
-
-
-    
-
-
-
-    
-    
-
-    
         
     
-
+        
     
         
     
 
     
 
+
+
     
 
 
-<h1  class="h5"  id="vision" >
-    <a class="text-body text-decoration-none" href="#vision">Vision</a>
+
+    
+    
+
+    
+        
+    
+
+    
+        
+    
+
+    
+
+    
+
+
+<h1  class="h4"  id="description-technique" >
+    <a class="text-body text-decoration-none" href="#description-technique">Description technique</a>
 </h1>
-<p>MilleGrilles est un système d&rsquo;information personnel décentralisé et sécuritaire.</p>
-<p>L&rsquo;objectif du projet est la création d&rsquo;applications et protocoles qui :</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+    
+
+
+
+    
+    
+
+    
+        
+    
+
+    
+        
+    
+
+    
+
+    
+
+
+<h2  class="h5"  id="bus-de-communication" >
+    <a class="text-body text-decoration-none" href="#bus-de-communication">Bus de communication</a>
+</h2>
+<p>RabbitMQ</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+    
+
+
+
+    
+    
+
+    
+        
+    
+
+    
+        
+    
+
+    
+
+    
+
+
+<h2  class="h5"  id="certificats-de-sécurité" >
+    <a class="text-body text-decoration-none" href="#certificats-de-s%c3%a9curit%c3%a9">Certificats de sécurité</a>
+</h2>
+<p>X.509</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+    
+
+
+
+    
+    
+
+    
+        
+    
+
+    
+        
+    
+
+    
+
+    
+
+
+<h2  class="h5"  id="chiffrage-en-transit" >
+    <a class="text-body text-decoration-none" href="#chiffrage-en-transit">Chiffrage en transit</a>
+</h2>
+<p>ssl</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+    
+
+
+
+    
+    
+
+    
+        
+    
+
+    
+        
+    
+
+    
+
+    
+
+
+<h2  class="h5"  id="chiffrage-au-repos" >
+    <a class="text-body text-decoration-none" href="#chiffrage-au-repos">Chiffrage au repos</a>
+</h2>
+<p>Fichiers, archives de backup.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+    
+
+
+
+    
+    
+
+    
+        
+    
+
+    
+        
+    
+
+    
+
+    
+
+
+<h2  class="h5"  id="algorithmes-cryptographiques" >
+    <a class="text-body text-decoration-none" href="#algorithmes-cryptographiques">Algorithmes cryptographiques</a>
+</h2>
+<p>Pas de AES, SHA ni RSA. Utilisation de Chacha20Poly1305, Blake2 et Ed25519. Algorithmes alternatifs.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+    
+
+
+
+    
+    
+
+    
+        
+    
+
+    
+        
+    
+
+    
+
+    
+
+
+<h2  class="h5"  id="authentification" >
+    <a class="text-body text-decoration-none" href="#authentification">Authentification</a>
+</h2>
+<p>Webauthn et certificats X.509.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+    
+
+
+
+    
+    
+
+    
+        
+    
+
+    
+        
+    
+
+    
+
+    
+
+
+<h2  class="h5"  id="autorisation" >
+    <a class="text-body text-decoration-none" href="#autorisation">Autorisation</a>
+</h2>
+<p>Pas de OAuth, utilisation de valeurs locales dans la base de données et de paramètres custom dans les certificats X.509.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+    
+
+
+
+    
+    
+
+    
+        
+    
+
+    
+        
+    
+
+    
+
+    
+
+
+<h2  class="h5"  id="logiciels-infrastructure" >
+    <a class="text-body text-decoration-none" href="#logiciels-infrastructure">Logiciels infrastructure</a>
+</h2>
 <ul>
-<li>contrôlent des logiciels et appareils physiques,</li>
-<li>conservent de manière chiffrée le contenu des fichiers et documents,</li>
-<li>réduisent les risques dus aux vols, pertes et corruptions malicieuses de données,</li>
-<li>exploitent le cloud tout en facilitant le rapatriement local au besoin,</li>
-<li>fonctionnent hors ligne sur un réseau local avec des appareils mobiles comme clients.</li>
+<li>RabbitMQ</li>
+<li>Nginx</li>
+<li>Python3</li>
 </ul>
-<p>Mots clés : <strong>décentralisation, sécurité, appareils mobiles, chiffrage, vols, cloud, ransomware</strong>.</p>
 
 
 
@@ -1128,193 +1475,14 @@ contrôlent des logiciels et appareils physiques, conservent de manière chiffr�
     
 
 
-<h2  class="h6"  id="sécurité" >
-    <a class="text-body text-decoration-none" href="#s%c3%a9curit%c3%a9">Sécurité</a>
-</h2>
-<p>MilleGrilles conserve l&rsquo;information au repos de manière chiffrée. Le contenu de la base de données est souvent chiffré
-par l&rsquo;application d&rsquo;origine et ainsi inaccessible à un tiers si une fuite survient.</p>
-<p>La communication entre les composants serveurs (e.g. reverse proxy, base de données) est chiffrée et sécurisée par
-certificats X.509.</p>
-<p>Les applications web sont protégées par un accès webauthn qui utilise les passkeys. MilleGrilles ne supporte pas de
-mots de passe pour ses usagers ce qui élimine tous les problèmes liés au vol et à la réutilisation de mots de passe.</p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-    
-
-
-
-    
-    
-
-    
-        
-    
-
-    
-        
-    
-
-    
-
-    
-
-
-<h2  class="h6"  id="logiciels-et-appareils" >
-    <a class="text-body text-decoration-none" href="#logiciels-et-appareils">Logiciels et appareils</a>
-</h2>
-<p>MilleGrilles fournit des protocoles d&rsquo;authentification, d&rsquo;échange de messages et de stockage de données qui permettent
-aux logiciels et appareils physiques (e.g. micro-controleurs) d&rsquo;intéragir sécuritairement. Chaque parti peut vérifier
-la validité d&rsquo;une commande par sa signature électronique.</p>
-<p>Les composants peuvent communiquer entre-eux via un bus de communication MQ (RabbitMQ) et par des connexions https
-utilisant websocket ou un API RESTful.</p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-    
-
-
-
-    
-    
-
-    
-        
-    
-
-    
-        
-    
-
-    
-
-    
-
-
-<h2  class="h6"  id="cloud" >
-    <a class="text-body text-decoration-none" href="#cloud">Cloud</a>
-</h2>
-<p>Des services cloud peuvent être utilisés et sont rappatriés simplement et rapidement au besoin.</p>
-<p>MilleGrilles simplifie le déploiement de fichiers vers des Content Delivery Network (CDN) tout en garantissant la
-sécurité du contenu. Même des erreurs de configuration ou des attaques sur les fournisseurs de service ne peuvent
-pas compromettre le contenu des fichiers hébergés chez un tiers.</p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-    
-
-
-
-    
-    
-
-    
-        
-    
-
-    
-        
-    
-
-    
-
-    
-
-
-<h2  class="h6"  id="accès-mobile" >
-    <a class="text-body text-decoration-none" href="#acc%c3%a8s-mobile">Accès mobile</a>
-</h2>
-<p>MilleGrilles vise à utiliser pleinement les capacités des appareils mobiles sans avoir à dépendre de fournisseurs
-externes. Les applications MilleGrilles sont disponibles sous forme Web ce qui évite le recours aux App Stores.</p>
-<p>Il est possible de configurer le système MilleGrilles pour fonctionner localement avec des appareils mobiles sans avoir
-recours à une connexion internet (serveur DNS local requis, e.g. dnsmasq).</p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-    
-
-
-
-    
-    
-
-    
-        
-    
-
-    
-        
-    
-
-    
-
-    
-
-
-<h2  class="h6"  id="copies-de-sécurité" >
-    <a class="text-body text-decoration-none" href="#copies-de-s%c3%a9curit%c3%a9">Copies de sécurité</a>
-</h2>
-<p>Le contenu des base de données est automatiquement chiffré et archivé à toutes les 30 minutes. Le format des archives
-est agnostic aux base de données utilisées et peut être stocké sans danger sur tout disque non protégé. Les archives
-peuvent agir comme source pour une migration entre différents formats de bases de données ou comme copie de sécurité.</p>
-<p>Note : il est recommandé d&rsquo;utiliser une méthode additionnelle de copie de sécurité (backup) de bases de données pour
-une récupération rapide en cas de problèmes.</p>
+<h3  class="h6"  id="bases-de-données" >
+    <a class="text-body text-decoration-none" href="#bases-de-donn%c3%a9es">Bases de données</a>
+</h3>
+<ul>
+<li>Redis</li>
+<li>MongoDB</li>
+<li>MariaDB</li>
+</ul>
 
             
 
@@ -1462,9 +1630,11 @@ une récupération rapide en cas de problèmes.</p>
         
             <div id="paige-page-siblings">
                 
+                    <div class="paige-row-short text-center text-secondary" id="paige-page-next"><a class="link-secondary" href="https://www.millegrilles.com/fr/vision/">Vision</a> &rsaquo;</div>
+                
 
                 
-                    <div class="paige-row-short text-center text-secondary" id="paige-page-prev">&lsaquo; <a class="link-secondary" href="https://www.millegrilles.com/fr/technical/">Description technique</a></div>
+                    <div class="paige-row-short text-center text-secondary" id="paige-page-prev">&lsaquo; <a class="link-secondary" href="https://www.millegrilles.com/fr/applications/">Applications</a></div>
                 
             </div>
         
@@ -1928,7 +2098,7 @@ une récupération rapide en cas de problèmes.</p>
         
     
 
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","abstract":" ","articleSection":"MilleGrilles","dateCreated":"2025-03-15T12:00:00Z","dateModified":"2025-03-15T12:00:00Z","headline":"Vision","inLanguage":"fr","name":"Vision","timeRequired":"PT3M","url":"https://www.millegrilles.com/fr/vision/","wordCount":448}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","abstract":" ","articleSection":"MilleGrilles","dateCreated":"2025-03-15T12:00:00Z","dateModified":"2025-03-15T12:00:00Z","headline":"Description technique","inLanguage":"fr","name":"Description technique","timeRequired":"PT1M","url":"https://www.millegrilles.com/fr/technical/","wordCount":74}</script>
 
 
 

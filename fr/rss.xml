@@ -35,7 +35,7 @@
         
 
         
-            <lastBuildDate>Fri, 14 Mar 2025 19:24:48 UTC</lastBuildDate>
+            <lastBuildDate>Sat, 15 Mar 2025 12:00:00 UTC</lastBuildDate>
         
 
         
@@ -98,23 +98,148 @@
                     
 
                     
-                        <description><![CDATA[<h1 class=h5 id=vision><a class="text-body text-decoration-none" href=#vision>Vision</a></h1><p>MilleGrilles est un système d&rsquo;information personnel décentralisé et sécuritaire.</p><p>L&rsquo;objectif du projet est la création d&rsquo;applications et protocoles qui :</p><ul><li>contrôlent des logiciels et appareils physiques,</li><li>conservent de manière chiffrée le contenu des fichiers et documents,</li><li>réduisent les risques dus aux vols, pertes et corruptions malicieuses de données,</li><li>exploitent le cloud tout en facilitant le rapatriement local au besoin,</li><li>fonctionnent hors ligne sur un réseau local avec des appareils mobiles comme clients.</li></ul><p>Mots clés : <strong>décentralisation, sécurité, appareils mobiles, chiffrage, vols, cloud, ransomware</strong>.</p><h2 class=h6 id=sécurité><a class="text-body text-decoration-none" href=#s%c3%a9curit%c3%a9>Sécurité</a></h2><p>MilleGrilles conserve l&rsquo;information au repos de manière chiffrée sans dépendances envers un algorithme externe.
-Les fichiers sont chiffrés en tout temps au repos. Le contenu de la base de données est souvent chiffré par
-l&rsquo;application et ainsi inaccessible à un tiers lorsqu&rsquo;une fuite survient.</p><p>La communication entre les composants serveurs (e.g. reverse proxy, base de données) est chiffrée et sécurisée par
-certificats X.509.</p><p>Les applications web sont protégées par un accès webauth qui utilise les passkeys. MilleGrilles ne supporte pas de
-mots de passe pour ses usagers ce qui élimine tous les problèmes liés au vol et à la réutilisation de mots de passe.</p><h2 class=h6 id=cloud><a class="text-body text-decoration-none" href=#cloud>Cloud</a></h2><p>Des services cloud peuvent être utilisés et sont rappatriés simplement et rapidement au besoin.</p><p>MilleGrilles simplifie le déploiement de fichiers vers des Content Delivery Network (CDN) tout en garantissant la
-sécurité du contenu. Même des erreurs de configuration ou des attaques sur les fournisseurs de service ne peuvent
-pas compromettre le contenu des fichiers hébergés chez un tiers.</p><h2 class=h6 id=accès-mobile><a class="text-body text-decoration-none" href=#acc%c3%a8s-mobile>Accès mobile</a></h2><p>MilleGrilles vise à utiliser pleinement les capacités des appareils mobiles sans avoir à dépendre de fournisseurs
-externes. Les applications MilleGrilles sont disponibles sous forme Web ce qui évite le recours aux App Stores.</p><h2 class=h6 id=copies-de-sécurité><a class="text-body text-decoration-none" href=#copies-de-s%c3%a9curit%c3%a9>Copies de sécurité</a></h2><p>Le contenu des base de données est automatiquement chiffré et archivé à toutes les 30 minutes. Le format des archives
-est agnostic aux base de données utilisées et peut être stocké sans danger sur tout disque non protégé. Les archives
-peuvent agir comme source pour une migration entre différents formats de bases de données ou comme copie de sécurité.</p><p>Note : il est recommandé d&rsquo;utiliser une méthode additionnelle de copie de sécurité (backup) de bases de données pour
-une récupération rapide en cas de problèmes.</p><h2 class=h6 id=migration><a class="text-body text-decoration-none" href=#migration>Migration</a></h2><p>En cas de cession d&rsquo;un produit utilisé (e.g. base de données, système de messagerie, version de système d&rsquo;exploitation),
-une copie de sécurité des données permet en tout temps de récupérer le contenu et de le migrer vers le nouveau produit
-sélectionné.</p>]]></description>
+                        <description><![CDATA[<h1 class=h5 id=applications><a class="text-body text-decoration-none" href=#applications>Applications</a></h1><p>Applications MilleGrilles disponibles.</p><h2 class=h6 id=portail-dauthentification><a class="text-body text-decoration-none" href=#portail-dauthentification>Portail d&rsquo;authentification</a></h2><p><img src=https://www.millegrilles.com/applications/Portail_Screen01.webp alt="Portail Saisie d’écran" title=Écran></p><p><img src=https://www.millegrilles.com/applications/Portail_Screen02.webp alt="Portail Saisie d’écran" title=Écran></p><p><img src=https://www.millegrilles.com/applications/Portail_Screen03.webp alt="Portail Saisie d’écran" title=Écran></p><p><img src=https://www.millegrilles.com/applications/Portail_Screen04.webp alt="Portail Saisie d’écran" title=Écran></p><p><img src=https://www.millegrilles.com/applications/Portail_Screen05.webp alt="Portail Saisie d’écran" title=Écran></p><p><img src=https://www.millegrilles.com/applications/Portail_Screen06.webp alt="Portail Saisie d’écran" title=Écran></p><h2 class=h6 id=coup-doeil-2><a class="text-body text-decoration-none" href=#coup-doeil-2>Coup D&rsquo;Oeil 2</a></h2><p>Console d&rsquo;administration web</p><h2 class=h6 id=collections-2><a class="text-body text-decoration-none" href=#collections-2>Collections 2</a></h2><p>File manager, video streamer</p><p><img src=https://www.millegrilles.com/applications/Collections2_Screen01.webp alt="Collections 2 Screenshot" title="Screenshot of directories"></p><p><img src=https://www.millegrilles.com/applications/Collections2_Screen02.webp alt="Collections 2 Screenshot" title="Screenshot of images"></p><p><img src=https://www.millegrilles.com/applications/Collections2_Screen03.webp alt="Collections 2 Screenshot" title="Screenshot of large file thumbnails"></p><p><img src=https://www.millegrilles.com/applications/Collections2_Screen04.webp alt="Collections 2 Screenshot" title="Screenshot of image file details"></p><p><img src=https://www.millegrilles.com/applications/Collections2_Screen05.webp alt="Collections 2 Screenshot" title="Screenshot of video details and viewer"></p><h2 class=h6 id=senseurs-passifs><a class="text-body text-decoration-none" href=#senseurs-passifs>Senseurs Passifs</a></h2><p>Interface pour micro-controleurs</p><p><img src=https://www.millegrilles.com/applications/SenseursPassifs_Screen01.webp alt="Senseurs Passifs 2 Saisie d’écran" title="Écran de la liste d'appareils"></p><p><img src=https://www.millegrilles.com/applications/SenseursPassifs_Screen02.webp alt="Senseurs Passifs 2 Saisie d’écran" title="Écran de l'historique d'un senseur"></p><p><img src=https://www.millegrilles.com/applications/SenseursPassifs_Screen03.webp alt="Senseurs Passifs 2 Saisie d’écran" title="Écran de programmation d'un appareil"></p><p><img src=https://www.millegrilles.com/applications/SenseursPassifs_Screen04.webp alt="Senseurs Passifs 2 Saisie d’écran" title="Écran de programmation d'un affichage LCD"></p><h2 class=h6 id=notepad><a class="text-body text-decoration-none" href=#notepad>Notepad</a></h2><p>Documents web</p><p><img src=https://www.millegrilles.com/applications/Notepad_Screen01.webp alt="Notepad Saisie d’écran" title=Écran></p><p><img src=https://www.millegrilles.com/applications/Notepad_Screen02.webp alt="Notepad Saisie d’écran" title=Écran></p><p><img src=https://www.millegrilles.com/applications/Notepad_Screen03.webp alt="Notepad Saisie d’écran" title=Écran></p><p><img src=https://www.millegrilles.com/applications/Notepad_Screen04.webp alt="Notepad Saisie d’écran" title=Écran></p><p><img src=https://www.millegrilles.com/applications/Notepad_Screen05.webp alt="Notepad Saisie d’écran" title=Écran></p><h2 class=h6 id=ai-chat><a class="text-body text-decoration-none" href=#ai-chat>AI Chat</a></h2><p>Interface pour Ollama</p><p><img src=https://www.millegrilles.com/applications/AiChat_Screen01.webp alt="AI Chat Saisie d’écran" title="Écran d'une discussion"></p><h2 class=h6 id=data-viewer><a class="text-body text-decoration-none" href=#data-viewer>Data Viewer</a></h2><p>RSS/Atom data collector et viewer</p><p><img src=https://www.millegrilles.com/applications/DataViewer_Screen01.webp alt="Data Viewer Saisie d’écran" title="Écran de la liste des sources"></p><p><img src=https://www.millegrilles.com/applications/DataViewer_Screen02.webp alt="Data Viewer Saisie d’écran" title="Écran du contenu d'une source"></p><p><img src=https://www.millegrilles.com/applications/DataViewer_Screen03.webp alt="Data Viewer Saisie d’écran" title="Écran d'ajout de source de données"></p>]]></description>
                     
 
                     
-                        <guid isPermaLink="false">tag:www.millegrilles.com,2025-03-14:/fr/vision/</guid>
+                        <guid isPermaLink="false">tag:www.millegrilles.com,2025-03-15:/fr/applications/</guid>
+                    
+
+                    
+                        <link>https://www.millegrilles.com/fr/applications/</link>
+                    
+
+                    <atom:link href="https://www.millegrilles.com/fr/applications/" hreflang="fr" rel="self" type="text/html"/>
+
+                    
+                        
+
+                        
+
+                        <atom:link href="https://www.millegrilles.com/fr/applications/" hreflang="fr" rel="alternate" type="text/html"/>
+                    
+
+                    
+                        
+                            <atom:link href="https://www.millegrilles.com/applications/" hreflang="en" rel="canonical" type="text/html"/>
+                        
+                    
+
+                    
+                        <pubDate>Sat, 15 Mar 2025 12:00:00 UTC</pubDate>
+                    
+
+                    
+                        <title>Applications</title>
+                    
+                </item>
+            
+        
+            
+                <item>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+
+                    
+
+                    
+
+                    
+
+                    
+
+                    
+                    
+                    
+
+                    
+
+                    
+                        <description><![CDATA[<h1 class=h4 id=description-technique><a class="text-body text-decoration-none" href=#description-technique>Description technique</a></h1><h2 class=h5 id=bus-de-communication><a class="text-body text-decoration-none" href=#bus-de-communication>Bus de communication</a></h2><p>RabbitMQ</p><h2 class=h5 id=certificats-de-sécurité><a class="text-body text-decoration-none" href=#certificats-de-s%c3%a9curit%c3%a9>Certificats de sécurité</a></h2><p>X.509</p><h2 class=h5 id=chiffrage-en-transit><a class="text-body text-decoration-none" href=#chiffrage-en-transit>Chiffrage en transit</a></h2><p>ssl</p><h2 class=h5 id=chiffrage-au-repos><a class="text-body text-decoration-none" href=#chiffrage-au-repos>Chiffrage au repos</a></h2><p>Fichiers, archives de backup.</p><h2 class=h5 id=algorithmes-cryptographiques><a class="text-body text-decoration-none" href=#algorithmes-cryptographiques>Algorithmes cryptographiques</a></h2><p>Pas de AES, SHA ni RSA. Utilisation de Chacha20Poly1305, Blake2 et Ed25519. Algorithmes alternatifs.</p><h2 class=h5 id=authentification><a class="text-body text-decoration-none" href=#authentification>Authentification</a></h2><p>Webauthn et certificats X.509.</p><h2 class=h5 id=autorisation><a class="text-body text-decoration-none" href=#autorisation>Autorisation</a></h2><p>Pas de OAuth, utilisation de valeurs locales dans la base de données et de paramètres custom dans les certificats X.509.</p><h2 class=h5 id=logiciels-infrastructure><a class="text-body text-decoration-none" href=#logiciels-infrastructure>Logiciels infrastructure</a></h2><ul><li>RabbitMQ</li><li>Nginx</li><li>Python3</li></ul><h3 class=h6 id=bases-de-données><a class="text-body text-decoration-none" href=#bases-de-donn%c3%a9es>Bases de données</a></h3><ul><li>Redis</li><li>MongoDB</li><li>MariaDB</li></ul>]]></description>
+                    
+
+                    
+                        <guid isPermaLink="false">tag:www.millegrilles.com,2025-03-15:/fr/technical/</guid>
+                    
+
+                    
+                        <link>https://www.millegrilles.com/fr/technical/</link>
+                    
+
+                    <atom:link href="https://www.millegrilles.com/fr/technical/" hreflang="fr" rel="self" type="text/html"/>
+
+                    
+                        
+
+                        
+
+                        <atom:link href="https://www.millegrilles.com/fr/technical/" hreflang="fr" rel="alternate" type="text/html"/>
+                    
+
+                    
+                        
+                            <atom:link href="https://www.millegrilles.com/technical/" hreflang="en" rel="canonical" type="text/html"/>
+                        
+                    
+
+                    
+                        <pubDate>Sat, 15 Mar 2025 12:00:00 UTC</pubDate>
+                    
+
+                    
+                        <title>Description technique</title>
+                    
+                </item>
+            
+        
+            
+                <item>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+
+                    
+
+                    
+
+                    
+
+                    
+
+                    
+                    
+                    
+
+                    
+
+                    
+                        <description><![CDATA[<h1 class=h5 id=vision><a class="text-body text-decoration-none" href=#vision>Vision</a></h1><p>MilleGrilles est un système d&rsquo;information personnel décentralisé et sécuritaire.</p><p>L&rsquo;objectif du projet est la création d&rsquo;applications et protocoles qui :</p><ul><li>contrôlent des logiciels et appareils physiques,</li><li>conservent de manière chiffrée le contenu des fichiers et documents,</li><li>réduisent les risques dus aux vols, pertes et corruptions malicieuses de données,</li><li>exploitent le cloud tout en facilitant le rapatriement local au besoin,</li><li>fonctionnent hors ligne sur un réseau local avec des appareils mobiles comme clients.</li></ul><p>Mots clés : <strong>décentralisation, sécurité, appareils mobiles, chiffrage, vols, cloud, ransomware</strong>.</p><h2 class=h6 id=sécurité><a class="text-body text-decoration-none" href=#s%c3%a9curit%c3%a9>Sécurité</a></h2><p>MilleGrilles conserve l&rsquo;information au repos de manière chiffrée. Le contenu de la base de données est souvent chiffré
+par l&rsquo;application d&rsquo;origine et ainsi inaccessible à un tiers si une fuite survient.</p><p>La communication entre les composants serveurs (e.g. reverse proxy, base de données) est chiffrée et sécurisée par
+certificats X.509.</p><p>Les applications web sont protégées par un accès webauthn qui utilise les passkeys. MilleGrilles ne supporte pas de
+mots de passe pour ses usagers ce qui élimine tous les problèmes liés au vol et à la réutilisation de mots de passe.</p><h2 class=h6 id=logiciels-et-appareils><a class="text-body text-decoration-none" href=#logiciels-et-appareils>Logiciels et appareils</a></h2><p>MilleGrilles fournit des protocoles d&rsquo;authentification, d&rsquo;échange de messages et de stockage de données qui permettent
+aux logiciels et appareils physiques (e.g. micro-controleurs) d&rsquo;intéragir sécuritairement. Chaque parti peut vérifier
+la validité d&rsquo;une commande par sa signature électronique.</p><p>Les composants peuvent communiquer entre-eux via un bus de communication MQ (RabbitMQ) et par des connexions https
+utilisant websocket ou un API RESTful.</p><h2 class=h6 id=cloud><a class="text-body text-decoration-none" href=#cloud>Cloud</a></h2><p>Des services cloud peuvent être utilisés et sont rappatriés simplement et rapidement au besoin.</p><p>MilleGrilles simplifie le déploiement de fichiers vers des Content Delivery Network (CDN) tout en garantissant la
+sécurité du contenu. Même des erreurs de configuration ou des attaques sur les fournisseurs de service ne peuvent
+pas compromettre le contenu des fichiers hébergés chez un tiers.</p><h2 class=h6 id=accès-mobile><a class="text-body text-decoration-none" href=#acc%c3%a8s-mobile>Accès mobile</a></h2><p>MilleGrilles vise à utiliser pleinement les capacités des appareils mobiles sans avoir à dépendre de fournisseurs
+externes. Les applications MilleGrilles sont disponibles sous forme Web ce qui évite le recours aux App Stores.</p><p>Il est possible de configurer le système MilleGrilles pour fonctionner localement avec des appareils mobiles sans avoir
+recours à une connexion internet (serveur DNS local requis, e.g. dnsmasq).</p><h2 class=h6 id=copies-de-sécurité><a class="text-body text-decoration-none" href=#copies-de-s%c3%a9curit%c3%a9>Copies de sécurité</a></h2><p>Le contenu des base de données est automatiquement chiffré et archivé à toutes les 30 minutes. Le format des archives
+est agnostic aux base de données utilisées et peut être stocké sans danger sur tout disque non protégé. Les archives
+peuvent agir comme source pour une migration entre différents formats de bases de données ou comme copie de sécurité.</p><p>Note : il est recommandé d&rsquo;utiliser une méthode additionnelle de copie de sécurité (backup) de bases de données pour
+une récupération rapide en cas de problèmes.</p>]]></description>
+                    
+
+                    
+                        <guid isPermaLink="false">tag:www.millegrilles.com,2025-03-15:/fr/vision/</guid>
                     
 
                     
@@ -138,7 +263,7 @@ sélectionné.</p>]]></description>
                     
 
                     
-                        <pubDate>Fri, 14 Mar 2025 19:24:48 UTC</pubDate>
+                        <pubDate>Sat, 15 Mar 2025 12:00:00 UTC</pubDate>
                     
 
                     
