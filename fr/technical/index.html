@@ -124,12 +124,10 @@
   <meta property="og:site_name" content="MilleGrilles">
   <meta property="og:title" content="Description technique">
   <meta property="og:description" content="Description technique Bus de communication RabbitMQ
-Certificats de sécurité X.509
-Chiffrage en transit ssl
-Chiffrage au repos Fichiers, archives de backup.
-Algorithmes cryptographiques Pas de AES, SHA ni RSA. Utilisation de Chacha20Poly1305, Blake2 et Ed25519. Algorithmes alternatifs.
-Authentification Webauthn et certificats X.509.
-Accès système Les composants système se font attribuer des certificats X.509 qui contiennent l’information requise pour se faire attribuer un compte sur le bus de communication MQ et si approprié dans une base de données.">
+Certificats de sécurité X.509 Système, usager
+Chiffrage en transit Chiffrage entre modules externes Tous les modules serveurs qui passent par internet communiquent entre-eux en utilisant une forme ou une autre de chiffrage.
+Le bus de communication MQ est uniquement disponible avec le protocole amqps (ssl) et requiert un certificat ssl client.
+Les autres connexions faites de l’extérieur doivent passer par nginx qui supporte https sur les ports 443 (certificat client optionnel) et 444 (certificat client obligatoire). Les connexions via nginx peuvent être converties en websocket lorsque l’application derrière le proxy le supporte.">
   <meta property="og:locale" content="fr">
   <meta property="og:type" content="article">
     <meta property="article:published_time" content="2025-03-15T12:00:00+00:00">
@@ -139,12 +137,10 @@ Accès système Les composants système se font attribuer des certificats X.509 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Description technique">
   <meta name="twitter:description" content="Description technique Bus de communication RabbitMQ
-Certificats de sécurité X.509
-Chiffrage en transit ssl
-Chiffrage au repos Fichiers, archives de backup.
-Algorithmes cryptographiques Pas de AES, SHA ni RSA. Utilisation de Chacha20Poly1305, Blake2 et Ed25519. Algorithmes alternatifs.
-Authentification Webauthn et certificats X.509.
-Accès système Les composants système se font attribuer des certificats X.509 qui contiennent l’information requise pour se faire attribuer un compte sur le bus de communication MQ et si approprié dans une base de données.">
+Certificats de sécurité X.509 Système, usager
+Chiffrage en transit Chiffrage entre modules externes Tous les modules serveurs qui passent par internet communiquent entre-eux en utilisant une forme ou une autre de chiffrage.
+Le bus de communication MQ est uniquement disponible avec le protocole amqps (ssl) et requiert un certificat ssl client.
+Les autres connexions faites de l’extérieur doivent passer par nginx qui supporte https sur les ports 443 (certificat client optionnel) et 444 (certificat client obligatoire). Les connexions via nginx peuvent être converties en websocket lorsque l’application derrière le proxy le supporte.">
 
 
 
@@ -898,7 +894,12 @@ Accès système Les composants système se font attribuer des certificats X.509 
   <ul>
     <li><a href="#bus-de-communication">Bus de communication</a></li>
     <li><a href="#certificats-de-sécurité">Certificats de sécurité</a></li>
-    <li><a href="#chiffrage-en-transit">Chiffrage en transit</a></li>
+    <li><a href="#chiffrage-en-transit">Chiffrage en transit</a>
+      <ul>
+        <li><a href="#chiffrage-entre-modules-externes">Chiffrage entre modules externes</a></li>
+        <li><a href="#chiffrage-entre-modules-internes">Chiffrage entre modules internes</a></li>
+      </ul>
+    </li>
     <li><a href="#chiffrage-au-repos">Chiffrage au repos</a></li>
     <li><a href="#algorithmes-cryptographiques">Algorithmes cryptographiques</a></li>
     <li><a href="#authentification">Authentification</a>
@@ -1106,6 +1107,10 @@ Accès système Les composants système se font attribuer des certificats X.509 
     
         
     
+        
+    
+        
+    
 
     
 
@@ -1215,7 +1220,8 @@ Accès système Les composants système se font attribuer des certificats X.509 
 <h2  class="h5"  id="certificats-de-sécurité" >
     <a class="text-body text-decoration-none" href="#certificats-de-s%c3%a9curit%c3%a9">Certificats de sécurité</a>
 </h2>
-<p>X.509</p>
+<p>X.509
+Système, usager</p>
 
 
 
@@ -1256,7 +1262,110 @@ Accès système Les composants système se font attribuer des certificats X.509 
 <h2  class="h5"  id="chiffrage-en-transit" >
     <a class="text-body text-decoration-none" href="#chiffrage-en-transit">Chiffrage en transit</a>
 </h2>
-<p>ssl</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+    
+
+
+
+    
+    
+
+    
+        
+    
+
+    
+        
+    
+
+    
+
+    
+
+
+<h3  class="h6"  id="chiffrage-entre-modules-externes" >
+    <a class="text-body text-decoration-none" href="#chiffrage-entre-modules-externes">Chiffrage entre modules externes</a>
+</h3>
+<p>Tous les modules serveurs qui passent par internet communiquent entre-eux en utilisant une forme ou une autre de
+chiffrage.</p>
+<p>Le bus de communication MQ est uniquement disponible avec le protocole amqps (ssl) et requiert un certificat ssl client.</p>
+<p>Les autres connexions faites de l&rsquo;extérieur doivent passer par nginx qui supporte https sur les ports 443 (certificat
+client optionnel) et 444 (certificat client obligatoire). Les connexions via nginx peuvent être converties en websocket
+lorsque l&rsquo;application derrière le proxy le supporte.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+    
+
+
+
+    
+    
+
+    
+        
+    
+
+    
+        
+    
+
+    
+
+    
+
+
+<h3  class="h6"  id="chiffrage-entre-modules-internes" >
+    <a class="text-body text-decoration-none" href="#chiffrage-entre-modules-internes">Chiffrage entre modules internes</a>
+</h3>
+<p>Pour l&rsquo;instant, seul le module certissuer utilise une connexion http non sécurisée à l&rsquo;interne. Tous les autres modules
+utilisent une connexion ssl généralement avec certificat client pour se connecter.</p>
+<p>Connexions sécurisées via ssl avec certificat client obligatoire :</p>
+<ul>
+<li>rabbitmq</li>
+<li>mongodb</li>
+<li>nginx (port 444)</li>
+</ul>
+<p>Connexions sécurisées via ssl avec certificat client optionnel :</p>
+<ul>
+<li>redis</li>
+<li>nginx (port 443)</li>
+</ul>
+<p>Connexions non sécurisées à l&rsquo;interne:</p>
+<ul>
+<li>certissuer: la requête de certificat (CSR) et le nouveau certificat généré sont passés par HTTP. Ceci simplifie
+la configuration d&rsquo;un nouveau système ou récupération d&rsquo;un système avec certificats expirés.</li>
+</ul>
 
 
 
@@ -1338,7 +1447,8 @@ Accès système Les composants système se font attribuer des certificats X.509 
 <h2  class="h5"  id="algorithmes-cryptographiques" >
     <a class="text-body text-decoration-none" href="#algorithmes-cryptographiques">Algorithmes cryptographiques</a>
 </h2>
-<p>Pas de AES, SHA ni RSA. Utilisation de Chacha20Poly1305, Blake2 et Ed25519. Algorithmes alternatifs.</p>
+<p>Utilisation de Chacha20Poly1305, Blake2 et Ed25519.</p>
+<p>Algorithmes alternatifs. Pas de AES, SHA ni RSA.</p>
 
 
 
@@ -2533,7 +2643,7 @@ au bus MilleGrilles doivent être capables de déchiffrer une réponse de maniè
         
     
 
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","abstract":" ","articleSection":"MilleGrilles","dateCreated":"2025-03-15T12:00:00Z","dateModified":"2025-03-15T12:00:00Z","headline":"Description technique","inLanguage":"fr","name":"Description technique","timeRequired":"PT3M","url":"https://www.millegrilles.com/fr/technical/","wordCount":617}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","abstract":" ","articleSection":"MilleGrilles","dateCreated":"2025-03-15T12:00:00Z","dateModified":"2025-03-15T12:00:00Z","headline":"Description technique","inLanguage":"fr","name":"Description technique","timeRequired":"PT4M","url":"https://www.millegrilles.com/fr/technical/","wordCount":795}</script>
 
 
 
