@@ -130,8 +130,8 @@ Le bus de communication MQ est uniquement disponible avec le protocole amqps (ss
 Les autres connexions faites de l’extérieur doivent passer par nginx qui supporte https sur les ports 443 (certificat client optionnel) et 444 (certificat client obligatoire). Les connexions via nginx peuvent être converties en websocket lorsque l’application derrière le proxy le supporte.">
   <meta property="og:locale" content="fr">
   <meta property="og:type" content="article">
-    <meta property="article:published_time" content="2025-03-15T12:00:00+00:00">
-    <meta property="article:modified_time" content="2025-03-15T12:00:00+00:00">
+    <meta property="article:published_time" content="2025-03-17T13:00:00+00:00">
+    <meta property="article:modified_time" content="2025-03-17T13:00:00+00:00">
 
 
   <meta name="twitter:card" content="summary">
@@ -875,7 +875,7 @@ Les autres connexions faites de l’extérieur doivent passer par nginx qui supp
 
                 
                     <p class="paige-row-short text-secondary" id="paige-page-date">
-                        <time datetime="2025-03-15" >15 mars 2025</time>
+                        <time datetime="2025-03-17" >17 mars 2025</time>
                     </p>
                 
 
@@ -918,9 +918,21 @@ Les autres connexions faites de l’extérieur doivent passer par nginx qui supp
         <li><a href="#commande">Commande</a></li>
         <li><a href="#événement">Événement</a></li>
         <li><a href="#réponse">Réponse</a></li>
+        <li><a href="#routage">Routage</a></li>
+        <li><a href="#sécurité-du-routage">Sécurité du routage</a></li>
       </ul>
     </li>
     <li><a href="#gestion-de-clés-de-chiffrage">Gestion de clés de chiffrage</a></li>
+    <li><a href="#file-controler-et-file-hosts">File controler et file hosts</a></li>
+    <li><a href="#noms-de-fichiers">Noms de fichiers</a></li>
+    <li><a href="#chiffrage">Chiffrage</a>
+      <ul>
+        <li><a href="#clés-symétriques">Clés symétriques</a></li>
+        <li><a href="#mgs4">mgs4</a></li>
+        <li><a href="#exemple-de-contenu-dune-commande-avec-chiffrage">Exemple de contenu d&rsquo;une commande avec chiffrage</a></li>
+        <li><a href="#fichiers-chiffrés-avec-mgs4">Fichiers chiffrés avec mgs4</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
                 </div>
@@ -1069,6 +1081,24 @@ Les autres connexions faites de l’extérieur doivent passer par nginx qui supp
     
         
             
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
         
     
         
@@ -2024,10 +2054,538 @@ au bus MilleGrilles doivent être capables de déchiffrer une réponse de maniè
     
 
 
+<h3  class="h6"  id="routage" >
+    <a class="text-body text-decoration-none" href="#routage">Routage</a>
+</h3>
+<p>Les messages de type requete, commande et evenement vont sur un des 4 exchanges sécurisés (1.public, 2.prive,
+3.protege ou 4.secure). Le certificat du module détermine les exchanges disponibles.</p>
+<p>Formats de la routing key MQ pour un message sur un des exchanges sécurisés.</p>
+<ul>
+<li>message kind.domaine ou role.action</li>
+<li>message kind.domaine ou role.partition.action</li>
+</ul>
+<p>Exemples sans partition :</p>
+<ul>
+<li>requete.CoreTopologie.listeUserappsDeployees</li>
+<li>requete.CoreMaitreDesComptes.chargerUsager</li>
+<li>commande.media.transcoderVideo</li>
+<li>commande.instance.transmettreCatalogues</li>
+<li>evenement.filecontroler.status</li>
+</ul>
+<p>Exemples avec partition :</p>
+<ul>
+<li>commande.instance.f3a68d38-1ce6-4c51-a628-fb88a95d22ae.installerApplication</li>
+<li>evenement.GrosFichiers.ff7db38a-111a-4df5-8e96-69648f0d55ba.newFuuid</li>
+<li>evenement.instance.f3a68d38-1ce6-4c51-a628-fb88a95d22ae.presenceInstanceApplications</li>
+</ul>
+<p>Le routage des réponses fonctionne avec les champs header reply_to et correlation_id du protocole MQ.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+    
+
+
+
+    
+    
+
+    
+        
+    
+
+    
+        
+    
+
+    
+
+    
+
+
+<h3  class="h6"  id="sécurité-du-routage" >
+    <a class="text-body text-decoration-none" href="#s%c3%a9curit%c3%a9-du-routage">Sécurité du routage</a>
+</h3>
+<p>Pour qu&rsquo;un module puisse se connecter à MQ, un compte doit être créé en connectant le module en utilisant son
+certificat X.509 (client ssl) avec la commande HTTPS POST sur /administration/ajouterCompte sur le port 444 du
+serveur MQ.</p>
+<p>Le compte du module est lié à son subject X.509 (CN,OU et O). Le compte se fait donner accès aux exchanges listés dans
+son certificat. Sur chaque exchange, le certificat se fait donner accès ou routage de messages de la manière suivante :</p>
+<p>Write routing sur exchange</p>
+<ul>
+<li>evenement.certificat.infoCertificat</li>
+<li>requete.*</li>
+<li>commande.*</li>
+<li>evenement.global.*</li>
+<li>evenement.ROLES.*  (pour chaque role)</li>
+<li>evenement.DOMAINES.*  (pour chaque domaine)</li>
+</ul>
+<p>Read routing sur exchange</p>
+<ul>
+<li>requete.certificat.*</li>
+<li>evenement.*</li>
+<li>requete.global.*</li>
+<li>requete.ROLE.*</li>
+<li>requete.DOMAINES.*</li>
+<li>commande.global.*</li>
+<li>commande.ROLES.*  (pour chaque role)</li>
+<li>commande.DOMAINES.*  (pour chaque domaine)</li>
+</ul>
+<p>Règles</p>
+<p>Le compte permet :</p>
+<ul>
+<li>d&rsquo;émettre des requêtes et commandes vers n&rsquo;importe quel role ou domaine,</li>
+<li>d&rsquo;émettre des événements uniquement pour les roles et domaines enregistrés dans le certificat,</li>
+<li>d&rsquo;écouter des requêtes ou commandes uniquement pour les roles et domaines enregistrés dans le certificat,</li>
+<li>d&rsquo;écouter des événements de n&rsquo;importe quel role et domaine,</li>
+<li>émettre / écouter certains messages globaux et requêtes/réponses pour les certificats.</li>
+</ul>
+<p>Par exemple :</p>
+<p>Compte MQ: O=zbaTeMFXpvuALGcPLx7UYFjW2oCz8fbDpyyse5boZB22VX8NvSQfMaSR,OU=core,CN=f3a68d38-1ce6-4c51-a628-fb88a95d22ae</p>
+<p>Permissions</p>
+<p><strong>Write routing sur exchange</strong></p>
+<ul>
+<li>evenement.certificat.infoCertificat</li>
+<li>requete.*</li>
+<li>commande.*</li>
+<li>evenement.core.*</li>
+<li>evenement.global.*</li>
+<li>evenement.CoreBackup.*</li>
+<li>evenement.CoreCatalogues.*</li>
+<li>evenement.CoreMaitreDesComptes.*</li>
+<li>evenement.CorePki.*</li>
+<li>evenement.CoreTopologie.*</li>
+</ul>
+<p><strong>Read routing sur exchange</strong></p>
+<ul>
+<li>requete.certificat.*</li>
+<li>evenement.*</li>
+<li>requete.core.*</li>
+<li>requete.global.*</li>
+<li>requete.CoreBackup.*</li>
+<li>requete.CoreCatalogues.*</li>
+<li>requete.CoreMaitreDesComptes.*</li>
+<li>requete.CorePki.*</li>
+<li>requete.CoreTopologie.*</li>
+<li>commande.core.*</li>
+<li>commande.global.*</li>
+<li>commande.CoreBackup.*</li>
+<li>commande.CoreCatalogues.*</li>
+<li>commande.CoreMaitreDesComptes.*</li>
+<li>commande.CorePki.*</li>
+<li>commande.CoreTopologie.*</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+    
+
+
+
+    
+    
+
+    
+        
+    
+
+    
+        
+    
+
+    
+
+    
+
+
 <h2  class="h5"  id="gestion-de-clés-de-chiffrage" >
     <a class="text-body text-decoration-none" href="#gestion-de-cl%c3%a9s-de-chiffrage">Gestion de clés de chiffrage</a>
 </h2>
 <p>Maître des clés, fiche et chiffrage X25519.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+    
+
+
+
+    
+    
+
+    
+        
+    
+
+    
+        
+    
+
+    
+
+    
+
+
+<h2  class="h5"  id="file-controler-et-file-hosts" >
+    <a class="text-body text-decoration-none" href="#file-controler-et-file-hosts">File controler et file hosts</a>
+</h2>
+<p>Les fichiers d&rsquo;une MilleGrille sont gérés par le composant CoreTopology qui synchronise tous les sites d&rsquo;hébergement
+des fichiers. Le serveur de fichier de base de MilleGrilles est le file host.</p>
+<p>Noter qu&rsquo;un file host est un serveur indépendant des MilleGrilles qu&rsquo;il héberge. Un nombre illimité de MilleGrilles
+peuvent utiliser le même file host. Chaque MilleGrille peut uniquement accéder et gérer ses propres fichiers sur le
+file host.</p>
+<p>Le file controler récupère les événements émis par le file host pour une MilleGrille et fait le relai vers le bus.
+Il s&rsquo;assure de distribuer les fichiers entre tous les file hosts pour que ces derniers agissent comme miroir les
+uns des autres. Régulièrement (à tous les jours), une vérification complète de la liste des fichiers conservés sur
+chaque file host est générée par le file host, téléchargée par le file controler et réconciliée dans CoreTopology.</p>
+<p>Les modules systèmes et usagers (e.g. navigateurs) peuvent récupérer et uploader des fichiers directement via commandes
+GET/PUT https sur n&rsquo;importe quel file host utilisé par une MilleGrille en utilisant leur certificat X.509 pour
+s&rsquo;authentifier.</p>
+<p>Les archives de transactions sont téléchargées vers tous les file hosts régulièrement, généralement dès qu&rsquo;ils sont
+crées par les domaines. Ceci augmente les chances de récupérer le contenu de la MilleGrille en cas de problèmes.</p>
+<p>Les fichiers hébergés sont vérifiés régulièrement par le filehost. Le hachage du contenu fait parti du nom de chaque
+fichier hébergé, c&rsquo;est cette valeur qui est utilisée par le file host pour s&rsquo;assurer de l&rsquo;intégrité de chaque fichier.
+Pour une site avec moins de 10 téra-octets, la vérification complète devrait être complétée au moins 1 fois par mois par
+chaque file host.</p>
+<p>Si un fichier est corrompu, il est déplacé vers le répertoire dumpster et un message est émis via
+le file controler. Tant qu&rsquo;il y a au moins une autre copie valide du fichier sur un autre file host, il sera retransféré
+automatiquement dès que possible.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+    
+
+
+
+    
+    
+
+    
+        
+    
+
+    
+        
+    
+
+    
+
+    
+
+
+<h2  class="h5"  id="noms-de-fichiers" >
+    <a class="text-body text-decoration-none" href="#noms-de-fichiers">Noms de fichiers</a>
+</h2>
+<p>Le fichiers conservés pour les usagers sont gérés par CoreTopology. Le nom d&rsquo;un fichier correspond à son hachage
+blake2b encodé avec multihash et multibase en base58btc.</p>
+<p>Exemple : zSEfXUAcuo5Fmvbr7oQVpagXtLqgAxzLi5cfEPN5NP34RJf6wAvwD3v8ENoVKj8TsYcVBqp8K1A255DUk1y2n3Su3b7iuP</p>
+<p>Cette valeur est aussi appelée le fuuid (file unique id).</p>
+<p>Les modules qui utilisent les fichiers vérifient le contenu en utilisant le fuuid.</p>
+<p>Un fichier doit être chiffré. Le format courant de chiffrage MilleGrille est mgs4.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+    
+
+
+
+    
+    
+
+    
+        
+    
+
+    
+        
+    
+
+    
+
+    
+
+
+<h2  class="h5"  id="chiffrage" >
+    <a class="text-body text-decoration-none" href="#chiffrage">Chiffrage</a>
+</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+    
+
+
+
+    
+    
+
+    
+        
+    
+
+    
+        
+    
+
+    
+
+    
+
+
+<h3  class="h6"  id="clés-symétriques" >
+    <a class="text-body text-decoration-none" href="#cl%c3%a9s-sym%c3%a9triques">Clés symétriques</a>
+</h3>
+<p>Les clés symétriques sont générées à partir de la clé publique de la MilleGrille (celle du certificat CA). Ceci permet
+de récupérer la version X25519 de la clé et de la conserver dans les archives du Maitre des clés comme référence pour
+récupération du système au besoin.</p>
+<p>La clé symétrique peut devoir être re-chiffrée pour être transmise à un composant tiers, généralement la clé active du
+maitre des clés.</p>
+<p>En cas de traitement de plusieurs clés symétriques à transférer en même temps, il est préférable de créer une clé
+d&rsquo;échange X25519 temporaire qui sera utilisable par le composant visé uniquement.</p>
+<p>TODO - algorithme de chiffrage asymétrique vers plusieurs destinataires d&rsquo;une même clé symmétrique.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+    
+
+
+
+    
+    
+
+    
+        
+    
+
+    
+        
+    
+
+    
+
+    
+
+
+<h3  class="h6"  id="mgs4" >
+    <a class="text-body text-decoration-none" href="#mgs4">mgs4</a>
+</h3>
+<p>Implémentation libsodium chacha20poly1305 en blocks de 64 kilo-octets. Le header est conservé sous le nom de nonce en
+base64-nopad. La clé symmétrique est conservée dans les méta-données distinctes ou par le maître des clés de la
+MilleGrille.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+    
+
+
+
+    
+    
+
+    
+        
+    
+
+    
+        
+    
+
+    
+
+    
+
+
+<h3  class="h6"  id="exemple-de-contenu-dune-commande-avec-chiffrage" >
+    <a class="text-body text-decoration-none" href="#exemple-de-contenu-dune-commande-avec-chiffrage">Exemple de contenu d&rsquo;une commande avec chiffrage</a>
+</h3>
+<p>Exemple avec élément distinct pour le contenu chiffré</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;cuuid&#34;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;favoris&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;metadata&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;cle_id&#34;</span><span class="p">:</span> <span class="s2">&#34;z8to4MmYhygtNNnobkBsWPj34v5rcd5sxnhZDajvusF8M&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;data_chiffre&#34;</span><span class="p">:</span> <span class="s2">&#34;ILeP1TYQi/YTwbSwBczPPRN6r+nyWb1zQm8eq7PBClOR8QVKs09om3Al&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;format&#34;</span><span class="p">:</span> <span class="s2">&#34;mgs4&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;nonce&#34;</span><span class="p">:</span> <span class="s2">&#34;g2T9vcNqGOoBKLeCXISoppmJnzD9n2vZ&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;verification&#34;</span><span class="p">:</span> <span class="s2">&#34;zSEfXUCcmhoXqqL1aov9raWjyN2M2146yPwqPSWwAHftNiVxkD5uRprzJkjjjhUvmwfAcbbtXLcfXX8wRnRfcKmnC7fRDH&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>Exemple avec le contenu chiffré au même niveau que le contenu non-chiffré</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;doc_id&#34;</span><span class="p">:</span> <span class="s2">&#34;b869d126abc14fde632b8c24194fd99342082aab66d255c66adcf2c78d5156a6&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;groupe_id&#34;</span><span class="p">:</span> <span class="s2">&#34;5ad2d74b3162dd0d9abe8d91dcc05ec02d385135ae9d17cb1ed0af359531dabc&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;categorie_version&#34;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;data_chiffre&#34;</span><span class="p">:</span> <span class="s2">&#34;FHvvcILdLXYm5WkVeZebPmwR6lm2HBkdmZ3SIE9sIrNtz ... LpiyU662R/fGg+V/kEGV&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;cle_id&#34;</span><span class="p">:</span> <span class="s2">&#34;z6YHaBrzGQzvnZova6FzjfdkYuXCo44CujMD1pNwqHXCN&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;format&#34;</span><span class="p">:</span> <span class="s2">&#34;mgs4&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;nonce&#34;</span><span class="p">:</span> <span class="s2">&#34;48n7Aw23rxf2TIutgT4ovh21i1dlj4qQ&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;compression&#34;</span><span class="p">:</span> <span class="s2">&#34;gz&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>Champs :</p>
+<ul>
+<li>cuuid, favoris, doc_id, group_id, categorie_version - data non chiffré,</li>
+<li>metadata : contient la structure du contenu chiffré et metadata de déchiffrage,</li>
+<li>cle_id : identificateur à fournir au Maître des clés pour demander la clé,</li>
+<li>data_chiffre : contenu chiffré (optionnellement compressé) en base64-nopad</li>
+<li>format : format du chiffrage - mgs4 indique l&rsquo;algorithme (chacha20poly1305 avec blocks de 64ko) et paramètre requis (header sous nonce)</li>
+<li>nonce : header libsodium chacha20poly1305 encodé en base64-nopad, requis pour initialiser le déchiffrage</li>
+<li>verification : (optionnel) digest de data_chiffre encodé avec multihash + multibase, ici blake2b,</li>
+<li>compression : (optionnel) deflate ou gz lorsque le contenu est compressé avant le chiffrage.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+    
+
+
+
+    
+    
+
+    
+        
+    
+
+    
+        
+    
+
+    
+
+    
+
+
+<h3  class="h6"  id="fichiers-chiffrés-avec-mgs4" >
+    <a class="text-body text-decoration-none" href="#fichiers-chiffr%c3%a9s-avec-mgs4">Fichiers chiffrés avec mgs4</a>
+</h3>
+<p>Pour chiffrer un fichier avec mgs4, les mêmes méta-données sont requises pour le déchiffrage et doivent être stockées
+par le domaine responsable du fichier. Le nom du fichier (fuuid) correspond à la valeur de vérification - c&rsquo;est le
+digest blake2b encodé an multihash + multibase. Le contenu du fichier est équivalent au contenu de data_chiffre mais
+n&rsquo;est pas limité à 10 méga-octets (limite des documents). Cette approche fonctionne présentement avec des fichiers de
+plus de 100 giga-octets.</p>
 
             
 
@@ -2175,11 +2733,9 @@ au bus MilleGrilles doivent être capables de déchiffrer une réponse de maniè
         
             <div id="paige-page-siblings">
                 
-                    <div class="paige-row-short text-center text-secondary" id="paige-page-next"><a class="link-secondary" href="https://www.millegrilles.com/fr/vision/">Vision</a> &rsaquo;</div>
+                    <div class="paige-row-short text-center text-secondary" id="paige-page-next"><a class="link-secondary" href="https://www.millegrilles.com/fr/applications/">Applications</a> &rsaquo;</div>
                 
 
-                
-                    <div class="paige-row-short text-center text-secondary" id="paige-page-prev">&lsaquo; <a class="link-secondary" href="https://www.millegrilles.com/fr/applications/">Applications</a></div>
                 
             </div>
         
@@ -2643,7 +3199,7 @@ au bus MilleGrilles doivent être capables de déchiffrer une réponse de maniè
         
     
 
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","abstract":" ","articleSection":"MilleGrilles","dateCreated":"2025-03-15T12:00:00Z","dateModified":"2025-03-15T12:00:00Z","headline":"Description technique","inLanguage":"fr","name":"Description technique","timeRequired":"PT4M","url":"https://www.millegrilles.com/fr/technical/","wordCount":795}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","abstract":" ","articleSection":"MilleGrilles","dateCreated":"2025-03-17T13:00:00Z","dateModified":"2025-03-17T13:00:00Z","headline":"Description technique","inLanguage":"fr","name":"Description technique","timeRequired":"PT9M","url":"https://www.millegrilles.com/fr/technical/","wordCount":1897}</script>
 
 
 

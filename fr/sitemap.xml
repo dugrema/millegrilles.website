@@ -2,6 +2,71 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://www.millegrilles.com/fr/documentation/certificates/</loc>
+    <lastmod>2025-03-19T07:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://www.millegrilles.com/documentation/certificates/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://www.millegrilles.com/fr/documentation/certificates/"
+                />
+  </url><url>
+    <loc>https://www.millegrilles.com/fr/documentation/</loc>
+    <lastmod>2025-03-19T07:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://www.millegrilles.com/documentation/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://www.millegrilles.com/fr/documentation/"
+                />
+  </url><url>
+    <loc>https://www.millegrilles.com/fr/</loc>
+    <lastmod>2025-03-19T07:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://www.millegrilles.com/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://www.millegrilles.com/fr/"
+                />
+  </url><url>
+    <loc>https://www.millegrilles.com/fr/documentation/messages/</loc>
+    <lastmod>2025-03-17T13:16:48+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://www.millegrilles.com/documentation/messages/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://www.millegrilles.com/fr/documentation/messages/"
+                />
+  </url><url>
+    <loc>https://www.millegrilles.com/fr/technical/</loc>
+    <lastmod>2025-03-17T13:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://www.millegrilles.com/technical/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://www.millegrilles.com/fr/technical/"
+                />
+  </url><url>
     <loc>https://www.millegrilles.com/fr/applications/</loc>
     <lastmod>2025-03-15T12:00:00+00:00</lastmod>
     <xhtml:link
@@ -15,32 +80,6 @@
                 href="https://www.millegrilles.com/fr/applications/"
                 />
   </url><url>
-    <loc>https://www.millegrilles.com/fr/technical/</loc>
-    <lastmod>2025-03-15T12:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://www.millegrilles.com/technical/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="fr"
-                href="https://www.millegrilles.com/fr/technical/"
-                />
-  </url><url>
-    <loc>https://www.millegrilles.com/fr/</loc>
-    <lastmod>2025-03-15T12:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://www.millegrilles.com/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="fr"
-                href="https://www.millegrilles.com/fr/"
-                />
-  </url><url>
     <loc>https://www.millegrilles.com/fr/vision/</loc>
     <lastmod>2025-03-15T12:00:00+00:00</lastmod>
     <xhtml:link
@@ -52,45 +91,6 @@
                 rel="alternate"
                 hreflang="fr"
                 href="https://www.millegrilles.com/fr/vision/"
-                />
-  </url><url>
-    <loc>https://www.millegrilles.com/fr/documentation/certificates/</loc>
-    <lastmod>2025-03-14T12:20:48+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://www.millegrilles.com/documentation/certificates/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="fr"
-                href="https://www.millegrilles.com/fr/documentation/certificates/"
-                />
-  </url><url>
-    <loc>https://www.millegrilles.com/fr/documentation/</loc>
-    <lastmod>2025-03-14T12:20:48+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://www.millegrilles.com/documentation/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="fr"
-                href="https://www.millegrilles.com/fr/documentation/"
-                />
-  </url><url>
-    <loc>https://www.millegrilles.com/fr/documentation/messages/</loc>
-    <lastmod>2025-03-14T12:20:48+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://www.millegrilles.com/documentation/messages/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="fr"
-                href="https://www.millegrilles.com/fr/documentation/messages/"
                 />
   </url><url>
     <loc>https://www.millegrilles.com/fr/categories/</loc>

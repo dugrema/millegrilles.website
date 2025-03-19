@@ -35,7 +35,7 @@
         
 
         
-            <lastBuildDate>Sat, 15 Mar 2025 12:00:00 UTC</lastBuildDate>
+            <lastBuildDate>Wed, 19 Mar 2025 07:00:00 UTC</lastBuildDate>
         
 
         
@@ -72,6 +72,422 @@
 
         
 
+        
+            
+                <item>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+
+                    
+
+                    
+
+                    
+
+                    
+
+                    
+                    
+                    
+
+                    
+
+                    
+                        <description><![CDATA[<h1 class=h4 id=certificats-de-securité><a class="text-body text-decoration-none" href=#certificats-de-securit%c3%a9>Certificats de securité</a></h1><p>MilleGrilles utilise les certificats X.509 avec clés Ed25519 comme identification des modules et usagers. Les
+certificats ont une durée de vie différente en fonction de leur rôle.</p><h2 class=h5 id=certificat-de-millegrille-ca><a class="text-body text-decoration-none" href=#certificat-de-millegrille-ca>Certificat de MilleGrille (CA)</a></h2><p>Le certificat CA (Certificate Authority) d&rsquo;une MilleGrille est généré lors de la création du système. La clé de ce
+certificat est appelé la clé de la MilleGrille, c&rsquo;est une clé chiffrée avec un mot de passe et conservée dans un
+fichier .json.</p><p>Exemple de certificat CA</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>-----BEGIN CERTIFICATE-----
+</span></span><span style=display:flex><span>MIIBQzCB9qADAgECAgoXGIiSN1JwgpUSMAUGAytlcDAWMRQwEgYDVQQDEwtNaWxs
+</span></span><span style=display:flex><span>ZUdyaWxsZTAeFw0yNDA3MTMyMDMwMDFaFw00NDA3MTMyMDMwMDFaMBYxFDASBgNV
+</span></span><span style=display:flex><span>BAMTC01pbGxlR3JpbGxlMCowBQYDK2VwAyEAsJIE69qSt+GKywKsu/3LU31FkowZ
+</span></span><span style=display:flex><span>W5OSgvDFQ34PkKGjYDBeMA8GA1UdEwEB/wQFMAMBAf8wCwYDVR0PBAQDAgLkMB0G
+</span></span><span style=display:flex><span>A1UdDgQWBBRga8F75mOH5uZ1uWVsFBxVcZ8qiDAfBgNVHSMEGDAWgBRga8F75mOH
+</span></span><span style=display:flex><span>5uZ1uWVsFBxVcZ8qiDAFBgMrZXADQQAlt1NbEwEIOJi+qprkQp8GOmdvn+hQsM2R
+</span></span><span style=display:flex><span>RftTlHVzaecD36Ia4rItgfqOmJp9w925MwQibK0Z86mOXXTiyTkE
+</span></span><span style=display:flex><span>-----END CERTIFICATE-----</span></span></code></pre></div><p>Le certificat CA expire après 20 ans. Une millegrille qui utilise un certificat CA expiré doit être migrée vers un
+nouveau système (nouvelle clé). Le processus de migration est similaire à une restoration de backup du système.</p><p>Discussion : considérant le changement des technologies cryptographiques et la possibilité prochaine d&rsquo;ordinateurs
+quantiques performants, il est peu probable qu&rsquo;un système utilisé conserve la même clé système pour une période aussi
+longue que 20 ans sans devenir complètement désuet du point de vue de sécurité asymétrique.</p><h2 class=h5 id=identificateur-de-millegrille-idmg><a class="text-body text-decoration-none" href=#identificateur-de-millegrille-idmg>Identificateur de MilleGrille (IDMG)</a></h2><p>Le certificat de MilleGrille est utilisé pour calculer l&rsquo;identificateur de MilleGrille. Cet identificateur peut être
+utilisé en remplacement du certificat CA au besoin pour référer à la MilleGrille ou à l&rsquo;ensemble des certificats valides
+sur cette MilleGrille.</p><p><code>Exemple d'IDMG : zbaTeMFXpvuALGcPLx7UYFjW2oCz8fbDpyyse5boZB22VX8NvSQfMaSR</code></p><p>Par exemple, pour donner accès à un File Host, il suffit de créer un sous-répertoire au nom de l&rsquo;IDMG du système à
+héberger. Ceci donne accès à tout composant qui peut signer un document d&rsquo;authentification avec un certificat valide
+pour la MilleGrille qui correspond à l&rsquo;identificateur.</p><h2 class=h5 id=certificats-de-signature><a class="text-body text-decoration-none" href=#certificats-de-signature>Certificats de signature</a></h2><p>Certissuer, valides pour 18 mois.</p><h2 class=h5 id=certificats-système><a class="text-body text-decoration-none" href=#certificats-syst%c3%a8me>Certificats système</a></h2><p>Roles et domaines. Valids 31 jours.</p><p>CN = instance id
+OU = domaine ou role
+O = IDMG</p><p>Exemple de certificat système</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>-----BEGIN CERTIFICATE-----
+</span></span><span style=display:flex><span>MIIClDCCAkagAwIBAgIUexnJEGh1J5fMKO2fPRtkAZ5yY8MwBQYDK2VwMHIxLTAr
+</span></span><span style=display:flex><span>BgNVBAMTJGFhZDg3NWE1LTBiNzQtNDhiMC1hZDBmLWNlMTQ1NDNiZDJkNzFBMD8G
+</span></span><span style=display:flex><span>A1UEChM4elVCR0VydDREYzg0QjVIbnVRUmJZdFpSZ2pGZ2hFV2drNWNTczFheGQy
+</span></span><span style=display:flex><span>VGZaWEZtWVRnZGZHZEUwHhcNMjMwNDI4MjMwODA5WhcNMjMwNTI5MjMwODI5WjCB
+</span></span><span style=display:flex><span>gTEtMCsGA1UEAwwkYWFkODc1YTUtMGI3NC00OGIwLWFkMGYtY2UxNDU0M2JkMmQ3
+</span></span><span style=display:flex><span>MQ0wCwYDVQQLDARjb3JlMUEwPwYDVQQKDDh6VUJHRXJ0NERjODRCNUhudVFSYll0
+</span></span><span style=display:flex><span>WlJnakZnaEVXZ2s1Y1NzMWF4ZDJUZlpYRm1ZVGdkZkdkRTAqMAUGAytlcAMhAGfL
+</span></span><span style=display:flex><span>67cl0RAU3vGGmXi5vgqQxte7zHfAQ40bZGYhVvvro4HdMIHaMCsGBCoDBAAEIzQu
+</span></span><span style=display:flex><span>c2VjdXJlLDMucHJvdGVnZSwyLnByaXZlLDEucHVibGljMAwGBCoDBAEEBGNvcmUw
+</span></span><span style=display:flex><span>TAYEKgMEAgREQ29yZUJhY2t1cCxDb3JlQ2F0YWxvZ3VlcyxDb3JlTWFpdHJlRGVz
+</span></span><span style=display:flex><span>Q29tcHRlcyxDb3JlUGtpLENvcmVUb3BvbG9naWUwDwYDVR0RBAgwBoIEY29yZTAf
+</span></span><span style=display:flex><span>BgNVHSMEGDAWgBQFFVqof7c3Dm7hxeRUpbr+EScHGTAdBgNVHQ4EFgQU6zE4DvHG
+</span></span><span style=display:flex><span>DOC9p1Mc8hdCSD46GhUwBQYDK2VwA0EAASkgmgyDx14vrYzMpZze2oLtbIlrqOqh
+</span></span><span style=display:flex><span>fk2IGV7jIxfFTVVfbNgCKx/g/iEMwY+/TiIWM1L0xjtfF0YJ/QgsBQ==
+</span></span><span style=display:flex><span>-----END CERTIFICATE-----</span></span></code></pre></div><p>Paramètres inclus dans le certificat</p><ul><li>sujet:<ul><li>commonName (CN): aad875a5-0b74-48b0-ad0f-ce14543bd2d7</li><li>organizationalUnitName (OU): core</li><li>organizationName (O): zUBGErt4Dc84B5HnuQRbYtZRgjFghEWgk5cSs1axd2TfZXFmYTgdfGdE</li></ul></li><li>clé publique : 67cbebb725d11014def1869978b9be0a90c6d7bbcc77c0438d1b64662156fbeb</li><li>not_valid_after : 2023-05-29T23:08:29.000Z</li><li>not_valid_before : 2023-04-28T23:08:09.000Z</li><li>extensions MilleGrilles<ul><li>domaines : CoreBackup,CoreCatalogues,CoreMaitreDesComptes,CorePki,CoreTopologie</li><li>exchanges : 4.secure,3.protege,2.prive,1.public</li><li>roles: core</li></ul></li></ul><h2 class=h5 id=certificats-usager><a class="text-body text-decoration-none" href=#certificats-usager>Certificats usager</a></h2><p>Role usager ou navigateur, userId.</p><p>CN = nom usager
+OU = valeur &lsquo;usager&rsquo;
+O = IDMG</p><p>Exemple de certificat usager</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>-----BEGIN CERTIFICATE-----
+</span></span><span style=display:flex><span>MIICUTCCAgOgAwIBAgIUMbWRLdadSzcfg/ERR+YBexQOr5AwBQYDK2VwMHIxLTAr
+</span></span><span style=display:flex><span>BgNVBAMTJGYzYTY4ZDM4LTFjZTYtNGM1MS1hNjI4LWZiODhhOTVkMjJhZTFBMD8G
+</span></span><span style=display:flex><span>A1UEChM4emJhVGVNRlhwdnVBTEdjUEx4N1VZRmpXMm9DejhmYkRweXlzZTVib1pC
+</span></span><span style=display:flex><span>MjJWWDhOdlNRZk1hU1IwHhcNMjUwMzE5MTIyOTQ3WhcNMjUwNDE5MTIzMDA3WjBr
+</span></span><span style=display:flex><span>MRUwEwYDVQQDDAxwcm9wcmlldGFpcmUxDzANBgNVBAsMBnVzYWdlcjFBMD8GA1UE
+</span></span><span style=display:flex><span>Cgw4emJhVGVNRlhwdnVBTEdjUEx4N1VZRmpXMm9DejhmYkRweXlzZTVib1pCMjJW
+</span></span><span style=display:flex><span>WDhOdlNRZk1hU1IwKjAFBgMrZXADIQBmEN2MZmVrkYAEcye2DRvb5iz2jeN+96ti
+</span></span><span style=display:flex><span>OsTfFsXAv6OBsTCBrjAZBgQqAwQBBBF1c2FnZXIsbmF2aWdhdGV1cjA7BgQqAwQD
+</span></span><span style=display:flex><span>BDN6MmkzWGp4SmlXM01ldmNWY3ozaGhocEU5NXd5bm1qNEd6TVJNaEVDenNQMmM5
+</span></span><span style=display:flex><span>U052ZXEwFAYEKgMEBAQMcHJvcHJpZXRhaXJlMB8GA1UdIwQYMBaAFGpi0Sr1J/MS
+</span></span><span style=display:flex><span>Ed6tXceKx+zcqpsFMB0GA1UdDgQWBBS82q3hBHyqlgFtMlaRQY+W5IHoKzAFBgMr
+</span></span><span style=display:flex><span>ZXADQQCZS19+uiUV6UvxKKqUOewYStk0kn4ufIYzaXQYx2UgXDnL64oyb37yKZd2
+</span></span><span style=display:flex><span>lzHVAWHXwcXYwLRVzir6ubzy7TcD
+</span></span><span style=display:flex><span>-----END CERTIFICATE-----</span></span></code></pre></div><p>Paramètres inclus dans le certificat</p><ul><li>sujet<ul><li>commonName (CN) : proprietaire</li><li>organizationalUnitName (OU) : usager</li><li>organizationName (O) : zbaTeMFXpvuALGcPLx7UYFjW2oCz8fbDpyyse5boZB22VX8NvSQfMaSR</li></ul></li><li>clé publique : 6610dd8c66656b9180047327b60d1bdbe62cf68de37ef7ab623ac4df16c5c0bf</li><li>not_valid_after : 2025-04-19T12:30:07.000Z</li><li>not_valid_before : 2025-03-19T12:29:47.000Z</li><li>extensions MilleGrilles<ul><li>user id : z2i3XjxJiW3MevcVcz3hhhpE95wynmj4GzMRMhECzsP2c9SNveq</li><li>roles : usager,navigateur</li><li>delegation globale : proprietaire</li></ul></li></ul><h2 class=h5 id=extensions-custom><a class="text-body text-decoration-none" href=#extensions-custom>Extensions custom</a></h2><p>Des extensions X.509 v3 sont ajoutées aux certificats pour permettre l&rsquo;autorisation de l&rsquo;accès aux ressources sans
+accéder à un composant de permission externe dans bien des cas. Ces extensions remplacent un serveur LDAP avec forte
+granularité de permissions.</p><p>Noter que les permissions usagers sont gérées avec des permissions particulières à chaque domaine. Ces permissions
+sont vérifiées avec le userId conservé dans le certificat.</p><p>Les extensions d&rsquo;un composant serveur ne sont pas appelées à changer durant la période de validité d&rsquo;un certificat. Les
+certificats usagers sont remplacés si les permissions de l&rsquo;usager changent (e.g. role public ou privé).</p><p>Niveaux de sécurité sur le bus (exchanges MQ)</p><ul><li>Id : 1.2.3.4.0</li><li>Valeurs possibles : 4.secure,3.protege,2.prive,1.public</li><li>Notes<ul><li>la première valeur de la liste est utilisée comme référence par défaut pour le niveau de sécurité
+du certificat. Il est préférable de mettre le plus haut niveau de sécurité en premier. Par exemple : 2.prive,1.public.</li><li>les exchanges ne communique pas entre-eux. Si un module doit se connecter aux exchanges 3.protege et 1.public,
+il faut les inclure dans la liste.</li><li>les niveaux 3.protege et 4.secure, lorsque combinés à un attribut Domaine (1.2.3.4.2) dans le même certificat,
+donnent le droit d&rsquo;accéder à toutes les clés de chiffrage de ce domaine auprès du Maitre des clés.</li></ul></li></ul><p>Liste de roles internes</p><ul><li>Id : 1.2.3.4.1</li></ul><p>Liste des domaines</p><ul><li>Id : 1.2.3.4.2</li><li>Exemple de valeurs : SenseursPassifs,GrosFichiers,CoreMaitredescomptes</li><li>Notes :<ul><li>Lorsque combiné à un attribut de sécurité (1.2.3.4.0) 3.protege ou 4.secure, donne accès à toutes les clés du domaine dans
+le Maitre des clés.</li></ul></li></ul><p>ID unique de l&rsquo;usager (userId)</p><ul><li>Id : 1.2.3.4.3</li><li>Exemple de valeur : z2i3XjxCG211bY3F4WL4c1cAtrrZZPkriKRWBDXWudg8NkzgZ4h</li></ul><p>Role usager &lsquo;administrateur&rsquo; qui s&rsquo;applique a toute la MilleGrille.</p><ul><li>Id : 1.2.3.4.4</li><li>Valeur : proprietaire</li></ul><h2 class=h5 id=création-des-certificats><a class="text-body text-decoration-none" href=#cr%c3%a9ation-des-certificats>Création des certificats</a></h2><p>Le certificat de MilleGrille (CA) est créé durant l&rsquo;installation d&rsquo;une nouvelle MilleGrille.</p><p>Les certificats de signature sont crées lors de la configuration des instances de serveurs 3.protege et 4.secure. Ces
+certificats sont bons pour 18 mois et doivent être renouvelés manuellement en utilisant la clé de Millegrille. Les
+certificats de signature sont installés dans le module certissuer et servent à créer tous les autres certificats
+d&rsquo;une MilleGrille.</p><p>Les autres certificats sont générés par le module certissuer lors d&rsquo;une demande de signature d&rsquo;un Certificate Signing
+Request (CSR). La requête CSR peut être faite par un gestionnaire d&rsquo;instance (mginstance) 3.protege ou 4.secure pour
+installer ou renouveler les modules d&rsquo;un serveur ou par le domaine CorePki au nom d&rsquo;un usager qui relai une demande à
+partir du bus MQ. L&rsquo;accès au certissuer est local et connecté via http non sécurisé.</p><p>Discussion : la connexion http ne cause pas de problèmes de sécurité. L&rsquo;information qui transite est publique (CSR
+et certificat) et la signature du document demandeur est utilisée comme autorisation pour procéder à la signature
+du certificat.</p><h3 class=h6 id=autorisation-de-création-de-certificats><a class="text-body text-decoration-none" href=#autorisation-de-cr%c3%a9ation-de-certificats>Autorisation de création de certificats</a></h3><p>Par exemple, un module mginstance est autorisé à demander des certificats avec un niveau de sécurité
+égal ou inférieur à son propre niveau et toujours associés à son instanceId (CN).</p><p>Attention :</p><ul><li>La clé de signature du certissuer permet de créer tous les certificats de module et d&rsquo;usager du système.</li><li>Les instances 3.protege et 4.secure peuvent demander un certificat pour installer un Maitre des clés. Ces
+certificats donnent accès à toutes les clés chiffrées du système.</li></ul><p>Les clés privées des modules nommés précédemment doivent être traitées avec attention. MilleGrilles offre plusieurs
+topologies de déploiement qui permettent de réduire l&rsquo;exposition de ces clés pour augmenter la sécurité du système.</p>]]></description>
+                    
+
+                    
+                        <guid isPermaLink="false">tag:www.millegrilles.com,2025-03-19:/fr/documentation/certificates/</guid>
+                    
+
+                    
+                        <link>https://www.millegrilles.com/fr/documentation/certificates/</link>
+                    
+
+                    <atom:link href="https://www.millegrilles.com/fr/documentation/certificates/" hreflang="fr" rel="self" type="text/html"/>
+
+                    
+                        
+
+                        
+
+                        <atom:link href="https://www.millegrilles.com/fr/documentation/certificates/" hreflang="fr" rel="alternate" type="text/html"/>
+                    
+
+                    
+                        
+                            <atom:link href="https://www.millegrilles.com/documentation/certificates/" hreflang="en" rel="canonical" type="text/html"/>
+                        
+                    
+
+                    
+                        <pubDate>Wed, 19 Mar 2025 07:00:00 UTC</pubDate>
+                    
+
+                    
+                        <title>Certificats</title>
+                    
+                </item>
+            
+        
+            
+                <item>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+
+                    
+
+                    
+
+                    
+
+                    
+
+                    
+                    
+                    
+
+                    
+
+                    
+                        <description><![CDATA[<h1 class=h5 id=enveloppe-de-document><a class="text-body text-decoration-none" href=#enveloppe-de-document>Enveloppe de document</a></h1><p>MilleGrilles établi une structure d&rsquo;enveloppe sécurisée par un hachage et une signature cryptographique pour ses
+documents.</p><p>Les messages sont un type de document particulier qui peuvent transiter sur le bus MQ d&rsquo;une MilleGrille.</p><p>Les autres types de document sont le document de base (kind:0) et la transaction (kind:3 et kind:7). Ces documents ne sont
+pas faits pour transiter directement sur le bus mais peuvent être inclus dans un message, conservés sur disque ou
+dans une base de données.</p><h1 class=h5 id=messages-millegrilles><a class="text-body text-decoration-none" href=#messages-millegrilles>Messages MilleGrilles</a></h1><p>Le bus MQ (RabbitMQ) permet d&rsquo;échanger des messages entre les composants d&rsquo;une MilleGrille. Ce bus est sécurisé et
+génère les permissions de chaque client en fonction de son certificat système.</p><p>Note : Les certificats usagers ne sont pas autorisés à se connecter au bus de la MilleGrille.</p><p>L&rsquo;enveloppe des messages et autres documents signés (documents, transactions) utilise une structure est inspirée
+par <a href=https://nostr.com/protocol rel=external>Nostr</a>
+.</p><p>La taille maximale d&rsquo;une enveloppe de message sur le bus MQ est 10 méga-octets.</p><h2 class=h6 id=exemple-denveloppe-de-message><a class="text-body text-decoration-none" href=#exemple-denveloppe-de-message>Exemple d&rsquo;enveloppe de message</a></h2><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json><span style=display:flex><span><span style=color:#1f2328>{</span>
+</span></span><span style=display:flex><span>  <span style=color:#0550ae>&#34;id&#34;</span><span style=color:#1f2328>:</span> <span style=color:#0a3069>&#34;b9fead6eef87d8400cbc1a5621600b360438affb9760a6a043cc0bddea21dab6&#34;</span><span style=color:#1f2328>,</span>
+</span></span><span style=display:flex><span>  <span style=color:#0550ae>&#34;pubkey&#34;</span><span style=color:#1f2328>:</span> <span style=color:#0a3069>&#34;6e468422dfb74a5738702a8823b9b28168abab8655faacb6853cd0ee15deee93&#34;</span><span style=color:#1f2328>,</span>
+</span></span><span style=display:flex><span>  <span style=color:#0550ae>&#34;estampille&#34;</span><span style=color:#1f2328>:</span> <span style=color:#0550ae>1681650062</span><span style=color:#1f2328>,</span>
+</span></span><span style=display:flex><span>  <span style=color:#0550ae>&#34;kind&#34;</span><span style=color:#1f2328>:</span> <span style=color:#0550ae>4</span><span style=color:#1f2328>,</span>
+</span></span><span style=display:flex><span>  <span style=color:#0550ae>&#34;routage&#34;</span><span style=color:#1f2328>:</span> <span style=color:#1f2328>{</span><span style=color:#0550ae>&#34;action&#34;</span><span style=color:#1f2328>:</span> <span style=color:#0a3069>&#34;fichePublique&#34;</span><span style=color:#1f2328>,</span> <span style=color:#0550ae>&#34;domaine&#34;</span><span style=color:#1f2328>:</span> <span style=color:#0a3069>&#34;CoreTopologie&#34;</span><span style=color:#1f2328>,</span> <span style=color:#0550ae>&#34;partition&#34;</span><span style=color:#1f2328>:</span> <span style=color:#0a3069>&#34;ZABC1&#34;</span><span style=color:#1f2328>},</span>
+</span></span><span style=display:flex><span>  <span style=color:#0550ae>&#34;origine&#34;</span><span style=color:#1f2328>:</span> <span style=color:#0a3069>&#34;zeYncRqEqZ6eTEmUZ8whJFuHG796eSvCTWE4M432izXrp22bAtwGm7Jf&#34;</span><span style=color:#1f2328>,</span>
+</span></span><span style=display:flex><span>  <span style=color:#0550ae>&#34;dechiffrage&#34;</span><span style=color:#1f2328>:</span> <span style=color:#1f2328>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#0550ae>&#34;cles&#34;</span><span style=color:#1f2328>:</span> <span style=color:#1f2328>{</span><span style=color:#0550ae>&#34;6e468422dfb74a5738702a8823b9b28168abab8655faacb6853cd0ee15deee93&#34;</span><span style=color:#1f2328>:</span> <span style=color:#0a3069>&#34;jSNQFfzeHPq3DoFaj8YMkCdnd4GzCc2qZDUdywFZlDQ&#34;</span><span style=color:#1f2328>},</span>
+</span></span><span style=display:flex><span>    <span style=color:#0550ae>&#34;cle_id&#34;</span><span style=color:#1f2328>:</span> <span style=color:#0a3069>&#34;z4KD61h3yH7jyJBmYYytzCj3Ni6DDW7iSDkuBw9wSUFRo&#34;</span><span style=color:#1f2328>,</span>
+</span></span><span style=display:flex><span>    <span style=color:#0550ae>&#34;format&#34;</span><span style=color:#1f2328>:</span> <span style=color:#0a3069>&#34;mgs4&#34;</span><span style=color:#1f2328>,</span>
+</span></span><span style=display:flex><span>    <span style=color:#0550ae>&#34;nonce&#34;</span><span style=color:#1f2328>:</span> <span style=color:#0a3069>&#34;EjQ8MmAx5VY12vtJ3ag8rA9j8DMjzuiS&#34;</span>
+</span></span><span style=display:flex><span>  <span style=color:#1f2328>},</span>
+</span></span><span style=display:flex><span>  <span style=color:#0550ae>&#34;pre-migration&#34;</span><span style=color:#1f2328>:</span> <span style=color:#1f2328>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#0550ae>&#34;estampille&#34;</span><span style=color:#1f2328>:</span> <span style=color:#0550ae>1671554193</span><span style=color:#1f2328>,</span>
+</span></span><span style=display:flex><span>    <span style=color:#0550ae>&#34;id&#34;</span><span style=color:#1f2328>:</span> <span style=color:#0a3069>&#34;5d0ef4c0-94de-4141-8954-7f006cbbbcfd&#34;</span><span style=color:#1f2328>,</span>
+</span></span><span style=display:flex><span>    <span style=color:#0550ae>&#34;pubkey&#34;</span><span style=color:#1f2328>:</span> <span style=color:#0a3069>&#34;10319064594e3990f78a35b288c83b33029ebab0e14206ea92908985022905a9&#34;</span> 
+</span></span><span style=display:flex><span>  <span style=color:#1f2328>},</span>
+</span></span><span style=display:flex><span>  <span style=color:#0550ae>&#34;contenu&#34;</span><span style=color:#1f2328>:</span> <span style=color:#0a3069>&#34;{\&#34;Champ\&#34;:\&#34;valeur\&#34;}&#34;</span><span style=color:#1f2328>,</span>
+</span></span><span style=display:flex><span>  <span style=color:#0550ae>&#34;sig&#34;</span><span style=color:#1f2328>:</span> <span style=color:#0a3069>&#34;908a15e46fb4d8675bab026fc230a0e3542bfade63da02d542fb78b2a8513fcd0092619a2c8c1221e581946e0191f2af505dfdf8657a414dbca329186f009262&#34;</span><span style=color:#1f2328>,</span>
+</span></span><span style=display:flex><span>  <span style=color:#0550ae>&#34;certificat&#34;</span><span style=color:#1f2328>:</span> <span style=color:#1f2328>[</span>
+</span></span><span style=display:flex><span>     <span style=color:#0a3069>&#34;-----BEGIN CERTIFICATE-----\nMIIClDCCAkagAwIBAgIUdkc2yl6WSpl ... +GFuCp92IBw==\n-----END CERTIFICATE-----\n&#34;</span><span style=color:#1f2328>,</span>
+</span></span><span style=display:flex><span>     <span style=color:#0a3069>&#34;-----BEGIN CERTIFICATE-----\nMIIBozCCAVWgAwIBAgIKBBdSWFdJiDN ... A6bAfGc7dGHsL\n-----END CERTIFICATE-----\n&#34;</span> 
+</span></span><span style=display:flex><span>  <span style=color:#1f2328>],</span>
+</span></span><span style=display:flex><span>  <span style=color:#0550ae>&#34;millegrille&#34;</span><span style=color:#1f2328>:</span> <span style=color:#0a3069>&#34;-----BEGIN CERTIFICATE-----\nMIIBQzCB9qADAgECAgo ... H94CH4d1VCPwI\n-----END CERTIFICATE-----&#34;</span><span style=color:#1f2328>,</span>
+</span></span><span style=display:flex><span>  <span style=color:#0550ae>&#34;attachements&#34;</span><span style=color:#1f2328>:</span> <span style=color:#1f2328>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#0550ae>&#34;cles&#34;</span><span style=color:#1f2328>:</span> <span style=color:#1f2328>{</span>
+</span></span><span style=display:flex><span>      <span style=color:#0550ae>&#34;pubkey cert destinataire 1&#34;</span><span style=color:#1f2328>:</span> <span style=color:#0a3069>&#34;cle dechiffrage&#34;</span><span style=color:#1f2328>,</span>
+</span></span><span style=display:flex><span>      <span style=color:#0550ae>&#34;pubkey cert destinataire 2&#34;</span><span style=color:#1f2328>:</span> <span style=color:#0a3069>&#34;cle dechiffrage&#34;</span> 
+</span></span><span style=display:flex><span>    <span style=color:#1f2328>}</span>
+</span></span><span style=display:flex><span>  <span style=color:#1f2328>}</span>
+</span></span><span style=display:flex><span><span style=color:#1f2328>}</span></span></span></code></pre></div><p>Cet exemple inclus tous les champs possibles pour un message. Le type de message (kind) détermine quelle combinaison
+d&rsquo;éléments sont supportés.</p><h2 class=h6 id=champs-dune-enveloppe-de-document><a class="text-body text-decoration-none" href=#champs-dune-enveloppe-de-document>Champs d&rsquo;une enveloppe de document</a></h2><ul><li>id : Hachage blake2s en format hexadécimal des éléments du message. Le kind détermine les champs et l&rsquo;ordre utilisé
+pour ce hachage.</li><li>pubkey : Clé publique ed25519 en format hexadécimal utilisée pour signer le message. Les certificats d&rsquo;une MilleGrille
+sont indexés par leur clé publique (hex) pour être facilement retrouvé.</li><li>estampille : Temps epoch en secondes (int) qui représente le moment de création du document/message.</li><li>kind : Type de message. Détermine les éléments requis/optionnels, format de séralisation du contenu et leur ordre
+d&rsquo;inclusion dans le hachage (id).</li><li>contenu : Contenu sérialisé en chaine de caractères (string). La méthode de sérialisation du contenu dếpend du kind.</li><li>sig : Signature électronique du <strong>id</strong> avec la clé ed25519 privée qui correspond à pubkey.</li><li>certificat : Optionnel mais recommandé - la chaîne de certificats X.509 qui correspond à pubkey.
+Exclus le certificat CA (millegrille).</li><li>millegrille : Optionnel - le certificat CA (millegrille).</li><li>attachements : Optionnel - objet avec un format qui dépend du contexte. Toujours exclus de la signature du
+document/message.</li><li>origine : Identificateur de MilleGrille (IDMG) de l&rsquo;origine du message.</li><li>dechiffrage : Information requise pour le déchiffrage du contenu. Peut inclure les clés indexées par pubkey ou un
+cle_id.</li></ul><h2 class=h6 id=calcul-du-hachage><a class="text-body text-decoration-none" href=#calcul-du-hachage>Calcul du hachage</a></h2><p>Le hachage du message est généré en mettant les éléments appopriés dans une liste JSON et calculant le hachage blake2s
+de cette chaîne de caractères.</p><p>Hachage par kind</p><table><thead><tr><th>Kind</th><th>Description</th><th>Hachage</th><th>Format contenu</th></tr></thead><tbody><tr><td>0</td><td>Document</td><td>pubkey, estampille, kind, contenu</td><td>json string</td></tr><tr><td>1</td><td>Requête</td><td>pubkey, estampille, kind, routage, contenu</td><td>json string</td></tr><tr><td>2</td><td>Commande</td><td>pubkey, estampille, kind, routage, contenu</td><td>json string</td></tr><tr><td>3</td><td>Transaction</td><td>pubkey, estampille, kind, routage, contenu</td><td>json string</td></tr><tr><td>4</td><td>Réponse</td><td>pubkey, estampille, kind, contenu</td><td>json string</td></tr><tr><td>5</td><td>Événement</td><td>pubkey, estampille, kind, routage, contenu</td><td>json string</td></tr><tr><td>6</td><td>Réponse chiffrée</td><td>pubkey, estampille, kind, déchiffrage, contenu</td><td>base64 nopad (json string -> mgs4)</td></tr><tr><td>7</td><td>Transaction migrée</td><td>pubkey, estampille, kind, routage, contenu</td><td>json string</td></tr><tr><td>8</td><td>Commande inter-millegrille</td><td>pubkey, estampille, kind, routage, origine, déchiffrage, contenu</td><td>base64 nopad (json string -> mgs4)</td></tr></tbody></table><p>Par exemple, pour le kind:4 - Réponse, le hachage est calculé de la façon suivante:</p><p><code>[pubkey,estampille,kind,contenu]</code></p><p>Pour le message en exemple, on aurait :</p><p><code>["6e468422dfb74a5738702a8823b9b28168abab8655faacb6853cd0ee15deee93",1681650062,4,"{\"Champ\":\"valeur\"}"]</code></p><p>Le message JSON précédent est converti en UTF-8 puis haché avec blake2s. Ceci donne une valeur de 32 bytes
+(64 caractères hexadécimaux). Cette valeur devient le <strong>id</strong> du message.</p><p>Note : Pour les champs objet (routage, dechiffrage et pre-migration), il faut s&rsquo;assurer de trier les sous-éléments en ordre
+alphabétique pour obtenir la bonne valeur de hachage. Les éléments dans l&rsquo;exemple sont dans le bon ordre.</p><h2 class=h6 id=signature-électronique><a class="text-body text-decoration-none" href=#signature-%c3%a9lectronique>Signature électronique</a></h2><p>Le champ <strong>sig</strong> contient une signature électronique du champ <strong>id</strong>.</p><p>La signature est générée en utilisant la clé privée ed25519 qui correspond à <strong>pubkey</strong> et la valeur binaire de <strong>id</strong>
+comme contenu.</p><p>La signature peut être vérifiée en utilisant le champ <strong>pubkey</strong> (hex) comme clé ed25519 et la valeur binaire de <strong>id</strong>
+comme contenu.</p><h2 class=h6 id=vérification-dun-document><a class="text-body text-decoration-none" href=#v%c3%a9rification-dun-document>Vérification d&rsquo;un document</a></h2><p>Pour vérifier la validité d&rsquo;un message, il faut recalculer le id pour s&rsquo;assurer qu&rsquo;il correspond puis valider la
+signature en utilisant le hachage puis pubkey.</p><p>Une fois le message validé, il est généralement utile de charger le certificat correspondant à pubkey pour extraire
+l&rsquo;information d&rsquo;autorisation comme le userId, instance, les domaines, etc. Ces valeurs doivent être privilégiées par
+rapport au contenu du message pour autoriser une requête ou une commande lorsque c&rsquo;est possible. Lorsque ce n&rsquo;est pas
+possible, les domaines, userId peuvent être placés dans le contenu du message - par exemple pour permettre à un
+administrateur d&rsquo;exécuter une commande au nom d&rsquo;un usager.</p><p>Note : si le certificat est inclus dans le document, s&rsquo;assurer qu&rsquo;il est valide (validation X.509) que sa clé
+publique correspond au champ <strong>pubkey</strong> du document.</p><h1 class=h5 id=chiffrage-du-contenu><a class="text-body text-decoration-none" href=#chiffrage-du-contenu>Chiffrage du contenu</a></h1><h2 class=h6 id=documents-avec-contenu-chiffré><a class="text-body text-decoration-none" href=#documents-avec-contenu-chiffr%c3%a9>Documents avec contenu chiffré</a></h2><p>Les documents peuvent contenir un ou plusieurs des éléments chiffrés.</p><p>Exemple</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json><span style=display:flex><span><span style=color:#1f2328>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#f6f8fa;background-color:#82071e>tuuid:</span> <span style=color:#f6f8fa;background-color:#82071e>&#39;a4a3397e8002c5beabcd03e25f46c4334c8eeceee49b02d3528c1a4b758a888d&#39;,</span>
+</span></span><span style=display:flex><span>    <span style=color:#f6f8fa;background-color:#82071e>user_id:</span> <span style=color:#f6f8fa;background-color:#82071e>&#39;z2i3XjxLmXHZZyfWszu4Kui7Nv6dKWaujpYTcJ9dSHZJCJ5sTm6&#39;,</span>
+</span></span><span style=display:flex><span>    <span style=color:#f6f8fa;background-color:#82071e>type_node:</span> <span style=color:#f6f8fa;background-color:#82071e>&#39;Fichier&#39;,</span>
+</span></span><span style=display:flex><span>    <span style=color:#f6f8fa;background-color:#82071e>&#39;_mg-derniere-modification&#39;:</span> <span style=color:#f6f8fa;background-color:#82071e>ISODate(&#39;2025-03-16T17:04:30.571Z&#39;),</span>
+</span></span><span style=display:flex><span>    <span style=color:#f6f8fa;background-color:#82071e>&#39;_mg-creation&#39;:</span> <span style=color:#f6f8fa;background-color:#82071e>ISODate(&#39;2025-02-24T23:55:46.652Z&#39;),</span>
+</span></span><span style=display:flex><span>    <span style=color:#f6f8fa;background-color:#82071e>flag_index:</span> <span style=color:#f6f8fa;background-color:#82071e>true,</span>
+</span></span><span style=display:flex><span>    <span style=color:#f6f8fa;background-color:#82071e>supprime:</span> <span style=color:#f6f8fa;background-color:#82071e>false,</span>
+</span></span><span style=display:flex><span>    <span style=color:#f6f8fa;background-color:#82071e>supprime_indirect:</span> <span style=color:#f6f8fa;background-color:#82071e>false,</span>
+</span></span><span style=display:flex><span>    <span style=color:#f6f8fa;background-color:#82071e>metadata:</span> <span style=color:#f6f8fa;background-color:#82071e>{</span>
+</span></span><span style=display:flex><span>        <span style=color:#f6f8fa;background-color:#82071e>data_chiffre:</span> <span style=color:#f6f8fa;background-color:#82071e>&#39;vjp8jo04zC4lTGfevDm91y8LsqNw31lze1A8f7+Qesyel4/5jMqOOLAbZZKnzM83GoJfre4XlEq3yPl0KXOMGHanAxtNmiQM9ehFXAUsdxXxpLR2WD6FR/iAndJH5nssp5Sghsqtu2TkoUa3FJboMV7lw2CPzg6p4ezP5WMRBFd3oMITl09WRY+IjtWogLczyorbvKB8frjUkRpc0Ym1obH9dpY9pg==&#39;,</span>
+</span></span><span style=display:flex><span>        <span style=color:#f6f8fa;background-color:#82071e>cle_id:</span> <span style=color:#f6f8fa;background-color:#82071e>&#39;z59EzgDUKK68RVT1MpBH3eF6VD9cJkMgV3aznaKaGrp2W&#39;,</span>
+</span></span><span style=display:flex><span>        <span style=color:#f6f8fa;background-color:#82071e>format:</span> <span style=color:#f6f8fa;background-color:#82071e>&#39;mgs4&#39;,</span>
+</span></span><span style=display:flex><span>        <span style=color:#f6f8fa;background-color:#82071e>nonce:</span> <span style=color:#f6f8fa;background-color:#82071e>&#39;Ej72ZPe5FYamAjPvVObkdr6PMAmoGuJ3&#39;</span>
+</span></span><span style=display:flex><span>    <span style=color:#1f2328>}</span><span style=color:#f6f8fa;background-color:#82071e>,</span>
+</span></span><span style=display:flex><span>    <span style=color:#f6f8fa;background-color:#82071e>mimetype:</span> <span style=color:#f6f8fa;background-color:#82071e>&#39;image/png&#39;,</span>
+</span></span><span style=display:flex><span>    <span style=color:#f6f8fa;background-color:#82071e>fuuids_versions:</span> <span style=color:#1f2328>[</span>
+</span></span><span style=display:flex><span>        <span style=color:#f6f8fa;background-color:#82071e>&#39;zSEfXUDjM</span><span style=color:#0550ae>1</span><span style=color:#f6f8fa;background-color:#82071e>yQz</span><span style=color:#0550ae>23</span><span style=color:#f6f8fa;background-color:#82071e>RnFiCmdN</span><span style=color:#0550ae>2</span><span style=color:#f6f8fa;background-color:#82071e>RgjNHBTV</span><span style=color:#0550ae>1</span><span style=color:#f6f8fa;background-color:#82071e>DC</span><span style=color:#0550ae>2</span><span style=color:#f6f8fa;background-color:#82071e>R</span><span style=color:#0550ae>6</span><span style=color:#f6f8fa;background-color:#82071e>LFj</span><span style=color:#0550ae>8</span><span style=color:#f6f8fa;background-color:#82071e>qwFJbtZiEhXKc</span><span style=color:#0550ae>1</span><span style=color:#f6f8fa;background-color:#82071e>AnsW</span><span style=color:#0550ae>7</span><span style=color:#f6f8fa;background-color:#82071e>NiptSVzpK</span><span style=color:#0550ae>59</span><span style=color:#f6f8fa;background-color:#82071e>pnyqsmyDCzsLGsBdw</span><span style=color:#0550ae>7</span><span style=color:#f6f8fa;background-color:#82071e>R</span><span style=color:#0550ae>5</span><span style=color:#f6f8fa;background-color:#82071e>mn&#39;</span>
+</span></span><span style=display:flex><span>    <span style=color:#1f2328>]</span><span style=color:#f6f8fa;background-color:#82071e>,</span>
+</span></span><span style=display:flex><span>    <span style=color:#f6f8fa;background-color:#82071e>path_cuuids:</span> <span style=color:#1f2328>[</span>
+</span></span><span style=display:flex><span>        <span style=color:#f6f8fa;background-color:#82071e>&#39;</span><span style=color:#0550ae>8</span><span style=color:#f6f8fa;background-color:#82071e>bd</span><span style=color:#0550ae>9</span><span style=color:#f6f8fa;background-color:#82071e>d</span><span style=color:#0550ae>3</span><span style=color:#f6f8fa;background-color:#82071e>c</span><span style=color:#0550ae>477</span><span style=color:#f6f8fa;background-color:#82071e>a</span><span style=color:#0550ae>818</span><span style=color:#f6f8fa;background-color:#82071e>b</span><span style=color:#0550ae>42292</span><span style=color:#f6f8fa;background-color:#82071e>cc</span><span style=color:#0550ae>39003e18</span><span style=color:#f6f8fa;background-color:#82071e>ac</span><span style=color:#0550ae>9861</span><span style=color:#f6f8fa;background-color:#82071e>d</span><span style=color:#0550ae>38</span><span style=color:#f6f8fa;background-color:#82071e>c</span><span style=color:#0550ae>7</span><span style=color:#f6f8fa;background-color:#82071e>b</span><span style=color:#0550ae>3811384</span><span style=color:#f6f8fa;background-color:#82071e>acfb</span><span style=color:#0550ae>4983178</span><span style=color:#f6f8fa;background-color:#82071e>f</span><span style=color:#0550ae>83</span><span style=color:#f6f8fa;background-color:#82071e>e&#39;</span><span style=color:#1f2328>,</span>
+</span></span><span style=display:flex><span>        <span style=color:#f6f8fa;background-color:#82071e>&#39;b</span><span style=color:#0550ae>6</span><span style=color:#f6f8fa;background-color:#82071e>ba</span><span style=color:#0550ae>87</span><span style=color:#f6f8fa;background-color:#82071e>ecb</span><span style=color:#0550ae>3</span><span style=color:#f6f8fa;background-color:#82071e>b</span><span style=color:#0550ae>96</span><span style=color:#f6f8fa;background-color:#82071e>fbe</span><span style=color:#0550ae>8</span><span style=color:#f6f8fa;background-color:#82071e>ce</span><span style=color:#0550ae>173457648517346119</span><span style=color:#f6f8fa;background-color:#82071e>fcad</span><span style=color:#0550ae>1</span><span style=color:#f6f8fa;background-color:#82071e>a</span><span style=color:#0550ae>3</span><span style=color:#f6f8fa;background-color:#82071e>f</span><span style=color:#0550ae>555</span><span style=color:#f6f8fa;background-color:#82071e>d</span><span style=color:#0550ae>724948e4223254</span><span style=color:#f6f8fa;background-color:#82071e>e&#39;</span>
+</span></span><span style=display:flex><span>    <span style=color:#1f2328>]</span>
+</span></span><span style=display:flex><span><span style=color:#f6f8fa;background-color:#82071e>}</span></span></span></code></pre></div><h2 class=h6 id=chiffrage-des-réponses><a class="text-body text-decoration-none" href=#chiffrage-des-r%c3%a9ponses>Chiffrage des réponses</a></h2><p>Le chiffrage des réponses est supporté directement et de manière transparente. Le certificat de la requête/commande qui
+est utilisé pour chiffrer la réponse (kind:6). Le module qui reçoit la réponse déchiffre de manière transparente le
+contenu pour simuler une réponse de kind:4.</p><p>La réponse chiffrée est utile pour garantir la sécurité end-to-end d&rsquo;un contenu sensible qui peut inclure des clés
+de déchiffrage ou de l&rsquo;information qui ne doit pas être interceptée (numéros de cartes de crédit/bancaire). Ces messages
+ne peuvent pas être ouverts par les composants intermédiaires qui assurent le transit entre la base de données et
+le composant requérant (e.g. navigateur de l&rsquo;usager).</p><h2 class=h6 id=chiffrage-des-requêtes-ou-commandes><a class="text-body text-decoration-none" href=#chiffrage-des-requ%c3%aates-ou-commandes>Chiffrage des requêtes ou commandes</a></h2><h2 class=h6 id=format-json-serializé-en-texte><a class="text-body text-decoration-none" href=#format-json-serializ%c3%a9-en-texte>Format json serializé en texte</a></h2><p>Le champ <strong>contenu</strong> utilise un message json serializé en text UTF-8. Le choix de ce format est pour garantir
+l&rsquo;intégrité du message lors de la vérification.</p><p>La première version de message pour MilleGrilles (2019-2022) utilisait un format pur JSON pour les valeurs.
+L&rsquo;utilisation de certains parsers en C et Rust ont montré une approche différente entre le traitement des floats 32-64
+bits comparé à Python 3 et JavaScript. Cette différence causait des erreurs de vérifications inopinées et purement
+dues à la dé-sérialisation à la réception puis re-sérialisation du même message pour la vérification.</p><p>L&rsquo;utilisation du format texte a réglé ces problèmes puisqu&rsquo;il n&rsquo;y a aucune interprétation requise durant la
+désérialisation de l&rsquo;enveloppe d&rsquo;un type de document MilleGrille (aucunes valeurs float).</p>]]></description>
+                    
+
+                    
+                        <guid isPermaLink="false">tag:www.millegrilles.com,2025-03-17:/fr/documentation/messages/</guid>
+                    
+
+                    
+                        <link>https://www.millegrilles.com/fr/documentation/messages/</link>
+                    
+
+                    <atom:link href="https://www.millegrilles.com/fr/documentation/messages/" hreflang="fr" rel="self" type="text/html"/>
+
+                    
+                        
+
+                        
+
+                        <atom:link href="https://www.millegrilles.com/fr/documentation/messages/" hreflang="fr" rel="alternate" type="text/html"/>
+                    
+
+                    
+                        
+                            <atom:link href="https://www.millegrilles.com/documentation/messages/" hreflang="en" rel="canonical" type="text/html"/>
+                        
+                    
+
+                    
+                        <pubDate>Mon, 17 Mar 2025 13:16:48 UTC</pubDate>
+                    
+
+                    
+                        <title>Structure des messages</title>
+                    
+                </item>
+            
+        
+            
+                <item>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+
+                    
+
+                    
+
+                    
+
+                    
+
+                    
+                    
+                    
+
+                    
+
+                    
+                        <description><![CDATA[<h1 class=h4 id=description-technique><a class="text-body text-decoration-none" href=#description-technique>Description technique</a></h1><h2 class=h5 id=bus-de-communication><a class="text-body text-decoration-none" href=#bus-de-communication>Bus de communication</a></h2><p>RabbitMQ</p><h2 class=h5 id=certificats-de-sécurité><a class="text-body text-decoration-none" href=#certificats-de-s%c3%a9curit%c3%a9>Certificats de sécurité</a></h2><p>X.509
+Système, usager</p><h2 class=h5 id=chiffrage-en-transit><a class="text-body text-decoration-none" href=#chiffrage-en-transit>Chiffrage en transit</a></h2><h3 class=h6 id=chiffrage-entre-modules-externes><a class="text-body text-decoration-none" href=#chiffrage-entre-modules-externes>Chiffrage entre modules externes</a></h3><p>Tous les modules serveurs qui passent par internet communiquent entre-eux en utilisant une forme ou une autre de
+chiffrage.</p><p>Le bus de communication MQ est uniquement disponible avec le protocole amqps (ssl) et requiert un certificat ssl client.</p><p>Les autres connexions faites de l&rsquo;extérieur doivent passer par nginx qui supporte https sur les ports 443 (certificat
+client optionnel) et 444 (certificat client obligatoire). Les connexions via nginx peuvent être converties en websocket
+lorsque l&rsquo;application derrière le proxy le supporte.</p><h3 class=h6 id=chiffrage-entre-modules-internes><a class="text-body text-decoration-none" href=#chiffrage-entre-modules-internes>Chiffrage entre modules internes</a></h3><p>Pour l&rsquo;instant, seul le module certissuer utilise une connexion http non sécurisée à l&rsquo;interne. Tous les autres modules
+utilisent une connexion ssl généralement avec certificat client pour se connecter.</p><p>Connexions sécurisées via ssl avec certificat client obligatoire :</p><ul><li>rabbitmq</li><li>mongodb</li><li>nginx (port 444)</li></ul><p>Connexions sécurisées via ssl avec certificat client optionnel :</p><ul><li>redis</li><li>nginx (port 443)</li></ul><p>Connexions non sécurisées à l&rsquo;interne:</p><ul><li>certissuer: la requête de certificat (CSR) et le nouveau certificat généré sont passés par HTTP. Ceci simplifie
+la configuration d&rsquo;un nouveau système ou récupération d&rsquo;un système avec certificats expirés.</li></ul><h2 class=h5 id=chiffrage-au-repos><a class="text-body text-decoration-none" href=#chiffrage-au-repos>Chiffrage au repos</a></h2><p>Fichiers, archives de backup.</p><h2 class=h5 id=algorithmes-cryptographiques><a class="text-body text-decoration-none" href=#algorithmes-cryptographiques>Algorithmes cryptographiques</a></h2><p>Utilisation de Chacha20Poly1305, Blake2 et Ed25519.</p><p>Algorithmes alternatifs. Pas de AES, SHA ni RSA.</p><h2 class=h5 id=authentification><a class="text-body text-decoration-none" href=#authentification>Authentification</a></h2><p>Webauthn et certificats X.509.</p><h3 class=h6 id=accès-système><a class="text-body text-decoration-none" href=#acc%c3%a8s-syst%c3%a8me>Accès système</a></h3><p>Les composants système se font attribuer des certificats X.509 qui contiennent l&rsquo;information requise pour se faire
+attribuer un compte sur le bus de communication MQ et si approprié dans une base de données.</p><p>Un composant peut se faire créer les comptes auxquels il a droit en émettant une commande HTTPS POST vers
+/administration/ajouterCompte sur le port 444 du serveur ciblé. Il doit utiliser son certificat client X.509 comme
+méthode d&rsquo;authentification HTTPS. Le module midcompte, s&rsquo;il est configuré sur le serveur ciblé, va vérifier que le
+certificat est présentemant valide et automatiquement créer les comptes appropriés. La réponse HTTP 200 est émise
+par midcompte pour confirmer que tous les comptes sont prêts. En cas de refus, la réponse est HTTP 403.</p><h3 class=h6 id=accès-usagers><a class="text-body text-decoration-none" href=#acc%c3%a8s-usagers>Accès usagers</a></h3><p>Les usagers doivent utiliser webauthn (passkeys) pour correctement sécuriser leur compte. Il est aussi possible de donner
+accès aux navigateurs avec des codes d&rsquo;activation qui expirent après 31 jours. Ces codes ne peuvent être activé que par
+webauthn sur un autre appareil avec le même compte usager ou par un administrateur.</p><p>Lorsque l&rsquo;accès usager est vérifié, un certificat X.509 incluant le userId vérifié est émis et conservé localement par
+le navigateur. Ce certificat est nécessaire pour signer les messages émis au nom de l&rsquo;usager sur le bus MilleGrilles.
+Ceci permet de garantir qu&rsquo;il n&rsquo;y a pas d&rsquo;altération du contenu d&rsquo;une commande ou un exploit qui changerait le
+userId des messages en transit puisque le userId n&rsquo;est pas un paramètre du message.</p><h3 class=h6 id=attributs-conventionels-des-certificats-x509><a class="text-body text-decoration-none" href=#attributs-conventionels-des-certificats-x509>Attributs conventionels des certificats X.509</a></h3><ul><li>Common Name (CN): nom du serveur ou nom de l&rsquo;usager</li><li>Organizational Unit (OU): domaine (optionnel)</li><li>Organization (O): Identificateur de la MilleGrille</li></ul><h3 class=h6 id=attributs-spéciaux-ajoutés-au-certificats-x509><a class="text-body text-decoration-none" href=#attributs-sp%c3%a9ciaux-ajout%c3%a9s-au-certificats-x509>Attributs spéciaux ajoutés au certificats X.509</a></h3><ul><li>UserId</li><li>Roles</li><li>Domaines</li><li>Délégations (e.g administrateur)</li></ul><h2 class=h5 id=autorisation><a class="text-body text-decoration-none" href=#autorisation>Autorisation</a></h2><p>Pas de OAuth, utilisation de valeurs locales dans la base de données et de paramètres custom dans les certificats X.509.</p><p>Tokens JWT générés par un serveur autorisé au besoin (e.g. streaming video ou fichiers). Permet fonctionnement entre
+plusieurs MilleGrilles.</p><h2 class=h5 id=logiciels-infrastructure><a class="text-body text-decoration-none" href=#logiciels-infrastructure>Logiciels infrastructure</a></h2><ul><li>Docker</li><li>Nginx</li><li>RabbitMQ</li><li>MongoDB</li><li>Solr</li><li>Redis</li></ul><h2 class=h5 id=bus-millegrilles-et-messages><a class="text-body text-decoration-none" href=#bus-millegrilles-et-messages>Bus MilleGrilles et messages</a></h2><p>MilleGrilles supporte plusieurs types de documents signés avec les certificats X.509. De ces documents, les types
+suivants sont des messages qui peuvent être émis directement sur le bus avec routage :</p><ul><li>Requête</li><li>Commande</li><li>Événement</li><li>Réponse</li></ul><p>Note: il existe d&rsquo;autre types de documents signés (document et transaction) mais il ne peuvent pas transiter directement sur
+le bus MilleGrilles.</p><h3 class=h6 id=requête><a class="text-body text-decoration-none" href=#requ%c3%aate>Requête</a></h3><p>La requête sert à demander de l&rsquo;information à un composant système qui génère une réponse. La requête doit être
+lecture-seulement et ne doit pas modifier le contenu du système (aucun effet de bord).</p><h3 class=h6 id=commande><a class="text-body text-decoration-none" href=#commande>Commande</a></h3><p>Une commande est une opération qui va modifier l&rsquo;état du système. Si la modification est permanente, la commande va
+être convertie en transaction(s) et conservée dans les archives des domaines concernés.</p><p>Une commande ne fournit pas toujours de réponse, ceci est laissé à la discrétion de l&rsquo;implémentation.</p><h3 class=h6 id=événement><a class="text-body text-decoration-none" href=#%c3%a9v%c3%a9nement>Événement</a></h3><p>Un énévement est un message qui est émis sur le bus MilleGrilles sans être sollicité et qui peut être
+capturé par n&rsquo;importe quel module avec le niveau de sécurité approprié. L&rsquo;événement peut servir à générer de nouvelles
+transactions au besoin.</p><h3 class=h6 id=réponse><a class="text-body text-decoration-none" href=#r%c3%a9ponse>Réponse</a></h3><p>La réponse est un message émis suite à une sollicitation via une requête ou une commande.</p><p>Note : Une réponse peut être chiffrée en utilisant l&rsquo;information du certificat du demandeur. Tous les modules connectés
+au bus MilleGrilles doivent être capables de déchiffrer une réponse de manière transparente.</p><h3 class=h6 id=routage><a class="text-body text-decoration-none" href=#routage>Routage</a></h3><p>Les messages de type requete, commande et evenement vont sur un des 4 exchanges sécurisés (1.public, 2.prive,
+3.protege ou 4.secure). Le certificat du module détermine les exchanges disponibles.</p><p>Formats de la routing key MQ pour un message sur un des exchanges sécurisés.</p><ul><li>message kind.domaine ou role.action</li><li>message kind.domaine ou role.partition.action</li></ul><p>Exemples sans partition :</p><ul><li>requete.CoreTopologie.listeUserappsDeployees</li><li>requete.CoreMaitreDesComptes.chargerUsager</li><li>commande.media.transcoderVideo</li><li>commande.instance.transmettreCatalogues</li><li>evenement.filecontroler.status</li></ul><p>Exemples avec partition :</p><ul><li>commande.instance.f3a68d38-1ce6-4c51-a628-fb88a95d22ae.installerApplication</li><li>evenement.GrosFichiers.ff7db38a-111a-4df5-8e96-69648f0d55ba.newFuuid</li><li>evenement.instance.f3a68d38-1ce6-4c51-a628-fb88a95d22ae.presenceInstanceApplications</li></ul><p>Le routage des réponses fonctionne avec les champs header reply_to et correlation_id du protocole MQ.</p><h3 class=h6 id=sécurité-du-routage><a class="text-body text-decoration-none" href=#s%c3%a9curit%c3%a9-du-routage>Sécurité du routage</a></h3><p>Pour qu&rsquo;un module puisse se connecter à MQ, un compte doit être créé en connectant le module en utilisant son
+certificat X.509 (client ssl) avec la commande HTTPS POST sur /administration/ajouterCompte sur le port 444 du
+serveur MQ.</p><p>Le compte du module est lié à son subject X.509 (CN,OU et O). Le compte se fait donner accès aux exchanges listés dans
+son certificat. Sur chaque exchange, le certificat se fait donner accès ou routage de messages de la manière suivante :</p><p>Write routing sur exchange</p><ul><li>evenement.certificat.infoCertificat</li><li>requete.*</li><li>commande.*</li><li>evenement.global.*</li><li>evenement.ROLES.* (pour chaque role)</li><li>evenement.DOMAINES.* (pour chaque domaine)</li></ul><p>Read routing sur exchange</p><ul><li>requete.certificat.*</li><li>evenement.*</li><li>requete.global.*</li><li>requete.ROLE.*</li><li>requete.DOMAINES.*</li><li>commande.global.*</li><li>commande.ROLES.* (pour chaque role)</li><li>commande.DOMAINES.* (pour chaque domaine)</li></ul><p>Règles</p><p>Le compte permet :</p><ul><li>d&rsquo;émettre des requêtes et commandes vers n&rsquo;importe quel role ou domaine,</li><li>d&rsquo;émettre des événements uniquement pour les roles et domaines enregistrés dans le certificat,</li><li>d&rsquo;écouter des requêtes ou commandes uniquement pour les roles et domaines enregistrés dans le certificat,</li><li>d&rsquo;écouter des événements de n&rsquo;importe quel role et domaine,</li><li>émettre / écouter certains messages globaux et requêtes/réponses pour les certificats.</li></ul><p>Par exemple :</p><p>Compte MQ: O=zbaTeMFXpvuALGcPLx7UYFjW2oCz8fbDpyyse5boZB22VX8NvSQfMaSR,OU=core,CN=f3a68d38-1ce6-4c51-a628-fb88a95d22ae</p><p>Permissions</p><p><strong>Write routing sur exchange</strong></p><ul><li>evenement.certificat.infoCertificat</li><li>requete.*</li><li>commande.*</li><li>evenement.core.*</li><li>evenement.global.*</li><li>evenement.CoreBackup.*</li><li>evenement.CoreCatalogues.*</li><li>evenement.CoreMaitreDesComptes.*</li><li>evenement.CorePki.*</li><li>evenement.CoreTopologie.*</li></ul><p><strong>Read routing sur exchange</strong></p><ul><li>requete.certificat.*</li><li>evenement.*</li><li>requete.core.*</li><li>requete.global.*</li><li>requete.CoreBackup.*</li><li>requete.CoreCatalogues.*</li><li>requete.CoreMaitreDesComptes.*</li><li>requete.CorePki.*</li><li>requete.CoreTopologie.*</li><li>commande.core.*</li><li>commande.global.*</li><li>commande.CoreBackup.*</li><li>commande.CoreCatalogues.*</li><li>commande.CoreMaitreDesComptes.*</li><li>commande.CorePki.*</li><li>commande.CoreTopologie.*</li></ul><h2 class=h5 id=gestion-de-clés-de-chiffrage><a class="text-body text-decoration-none" href=#gestion-de-cl%c3%a9s-de-chiffrage>Gestion de clés de chiffrage</a></h2><p>Maître des clés, fiche et chiffrage X25519.</p><h2 class=h5 id=file-controler-et-file-hosts><a class="text-body text-decoration-none" href=#file-controler-et-file-hosts>File controler et file hosts</a></h2><p>Les fichiers d&rsquo;une MilleGrille sont gérés par le composant CoreTopology qui synchronise tous les sites d&rsquo;hébergement
+des fichiers. Le serveur de fichier de base de MilleGrilles est le file host.</p><p>Noter qu&rsquo;un file host est un serveur indépendant des MilleGrilles qu&rsquo;il héberge. Un nombre illimité de MilleGrilles
+peuvent utiliser le même file host. Chaque MilleGrille peut uniquement accéder et gérer ses propres fichiers sur le
+file host.</p><p>Le file controler récupère les événements émis par le file host pour une MilleGrille et fait le relai vers le bus.
+Il s&rsquo;assure de distribuer les fichiers entre tous les file hosts pour que ces derniers agissent comme miroir les
+uns des autres. Régulièrement (à tous les jours), une vérification complète de la liste des fichiers conservés sur
+chaque file host est générée par le file host, téléchargée par le file controler et réconciliée dans CoreTopology.</p><p>Les modules systèmes et usagers (e.g. navigateurs) peuvent récupérer et uploader des fichiers directement via commandes
+GET/PUT https sur n&rsquo;importe quel file host utilisé par une MilleGrille en utilisant leur certificat X.509 pour
+s&rsquo;authentifier.</p><p>Les archives de transactions sont téléchargées vers tous les file hosts régulièrement, généralement dès qu&rsquo;ils sont
+crées par les domaines. Ceci augmente les chances de récupérer le contenu de la MilleGrille en cas de problèmes.</p><p>Les fichiers hébergés sont vérifiés régulièrement par le filehost. Le hachage du contenu fait parti du nom de chaque
+fichier hébergé, c&rsquo;est cette valeur qui est utilisée par le file host pour s&rsquo;assurer de l&rsquo;intégrité de chaque fichier.
+Pour une site avec moins de 10 téra-octets, la vérification complète devrait être complétée au moins 1 fois par mois par
+chaque file host.</p><p>Si un fichier est corrompu, il est déplacé vers le répertoire dumpster et un message est émis via
+le file controler. Tant qu&rsquo;il y a au moins une autre copie valide du fichier sur un autre file host, il sera retransféré
+automatiquement dès que possible.</p><h2 class=h5 id=noms-de-fichiers><a class="text-body text-decoration-none" href=#noms-de-fichiers>Noms de fichiers</a></h2><p>Le fichiers conservés pour les usagers sont gérés par CoreTopology. Le nom d&rsquo;un fichier correspond à son hachage
+blake2b encodé avec multihash et multibase en base58btc.</p><p>Exemple : zSEfXUAcuo5Fmvbr7oQVpagXtLqgAxzLi5cfEPN5NP34RJf6wAvwD3v8ENoVKj8TsYcVBqp8K1A255DUk1y2n3Su3b7iuP</p><p>Cette valeur est aussi appelée le fuuid (file unique id).</p><p>Les modules qui utilisent les fichiers vérifient le contenu en utilisant le fuuid.</p><p>Un fichier doit être chiffré. Le format courant de chiffrage MilleGrille est mgs4.</p><h2 class=h5 id=chiffrage><a class="text-body text-decoration-none" href=#chiffrage>Chiffrage</a></h2><h3 class=h6 id=clés-symétriques><a class="text-body text-decoration-none" href=#cl%c3%a9s-sym%c3%a9triques>Clés symétriques</a></h3><p>Les clés symétriques sont générées à partir de la clé publique de la MilleGrille (celle du certificat CA). Ceci permet
+de récupérer la version X25519 de la clé et de la conserver dans les archives du Maitre des clés comme référence pour
+récupération du système au besoin.</p><p>La clé symétrique peut devoir être re-chiffrée pour être transmise à un composant tiers, généralement la clé active du
+maitre des clés.</p><p>En cas de traitement de plusieurs clés symétriques à transférer en même temps, il est préférable de créer une clé
+d&rsquo;échange X25519 temporaire qui sera utilisable par le composant visé uniquement.</p><p>TODO - algorithme de chiffrage asymétrique vers plusieurs destinataires d&rsquo;une même clé symmétrique.</p><h3 class=h6 id=mgs4><a class="text-body text-decoration-none" href=#mgs4>mgs4</a></h3><p>Implémentation libsodium chacha20poly1305 en blocks de 64 kilo-octets. Le header est conservé sous le nom de nonce en
+base64-nopad. La clé symmétrique est conservée dans les méta-données distinctes ou par le maître des clés de la
+MilleGrille.</p><h3 class=h6 id=exemple-de-contenu-dune-commande-avec-chiffrage><a class="text-body text-decoration-none" href=#exemple-de-contenu-dune-commande-avec-chiffrage>Exemple de contenu d&rsquo;une commande avec chiffrage</a></h3><p>Exemple avec élément distinct pour le contenu chiffré</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json><span style=display:flex><span><span style=color:#1f2328>{</span>
+</span></span><span style=display:flex><span>  <span style=color:#0550ae>&#34;cuuid&#34;</span><span style=color:#1f2328>:</span> <span style=color:#cf222e>null</span><span style=color:#1f2328>,</span>
+</span></span><span style=display:flex><span>  <span style=color:#0550ae>&#34;favoris&#34;</span><span style=color:#1f2328>:</span> <span style=color:#cf222e>true</span><span style=color:#1f2328>,</span>
+</span></span><span style=display:flex><span>  <span style=color:#0550ae>&#34;metadata&#34;</span><span style=color:#1f2328>:</span> <span style=color:#1f2328>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#0550ae>&#34;cle_id&#34;</span><span style=color:#1f2328>:</span> <span style=color:#0a3069>&#34;z8to4MmYhygtNNnobkBsWPj34v5rcd5sxnhZDajvusF8M&#34;</span><span style=color:#1f2328>,</span>
+</span></span><span style=display:flex><span>    <span style=color:#0550ae>&#34;data_chiffre&#34;</span><span style=color:#1f2328>:</span> <span style=color:#0a3069>&#34;ILeP1TYQi/YTwbSwBczPPRN6r+nyWb1zQm8eq7PBClOR8QVKs09om3Al&#34;</span><span style=color:#1f2328>,</span>
+</span></span><span style=display:flex><span>    <span style=color:#0550ae>&#34;format&#34;</span><span style=color:#1f2328>:</span> <span style=color:#0a3069>&#34;mgs4&#34;</span><span style=color:#1f2328>,</span>
+</span></span><span style=display:flex><span>    <span style=color:#0550ae>&#34;nonce&#34;</span><span style=color:#1f2328>:</span> <span style=color:#0a3069>&#34;g2T9vcNqGOoBKLeCXISoppmJnzD9n2vZ&#34;</span><span style=color:#1f2328>,</span>
+</span></span><span style=display:flex><span>    <span style=color:#0550ae>&#34;verification&#34;</span><span style=color:#1f2328>:</span> <span style=color:#0a3069>&#34;zSEfXUCcmhoXqqL1aov9raWjyN2M2146yPwqPSWwAHftNiVxkD5uRprzJkjjjhUvmwfAcbbtXLcfXX8wRnRfcKmnC7fRDH&#34;</span>
+</span></span><span style=display:flex><span>  <span style=color:#1f2328>}</span>
+</span></span><span style=display:flex><span><span style=color:#1f2328>}</span></span></span></code></pre></div><p>Exemple avec le contenu chiffré au même niveau que le contenu non-chiffré</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json><span style=display:flex><span><span style=color:#1f2328>{</span>
+</span></span><span style=display:flex><span>  <span style=color:#0550ae>&#34;doc_id&#34;</span><span style=color:#1f2328>:</span> <span style=color:#0a3069>&#34;b869d126abc14fde632b8c24194fd99342082aab66d255c66adcf2c78d5156a6&#34;</span><span style=color:#1f2328>,</span>
+</span></span><span style=display:flex><span>  <span style=color:#0550ae>&#34;groupe_id&#34;</span><span style=color:#1f2328>:</span> <span style=color:#0a3069>&#34;5ad2d74b3162dd0d9abe8d91dcc05ec02d385135ae9d17cb1ed0af359531dabc&#34;</span><span style=color:#1f2328>,</span>
+</span></span><span style=display:flex><span>  <span style=color:#0550ae>&#34;categorie_version&#34;</span><span style=color:#1f2328>:</span> <span style=color:#0550ae>1</span><span style=color:#1f2328>,</span>
+</span></span><span style=display:flex><span>  <span style=color:#0550ae>&#34;data_chiffre&#34;</span><span style=color:#1f2328>:</span> <span style=color:#0a3069>&#34;FHvvcILdLXYm5WkVeZebPmwR6lm2HBkdmZ3SIE9sIrNtz ... LpiyU662R/fGg+V/kEGV&#34;</span><span style=color:#1f2328>,</span>
+</span></span><span style=display:flex><span>  <span style=color:#0550ae>&#34;cle_id&#34;</span><span style=color:#1f2328>:</span> <span style=color:#0a3069>&#34;z6YHaBrzGQzvnZova6FzjfdkYuXCo44CujMD1pNwqHXCN&#34;</span><span style=color:#1f2328>,</span>
+</span></span><span style=display:flex><span>  <span style=color:#0550ae>&#34;format&#34;</span><span style=color:#1f2328>:</span> <span style=color:#0a3069>&#34;mgs4&#34;</span><span style=color:#1f2328>,</span>
+</span></span><span style=display:flex><span>  <span style=color:#0550ae>&#34;nonce&#34;</span><span style=color:#1f2328>:</span> <span style=color:#0a3069>&#34;48n7Aw23rxf2TIutgT4ovh21i1dlj4qQ&#34;</span><span style=color:#1f2328>,</span>
+</span></span><span style=display:flex><span>  <span style=color:#0550ae>&#34;compression&#34;</span><span style=color:#1f2328>:</span> <span style=color:#0a3069>&#34;gz&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#1f2328>}</span></span></span></code></pre></div><p>Champs :</p><ul><li>cuuid, favoris, doc_id, group_id, categorie_version - data non chiffré,</li><li>metadata : contient la structure du contenu chiffré et metadata de déchiffrage,</li><li>cle_id : identificateur à fournir au Maître des clés pour demander la clé,</li><li>data_chiffre : contenu chiffré (optionnellement compressé) en base64-nopad</li><li>format : format du chiffrage - mgs4 indique l&rsquo;algorithme (chacha20poly1305 avec blocks de 64ko) et paramètre requis (header sous nonce)</li><li>nonce : header libsodium chacha20poly1305 encodé en base64-nopad, requis pour initialiser le déchiffrage</li><li>verification : (optionnel) digest de data_chiffre encodé avec multihash + multibase, ici blake2b,</li><li>compression : (optionnel) deflate ou gz lorsque le contenu est compressé avant le chiffrage.</li></ul><h3 class=h6 id=fichiers-chiffrés-avec-mgs4><a class="text-body text-decoration-none" href=#fichiers-chiffr%c3%a9s-avec-mgs4>Fichiers chiffrés avec mgs4</a></h3><p>Pour chiffrer un fichier avec mgs4, les mêmes méta-données sont requises pour le déchiffrage et doivent être stockées
+par le domaine responsable du fichier. Le nom du fichier (fuuid) correspond à la valeur de vérification - c&rsquo;est le
+digest blake2b encodé an multihash + multibase. Le contenu du fichier est équivalent au contenu de data_chiffre mais
+n&rsquo;est pas limité à 10 méga-octets (limite des documents). Cette approche fonctionne présentement avec des fichiers de
+plus de 100 giga-octets.</p>]]></description>
+                    
+
+                    
+                        <guid isPermaLink="false">tag:www.millegrilles.com,2025-03-17:/fr/technical/</guid>
+                    
+
+                    
+                        <link>https://www.millegrilles.com/fr/technical/</link>
+                    
+
+                    <atom:link href="https://www.millegrilles.com/fr/technical/" hreflang="fr" rel="self" type="text/html"/>
+
+                    
+                        
+
+                        
+
+                        <atom:link href="https://www.millegrilles.com/fr/technical/" hreflang="fr" rel="alternate" type="text/html"/>
+                    
+
+                    
+                        
+                            <atom:link href="https://www.millegrilles.com/technical/" hreflang="en" rel="canonical" type="text/html"/>
+                        
+                    
+
+                    
+                        <pubDate>Mon, 17 Mar 2025 13:00:00 UTC</pubDate>
+                    
+
+                    
+                        <title>Description technique</title>
+                    
+                </item>
+            
         
             
                 <item>
@@ -160,92 +576,6 @@
                     
 
                     
-                        <description><![CDATA[<h1 class=h4 id=description-technique><a class="text-body text-decoration-none" href=#description-technique>Description technique</a></h1><h2 class=h5 id=bus-de-communication><a class="text-body text-decoration-none" href=#bus-de-communication>Bus de communication</a></h2><p>RabbitMQ</p><h2 class=h5 id=certificats-de-sécurité><a class="text-body text-decoration-none" href=#certificats-de-s%c3%a9curit%c3%a9>Certificats de sécurité</a></h2><p>X.509
-Système, usager</p><h2 class=h5 id=chiffrage-en-transit><a class="text-body text-decoration-none" href=#chiffrage-en-transit>Chiffrage en transit</a></h2><h3 class=h6 id=chiffrage-entre-modules-externes><a class="text-body text-decoration-none" href=#chiffrage-entre-modules-externes>Chiffrage entre modules externes</a></h3><p>Tous les modules serveurs qui passent par internet communiquent entre-eux en utilisant une forme ou une autre de
-chiffrage.</p><p>Le bus de communication MQ est uniquement disponible avec le protocole amqps (ssl) et requiert un certificat ssl client.</p><p>Les autres connexions faites de l&rsquo;extérieur doivent passer par nginx qui supporte https sur les ports 443 (certificat
-client optionnel) et 444 (certificat client obligatoire). Les connexions via nginx peuvent être converties en websocket
-lorsque l&rsquo;application derrière le proxy le supporte.</p><h3 class=h6 id=chiffrage-entre-modules-internes><a class="text-body text-decoration-none" href=#chiffrage-entre-modules-internes>Chiffrage entre modules internes</a></h3><p>Pour l&rsquo;instant, seul le module certissuer utilise une connexion http non sécurisée à l&rsquo;interne. Tous les autres modules
-utilisent une connexion ssl généralement avec certificat client pour se connecter.</p><p>Connexions sécurisées via ssl avec certificat client obligatoire :</p><ul><li>rabbitmq</li><li>mongodb</li><li>nginx (port 444)</li></ul><p>Connexions sécurisées via ssl avec certificat client optionnel :</p><ul><li>redis</li><li>nginx (port 443)</li></ul><p>Connexions non sécurisées à l&rsquo;interne:</p><ul><li>certissuer: la requête de certificat (CSR) et le nouveau certificat généré sont passés par HTTP. Ceci simplifie
-la configuration d&rsquo;un nouveau système ou récupération d&rsquo;un système avec certificats expirés.</li></ul><h2 class=h5 id=chiffrage-au-repos><a class="text-body text-decoration-none" href=#chiffrage-au-repos>Chiffrage au repos</a></h2><p>Fichiers, archives de backup.</p><h2 class=h5 id=algorithmes-cryptographiques><a class="text-body text-decoration-none" href=#algorithmes-cryptographiques>Algorithmes cryptographiques</a></h2><p>Utilisation de Chacha20Poly1305, Blake2 et Ed25519.</p><p>Algorithmes alternatifs. Pas de AES, SHA ni RSA.</p><h2 class=h5 id=authentification><a class="text-body text-decoration-none" href=#authentification>Authentification</a></h2><p>Webauthn et certificats X.509.</p><h3 class=h6 id=accès-système><a class="text-body text-decoration-none" href=#acc%c3%a8s-syst%c3%a8me>Accès système</a></h3><p>Les composants système se font attribuer des certificats X.509 qui contiennent l&rsquo;information requise pour se faire
-attribuer un compte sur le bus de communication MQ et si approprié dans une base de données.</p><p>Un composant peut se faire créer les comptes auxquels il a droit en émettant une commande HTTPS POST vers
-/administration/ajouterCompte sur le port 444 du serveur ciblé. Il doit utiliser son certificat client X.509 comme
-méthode d&rsquo;authentification HTTPS. Le module midcompte, s&rsquo;il est configuré sur le serveur ciblé, va vérifier que le
-certificat est présentemant valide et automatiquement créer les comptes appropriés. La réponse HTTP 200 est émise
-par midcompte pour confirmer que tous les comptes sont prêts. En cas de refus, la réponse est HTTP 403.</p><h3 class=h6 id=accès-usagers><a class="text-body text-decoration-none" href=#acc%c3%a8s-usagers>Accès usagers</a></h3><p>Les usagers doivent utiliser webauthn (passkeys) pour correctement sécuriser leur compte. Il est aussi possible de donner
-accès aux navigateurs avec des codes d&rsquo;activation qui expirent après 31 jours. Ces codes ne peuvent être activé que par
-webauthn sur un autre appareil avec le même compte usager ou par un administrateur.</p><p>Lorsque l&rsquo;accès usager est vérifié, un certificat X.509 incluant le userId vérifié est émis et conservé localement par
-le navigateur. Ce certificat est nécessaire pour signer les messages émis au nom de l&rsquo;usager sur le bus MilleGrilles.
-Ceci permet de garantir qu&rsquo;il n&rsquo;y a pas d&rsquo;altération du contenu d&rsquo;une commande ou un exploit qui changerait le
-userId des messages en transit puisque le userId n&rsquo;est pas un paramètre du message.</p><h3 class=h6 id=attributs-conventionels-des-certificats-x509><a class="text-body text-decoration-none" href=#attributs-conventionels-des-certificats-x509>Attributs conventionels des certificats X.509</a></h3><ul><li>Common Name (CN): nom du serveur ou nom de l&rsquo;usager</li><li>Organizational Unit (OU): domaine (optionnel)</li><li>Organization (O): Identificateur de la MilleGrille</li></ul><h3 class=h6 id=attributs-spéciaux-ajoutés-au-certificats-x509><a class="text-body text-decoration-none" href=#attributs-sp%c3%a9ciaux-ajout%c3%a9s-au-certificats-x509>Attributs spéciaux ajoutés au certificats X.509</a></h3><ul><li>UserId</li><li>Roles</li><li>Domaines</li><li>Délégations (e.g administrateur)</li></ul><h2 class=h5 id=autorisation><a class="text-body text-decoration-none" href=#autorisation>Autorisation</a></h2><p>Pas de OAuth, utilisation de valeurs locales dans la base de données et de paramètres custom dans les certificats X.509.</p><p>Tokens JWT générés par un serveur autorisé au besoin (e.g. streaming video ou fichiers). Permet fonctionnement entre
-plusieurs MilleGrilles.</p><h2 class=h5 id=logiciels-infrastructure><a class="text-body text-decoration-none" href=#logiciels-infrastructure>Logiciels infrastructure</a></h2><ul><li>Docker</li><li>Nginx</li><li>RabbitMQ</li><li>MongoDB</li><li>Solr</li><li>Redis</li></ul><h2 class=h5 id=bus-millegrilles-et-messages><a class="text-body text-decoration-none" href=#bus-millegrilles-et-messages>Bus MilleGrilles et messages</a></h2><p>MilleGrilles supporte plusieurs types de documents signés avec les certificats X.509. De ces documents, les types
-suivants sont des messages qui peuvent être émis directement sur le bus avec routage :</p><ul><li>Requête</li><li>Commande</li><li>Événement</li><li>Réponse</li></ul><p>Note: il existe d&rsquo;autre types de documents signés (document et transaction) mais il ne peuvent pas transiter directement sur
-le bus MilleGrilles.</p><h3 class=h6 id=requête><a class="text-body text-decoration-none" href=#requ%c3%aate>Requête</a></h3><p>La requête sert à demander de l&rsquo;information à un composant système qui génère une réponse. La requête doit être
-lecture-seulement et ne doit pas modifier le contenu du système (aucun effet de bord).</p><h3 class=h6 id=commande><a class="text-body text-decoration-none" href=#commande>Commande</a></h3><p>Une commande est une opération qui va modifier l&rsquo;état du système. Si la modification est permanente, la commande va
-être convertie en transaction(s) et conservée dans les archives des domaines concernés.</p><p>Une commande ne fournit pas toujours de réponse, ceci est laissé à la discrétion de l&rsquo;implémentation.</p><h3 class=h6 id=événement><a class="text-body text-decoration-none" href=#%c3%a9v%c3%a9nement>Événement</a></h3><p>Un énévement est un message qui est émis sur le bus MilleGrilles sans être sollicité et qui peut être
-capturé par n&rsquo;importe quel module avec le niveau de sécurité approprié. L&rsquo;événement peut servir à générer de nouvelles
-transactions au besoin.</p><h3 class=h6 id=réponse><a class="text-body text-decoration-none" href=#r%c3%a9ponse>Réponse</a></h3><p>La réponse est un message émis suite à une sollicitation via une requête ou une commande.</p><p>Note : Une réponse peut être chiffrée en utilisant l&rsquo;information du certificat du demandeur. Tous les modules connectés
-au bus MilleGrilles doivent être capables de déchiffrer une réponse de manière transparente.</p><h2 class=h5 id=gestion-de-clés-de-chiffrage><a class="text-body text-decoration-none" href=#gestion-de-cl%c3%a9s-de-chiffrage>Gestion de clés de chiffrage</a></h2><p>Maître des clés, fiche et chiffrage X25519.</p>]]></description>
-                    
-
-                    
-                        <guid isPermaLink="false">tag:www.millegrilles.com,2025-03-15:/fr/technical/</guid>
-                    
-
-                    
-                        <link>https://www.millegrilles.com/fr/technical/</link>
-                    
-
-                    <atom:link href="https://www.millegrilles.com/fr/technical/" hreflang="fr" rel="self" type="text/html"/>
-
-                    
-                        
-
-                        
-
-                        <atom:link href="https://www.millegrilles.com/fr/technical/" hreflang="fr" rel="alternate" type="text/html"/>
-                    
-
-                    
-                        
-                            <atom:link href="https://www.millegrilles.com/technical/" hreflang="en" rel="canonical" type="text/html"/>
-                        
-                    
-
-                    
-                        <pubDate>Sat, 15 Mar 2025 12:00:00 UTC</pubDate>
-                    
-
-                    
-                        <title>Description technique</title>
-                    
-                </item>
-            
-        
-            
-                <item>
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-
-                    
-
-                    
-
-                    
-
-                    
-
-                    
-                    
-                    
-
-                    
-
-                    
                         <description><![CDATA[<h1 class=h5 id=vision><a class="text-body text-decoration-none" href=#vision>Vision</a></h1><p>MilleGrilles est un système d&rsquo;information personnel décentralisé et sécuritaire.</p><p>L&rsquo;objectif du projet est la création d&rsquo;applications et protocoles qui :</p><ul><li>contrôlent des logiciels et appareils physiques,</li><li>conservent de manière chiffrée le contenu des fichiers et documents,</li><li>réduisent les risques dus aux vols, pertes et corruptions malicieuses de données,</li><li>exploitent le cloud tout en facilitant le rapatriement local au besoin,</li><li>fonctionnent hors ligne sur un réseau local avec des appareils mobiles comme clients.</li></ul><p>Mots clés : <strong>décentralisation, sécurité, appareils mobiles, chiffrage, vols, cloud, ransomware</strong>.</p><h2 class=h6 id=sécurité><a class="text-body text-decoration-none" href=#s%c3%a9curit%c3%a9>Sécurité</a></h2><p>MilleGrilles conserve l&rsquo;information au repos de manière chiffrée. Le contenu de la base de données est souvent chiffré
 par l&rsquo;application d&rsquo;origine et ainsi inaccessible à un tiers si une fuite survient.</p><p>La communication entre les composants serveurs (e.g. reverse proxy, base de données) est chiffrée et sécurisée par
 certificats X.509.</p><p>Les applications web sont protégées par un accès webauthn qui utilise les passkeys. MilleGrilles ne supporte pas de
@@ -292,180 +622,6 @@ une récupération rapide en cas de problèmes.</p>]]></description>
 
                     
                         <title>Vision</title>
-                    
-                </item>
-            
-        
-            
-                <item>
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-
-                    
-
-                    
-
-                    
-
-                    
-
-                    
-                    
-                    
-
-                    
-
-                    
-                        <description><![CDATA[<h1 class=h6 id=security-certificates><a class="text-body text-decoration-none" href=#security-certificates>Security certificates</a></h1><p>Voici comment ça marche.</p>]]></description>
-                    
-
-                    
-                        <guid isPermaLink="false">tag:www.millegrilles.com,2025-03-14:/fr/documentation/certificates/</guid>
-                    
-
-                    
-                        <link>https://www.millegrilles.com/fr/documentation/certificates/</link>
-                    
-
-                    <atom:link href="https://www.millegrilles.com/fr/documentation/certificates/" hreflang="fr" rel="self" type="text/html"/>
-
-                    
-                        
-
-                        
-
-                        <atom:link href="https://www.millegrilles.com/fr/documentation/certificates/" hreflang="fr" rel="alternate" type="text/html"/>
-                    
-
-                    
-                        
-                            <atom:link href="https://www.millegrilles.com/documentation/certificates/" hreflang="en" rel="canonical" type="text/html"/>
-                        
-                    
-
-                    
-                        <pubDate>Fri, 14 Mar 2025 12:20:48 UTC</pubDate>
-                    
-
-                    
-                        <title>Certificats</title>
-                    
-                </item>
-            
-        
-            
-                <item>
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-
-                    
-
-                    
-
-                    
-
-                    
-
-                    
-                    
-                    
-
-                    
-
-                    
-                        <description><![CDATA[<h1 class=h5 id=messages-millegrilles><a class="text-body text-decoration-none" href=#messages-millegrilles>Messages MilleGrilles</a></h1><p>Le bus MQ (RabbitMQ) permet d&rsquo;échanger des messages entre les composants d&rsquo;une MilleGrille. Ce bus est sécurisé et
-génère les permissions de chaque client en fonction de son certificat système.</p><p>Note : Les certificats usagers ne sont pas autorisés à se connecter au bus de la MilleGrille.</p><p>Les messages et autres documents signés (documents, transactions) ont tous la même structure qui est inspirée
-par <a href=https://nostr.com/protocol rel=external>Nostr</a>
-.</p><h2 class=h6 id=exemple-de-message><a class="text-body text-decoration-none" href=#exemple-de-message>Exemple de message</a></h2><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json><span style=display:flex><span><span style=color:#1f2328>{</span>
-</span></span><span style=display:flex><span>  <span style=color:#0550ae>&#34;id&#34;</span><span style=color:#1f2328>:</span> <span style=color:#0a3069>&#34;b9fead6eef87d8400cbc1a5621600b360438affb9760a6a043cc0bddea21dab6&#34;</span><span style=color:#1f2328>,</span>
-</span></span><span style=display:flex><span>  <span style=color:#0550ae>&#34;pubkey&#34;</span><span style=color:#1f2328>:</span> <span style=color:#0a3069>&#34;6e468422dfb74a5738702a8823b9b28168abab8655faacb6853cd0ee15deee93&#34;</span><span style=color:#1f2328>,</span>
-</span></span><span style=display:flex><span>  <span style=color:#0550ae>&#34;estampille&#34;</span><span style=color:#1f2328>:</span> <span style=color:#0550ae>1681650062</span><span style=color:#1f2328>,</span>
-</span></span><span style=display:flex><span>  <span style=color:#0550ae>&#34;kind&#34;</span><span style=color:#1f2328>:</span> <span style=color:#0550ae>4</span><span style=color:#1f2328>,</span>
-</span></span><span style=display:flex><span>  <span style=color:#0550ae>&#34;routage&#34;</span><span style=color:#1f2328>:</span> <span style=color:#1f2328>{</span><span style=color:#0550ae>&#34;action&#34;</span><span style=color:#1f2328>:</span> <span style=color:#0a3069>&#34;fichePublique&#34;</span><span style=color:#1f2328>,</span> <span style=color:#0550ae>&#34;domaine&#34;</span><span style=color:#1f2328>:</span> <span style=color:#0a3069>&#34;CoreTopologie&#34;</span><span style=color:#1f2328>,</span> <span style=color:#0550ae>&#34;partition&#34;</span><span style=color:#1f2328>:</span> <span style=color:#0a3069>&#34;ZABC1&#34;</span><span style=color:#1f2328>},</span>
-</span></span><span style=display:flex><span>  <span style=color:#0550ae>&#34;origine&#34;</span><span style=color:#1f2328>:</span> <span style=color:#0a3069>&#34;zeYncRqEqZ6eTEmUZ8whJFuHG796eSvCTWE4M432izXrp22bAtwGm7Jf&#34;</span><span style=color:#1f2328>,</span>
-</span></span><span style=display:flex><span>  <span style=color:#0550ae>&#34;dechiffrage&#34;</span><span style=color:#1f2328>:</span> <span style=color:#1f2328>{</span>
-</span></span><span style=display:flex><span>    <span style=color:#0550ae>&#34;cles&#34;</span><span style=color:#1f2328>:</span> <span style=color:#1f2328>{</span><span style=color:#0550ae>&#34;6e468422dfb74a5738702a8823b9b28168abab8655faacb6853cd0ee15deee93&#34;</span><span style=color:#1f2328>:</span> <span style=color:#0a3069>&#34;jSNQFfzeHPq3DoFaj8YMkCdnd4GzCc2qZDUdywFZlDQ&#34;</span><span style=color:#1f2328>},</span>
-</span></span><span style=display:flex><span>    <span style=color:#0550ae>&#34;cle_id&#34;</span><span style=color:#1f2328>:</span> <span style=color:#0a3069>&#34;z4KD61h3yH7jyJBmYYytzCj3Ni6DDW7iSDkuBw9wSUFRo&#34;</span><span style=color:#1f2328>,</span>
-</span></span><span style=display:flex><span>    <span style=color:#0550ae>&#34;format&#34;</span><span style=color:#1f2328>:</span> <span style=color:#0a3069>&#34;mgs4&#34;</span><span style=color:#1f2328>,</span>
-</span></span><span style=display:flex><span>    <span style=color:#0550ae>&#34;nonce&#34;</span><span style=color:#1f2328>:</span> <span style=color:#0a3069>&#34;EjQ8MmAx5VY12vtJ3ag8rA9j8DMjzuiS&#34;</span>
-</span></span><span style=display:flex><span>  <span style=color:#1f2328>},</span>
-</span></span><span style=display:flex><span>  <span style=color:#0550ae>&#34;pre-migration&#34;</span><span style=color:#1f2328>:</span> <span style=color:#1f2328>{</span>
-</span></span><span style=display:flex><span>    <span style=color:#0550ae>&#34;estampille&#34;</span><span style=color:#1f2328>:</span> <span style=color:#0550ae>1671554193</span><span style=color:#1f2328>,</span>
-</span></span><span style=display:flex><span>    <span style=color:#0550ae>&#34;id&#34;</span><span style=color:#1f2328>:</span> <span style=color:#0a3069>&#34;5d0ef4c0-94de-4141-8954-7f006cbbbcfd&#34;</span><span style=color:#1f2328>,</span>
-</span></span><span style=display:flex><span>    <span style=color:#0550ae>&#34;pubkey&#34;</span><span style=color:#1f2328>:</span> <span style=color:#0a3069>&#34;10319064594e3990f78a35b288c83b33029ebab0e14206ea92908985022905a9&#34;</span> 
-</span></span><span style=display:flex><span>  <span style=color:#1f2328>},</span>
-</span></span><span style=display:flex><span>  <span style=color:#0550ae>&#34;contenu&#34;</span><span style=color:#1f2328>:</span> <span style=color:#0a3069>&#34;{\&#34;Champ\&#34;:\&#34;valeur\&#34;}&#34;</span><span style=color:#1f2328>,</span>
-</span></span><span style=display:flex><span>  <span style=color:#0550ae>&#34;sig&#34;</span><span style=color:#1f2328>:</span> <span style=color:#0a3069>&#34;908a15e46fb4d8675bab026fc230a0e3542bfade63da02d542fb78b2a8513fcd0092619a2c8c1221e581946e0191f2af505dfdf8657a414dbca329186f009262&#34;</span><span style=color:#1f2328>,</span>
-</span></span><span style=display:flex><span>  <span style=color:#0550ae>&#34;certificat&#34;</span><span style=color:#1f2328>:</span> <span style=color:#1f2328>[</span>
-</span></span><span style=display:flex><span>     <span style=color:#0a3069>&#34;-----BEGIN CERTIFICATE-----\nMIIClDCCAkagAwIBAgIUdkc2yl6WSpl ... +GFuCp92IBw==\n-----END CERTIFICATE-----\n&#34;</span><span style=color:#1f2328>,</span>
-</span></span><span style=display:flex><span>     <span style=color:#0a3069>&#34;-----BEGIN CERTIFICATE-----\nMIIBozCCAVWgAwIBAgIKBBdSWFdJiDN ... A6bAfGc7dGHsL\n-----END CERTIFICATE-----\n&#34;</span> 
-</span></span><span style=display:flex><span>  <span style=color:#1f2328>],</span>
-</span></span><span style=display:flex><span>  <span style=color:#0550ae>&#34;millegrille&#34;</span><span style=color:#1f2328>:</span> <span style=color:#0a3069>&#34;-----BEGIN CERTIFICATE-----\nMIIBQzCB9qADAgECAgo ... H94CH4d1VCPwI\n-----END CERTIFICATE-----&#34;</span><span style=color:#1f2328>,</span>
-</span></span><span style=display:flex><span>  <span style=color:#0550ae>&#34;attachements&#34;</span><span style=color:#1f2328>:</span> <span style=color:#1f2328>{</span>
-</span></span><span style=display:flex><span>    <span style=color:#0550ae>&#34;cles&#34;</span><span style=color:#1f2328>:</span> <span style=color:#1f2328>{</span>
-</span></span><span style=display:flex><span>      <span style=color:#0550ae>&#34;pubkey cert destinataire 1&#34;</span><span style=color:#1f2328>:</span> <span style=color:#0a3069>&#34;cle dechiffrage&#34;</span><span style=color:#1f2328>,</span>
-</span></span><span style=display:flex><span>      <span style=color:#0550ae>&#34;pubkey cert destinataire 2&#34;</span><span style=color:#1f2328>:</span> <span style=color:#0a3069>&#34;cle dechiffrage&#34;</span> 
-</span></span><span style=display:flex><span>    <span style=color:#1f2328>}</span>
-</span></span><span style=display:flex><span>  <span style=color:#1f2328>}</span>
-</span></span><span style=display:flex><span><span style=color:#1f2328>}</span></span></span></code></pre></div><p>Cet exemple inclus tous les champs possibles pour un message. Le type de message (kind) détermine quelle combinaison
-d&rsquo;éléments sont supportés.</p><h2 class=h6 id=champs><a class="text-body text-decoration-none" href=#champs>Champs</a></h2><ul><li>id : Hachage blake2s en format hexadécimal des éléments du message. Le kind détermine les champs et l&rsquo;ordre utilisé
-pour ce hachage.</li><li>pubkey : Clé publique ed25519 en format hexadécimal utilisée pour signer le message. Les certificats d&rsquo;une MilleGrille
-sont indexés par leur clé publique (hex) pour être facilement retrouvé.</li><li>estampille : Temps epoch en secondes (int) qui représente le moment de création du document/message.</li><li>kind : Type de message. Détermine les éléments requis/optionnels, format de séralisation du contenu et leur ordre
-d&rsquo;inclusion dans le hachage (id).</li><li>contenu : Contenu sérialisé en chaine de caractères (string). La méthode de sérialisation du contenu dếpend du kind.</li><li>sig : Signature électronique du <strong>id</strong> avec la clé ed25519 privée qui correspond à pubkey.</li><li>certificat : Optionnel mais recommandé - la chaîne de certificats X.509 qui correspond à pubkey.
-Exclus le certificat CA (millegrille).</li><li>millegrille : Optionnel - le certificat CA (millegrille).</li><li>attachements : Optionnel - objet avec un format qui dépend du contexte. Toujours exclus de la signature du
-document/message.</li><li>origine : Identificateur de MilleGrille (IDMG) de l&rsquo;origine du message.</li><li>dechiffrage : Information requise pour le déchiffrage du contenu. Peut inclure les clés indexées par pubkey ou un
-cle_id.</li></ul><h2 class=h6 id=calcul-du-hachage><a class="text-body text-decoration-none" href=#calcul-du-hachage>Calcul du hachage</a></h2><p>Le hachage du message est généré en mettant les éléments appopriés dans une liste JSON et calculant le hachage blake2s
-de cette chaîne de caractères.</p><p>Hachage par kind</p><table><thead><tr><th>Kind</th><th>Description</th><th>Hachage</th><th>Format contenu</th></tr></thead><tbody><tr><td>0</td><td>Document</td><td>pubkey, estampille, kind, contenu</td><td>json string</td></tr><tr><td>1</td><td>Requête</td><td>pubkey, estampille, kind, routage, contenu</td><td>json string</td></tr><tr><td>2</td><td>Commande</td><td>pubkey, estampille, kind, routage, contenu</td><td>json string</td></tr><tr><td>3</td><td>Transaction</td><td>pubkey, estampille, kind, routage, contenu</td><td>json string</td></tr><tr><td>4</td><td>Réponse</td><td>pubkey, estampille, kind, contenu</td><td>json string</td></tr><tr><td>5</td><td>Événement</td><td>pubkey, estampille, kind, routage, contenu</td><td>json string</td></tr><tr><td>6</td><td>Réponse chiffrée</td><td>pubkey, estampille, kind, déchiffrage, contenu</td><td>base64 nopad (json string -> mgs4)</td></tr><tr><td>7</td><td>Transaction migrée</td><td>pubkey, estampille, kind, routage, contenu</td><td>json string</td></tr><tr><td>8</td><td>Commande inter-millegrille</td><td>pubkey, estampille, kind, routage, origine, déchiffrage, contenu</td><td>base64 nopad (json string -> mgs4)</td></tr></tbody></table><p>Par exemple, pour le kind:4 - Réponse, le hachage est calculé de la façon suivante:</p><p><code>[pubkey,estampille,kind,contenu]</code></p><p>Pour le message en exemple, on aurait :</p><p><code>["6e468422dfb74a5738702a8823b9b28168abab8655faacb6853cd0ee15deee93",1681650062,4,"{\"Champ\":\"valeur\"}"]</code></p><p>Le message JSON précédent est converti en UTF-8 puis haché avec blake2s. Ceci donne une valeur de 32 bytes
-(64 caractères hexadécimaux). Cette valeur devient le <strong>id</strong> du message.</p><p>Note : Pour les champs objet (routage, dechiffrage et pre-migration), il faut s&rsquo;assurer de trier les sous-éléments en ordre
-alphabétique pour obtenir la bonne valeur de hachage. Les éléments dans l&rsquo;exemple sont dans le bon ordre.</p><h2 class=h6 id=signature-électronique><a class="text-body text-decoration-none" href=#signature-%c3%a9lectronique>Signature électronique</a></h2><p>Le champ <strong>sig</strong> contient une signature électronique du champ <strong>id</strong>. La signature peut être vérifiée en usilisant le
-champ <strong>pubkey</strong> (hex) comme clé ed25519 et le champ <strong>id</strong> (hex) comme contenu.</p><h1 class=h5 id=chiffrage-du-contenu><a class="text-body text-decoration-none" href=#chiffrage-du-contenu>Chiffrage du contenu</a></h1><h2 class=h6 id=chiffrage-des-réponses><a class="text-body text-decoration-none" href=#chiffrage-des-r%c3%a9ponses>Chiffrage des réponses</a></h2><p>Le chiffrage des réponses est supporté directement et de manière transparente. Le certificat de la requête/commande qui
-est utilisé pour chiffrer la réponse (kind:6). Le module qui reçoit la réponse déchiffre de manière transparente le
-contenu pour simuler une réponse de kind:4.</p><p>La réponse chiffrée est utile pour garantir la sécurité end-to-end d&rsquo;un contenu sensible qui peut inclure des clés
-de déchiffrage ou de l&rsquo;information qui ne doit pas être interceptée (numéros de cartes de crédit/bancaire). Ces messages
-ne peuvent pas être ouverts par les composants intermédiaires qui assurent le transit entre la base de données et
-le composant requérant (e.g. navigateur de l&rsquo;usager).</p><h2 class=h6 id=chiffrage-des-requêtes-ou-commandes><a class="text-body text-decoration-none" href=#chiffrage-des-requ%c3%aates-ou-commandes>Chiffrage des requêtes ou commandes</a></h2>]]></description>
-                    
-
-                    
-                        <guid isPermaLink="false">tag:www.millegrilles.com,2025-03-14:/fr/documentation/messages/</guid>
-                    
-
-                    
-                        <link>https://www.millegrilles.com/fr/documentation/messages/</link>
-                    
-
-                    <atom:link href="https://www.millegrilles.com/fr/documentation/messages/" hreflang="fr" rel="self" type="text/html"/>
-
-                    
-                        
-
-                        
-
-                        <atom:link href="https://www.millegrilles.com/fr/documentation/messages/" hreflang="fr" rel="alternate" type="text/html"/>
-                    
-
-                    
-                        
-                            <atom:link href="https://www.millegrilles.com/documentation/messages/" hreflang="en" rel="canonical" type="text/html"/>
-                        
-                    
-
-                    
-                        <pubDate>Fri, 14 Mar 2025 12:20:48 UTC</pubDate>
-                    
-
-                    
-                        <title>Structure des messages</title>
                     
                 </item>
             

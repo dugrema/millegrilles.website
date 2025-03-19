@@ -129,17 +129,19 @@
 <meta property="og:url" content="https://www.millegrilles.com/fr/documentation/certificates/">
   <meta property="og:site_name" content="MilleGrilles">
   <meta property="og:title" content="Certificats">
-  <meta property="og:description" content="Security certificates Voici comment ça marche.">
+  <meta property="og:description" content="Certificats de securité MilleGrilles utilise les certificats X.509 avec clés Ed25519 comme identification des modules et usagers. Les certificats ont une durée de vie différente en fonction de leur rôle.
+Certificat de MilleGrille (CA) Le certificat CA (Certificate Authority) d’une MilleGrille est généré lors de la création du système. La clé de ce certificat est appelé la clé de la MilleGrille, c’est une clé chiffrée avec un mot de passe et conservée dans un fichier .json.">
   <meta property="og:locale" content="fr">
   <meta property="og:type" content="article">
     <meta property="article:section" content="documentation">
-    <meta property="article:published_time" content="2025-03-14T12:20:48+00:00">
-    <meta property="article:modified_time" content="2025-03-14T12:20:48+00:00">
+    <meta property="article:published_time" content="2025-03-19T07:00:00+00:00">
+    <meta property="article:modified_time" content="2025-03-19T07:00:00+00:00">
 
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Certificats">
-  <meta name="twitter:description" content="Security certificates Voici comment ça marche.">
+  <meta name="twitter:description" content="Certificats de securité MilleGrilles utilise les certificats X.509 avec clés Ed25519 comme identification des modules et usagers. Les certificats ont une durée de vie différente en fonction de leur rôle.
+Certificat de MilleGrille (CA) Le certificat CA (Certificate Authority) d’une MilleGrille est généré lors de la création du système. La clé de ce certificat est appelé la clé de la MilleGrille, c’est une clé chiffrée avec un mot de passe et conservée dans un fichier .json.">
 
 
 
@@ -880,7 +882,7 @@
 
                 
                     <p class="paige-row-short text-secondary" id="paige-page-date">
-                        <time datetime="2025-03-14" >14 mars 2025</time>
+                        <time datetime="2025-03-19" >19 mars 2025</time>
                     </p>
                 
 
@@ -892,6 +894,26 @@
 
         
 
+        
+            <div class="align-items-center d-flex flex-column paige-row-tall text-start" id="paige-page-toc">
+                <div class="border rounded" style="padding: 1rem 2rem 0 1rem">
+                    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#certificat-de-millegrille-ca">Certificat de MilleGrille (CA)</a></li>
+    <li><a href="#identificateur-de-millegrille-idmg">Identificateur de MilleGrille (IDMG)</a></li>
+    <li><a href="#certificats-de-signature">Certificats de signature</a></li>
+    <li><a href="#certificats-système">Certificats système</a></li>
+    <li><a href="#certificats-usager">Certificats usager</a></li>
+    <li><a href="#extensions-custom">Extensions custom</a></li>
+    <li><a href="#création-des-certificats">Création des certificats</a>
+      <ul>
+        <li><a href="#autorisation-de-création-de-certificats">Autorisation de création de certificats</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+            </div>
         
 
         
@@ -1038,6 +1060,22 @@
             
         
     
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
 
     
 
@@ -1063,10 +1101,507 @@
     
 
 
-<h1  class="h6"  id="security-certificates" >
-    <a class="text-body text-decoration-none" href="#security-certificates">Security certificates</a>
+<h1  class="h4"  id="certificats-de-securité" >
+    <a class="text-body text-decoration-none" href="#certificats-de-securit%c3%a9">Certificats de securité</a>
 </h1>
-<p>Voici comment ça marche.</p>
+<p>MilleGrilles utilise les certificats X.509 avec clés Ed25519 comme identification des modules et usagers. Les
+certificats ont une durée de vie différente en fonction de leur rôle.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+    
+
+
+
+    
+    
+
+    
+        
+    
+
+    
+        
+    
+
+    
+
+    
+
+
+<h2  class="h5"  id="certificat-de-millegrille-ca" >
+    <a class="text-body text-decoration-none" href="#certificat-de-millegrille-ca">Certificat de MilleGrille (CA)</a>
+</h2>
+<p>Le certificat CA (Certificate Authority) d&rsquo;une MilleGrille est généré lors de la création du système. La clé de ce
+certificat est appelé la clé de la MilleGrille, c&rsquo;est une clé chiffrée avec un mot de passe et conservée dans un
+fichier .json.</p>
+<p>Exemple de certificat CA</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">-----BEGIN CERTIFICATE-----
+</span></span><span class="line"><span class="cl">MIIBQzCB9qADAgECAgoXGIiSN1JwgpUSMAUGAytlcDAWMRQwEgYDVQQDEwtNaWxs
+</span></span><span class="line"><span class="cl">ZUdyaWxsZTAeFw0yNDA3MTMyMDMwMDFaFw00NDA3MTMyMDMwMDFaMBYxFDASBgNV
+</span></span><span class="line"><span class="cl">BAMTC01pbGxlR3JpbGxlMCowBQYDK2VwAyEAsJIE69qSt+GKywKsu/3LU31FkowZ
+</span></span><span class="line"><span class="cl">W5OSgvDFQ34PkKGjYDBeMA8GA1UdEwEB/wQFMAMBAf8wCwYDVR0PBAQDAgLkMB0G
+</span></span><span class="line"><span class="cl">A1UdDgQWBBRga8F75mOH5uZ1uWVsFBxVcZ8qiDAfBgNVHSMEGDAWgBRga8F75mOH
+</span></span><span class="line"><span class="cl">5uZ1uWVsFBxVcZ8qiDAFBgMrZXADQQAlt1NbEwEIOJi+qprkQp8GOmdvn+hQsM2R
+</span></span><span class="line"><span class="cl">RftTlHVzaecD36Ia4rItgfqOmJp9w925MwQibK0Z86mOXXTiyTkE
+</span></span><span class="line"><span class="cl">-----END CERTIFICATE-----
+</span></span></code></pre></div><p>Le certificat CA expire après 20 ans. Une millegrille qui utilise un certificat CA expiré doit être migrée vers un
+nouveau système (nouvelle clé). Le processus de migration est similaire à une restoration de backup du système.</p>
+<p>Discussion : considérant le changement des technologies cryptographiques et la possibilité prochaine d&rsquo;ordinateurs
+quantiques performants, il est peu probable qu&rsquo;un système utilisé conserve la même clé système pour une période aussi
+longue que 20 ans sans devenir complètement désuet du point de vue de sécurité asymétrique.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+    
+
+
+
+    
+    
+
+    
+        
+    
+
+    
+        
+    
+
+    
+
+    
+
+
+<h2  class="h5"  id="identificateur-de-millegrille-idmg" >
+    <a class="text-body text-decoration-none" href="#identificateur-de-millegrille-idmg">Identificateur de MilleGrille (IDMG)</a>
+</h2>
+<p>Le certificat de MilleGrille est utilisé pour calculer l&rsquo;identificateur de MilleGrille. Cet identificateur peut être
+utilisé en remplacement du certificat CA au besoin pour référer à la MilleGrille ou à l&rsquo;ensemble des certificats valides
+sur cette MilleGrille.</p>
+<p><code>Exemple d'IDMG : zbaTeMFXpvuALGcPLx7UYFjW2oCz8fbDpyyse5boZB22VX8NvSQfMaSR</code></p>
+<p>Par exemple, pour donner accès à un File Host, il suffit de créer un sous-répertoire au nom de l&rsquo;IDMG du système à
+héberger. Ceci donne accès à tout composant qui peut signer un document d&rsquo;authentification avec un certificat valide
+pour la MilleGrille qui correspond à l&rsquo;identificateur.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+    
+
+
+
+    
+    
+
+    
+        
+    
+
+    
+        
+    
+
+    
+
+    
+
+
+<h2  class="h5"  id="certificats-de-signature" >
+    <a class="text-body text-decoration-none" href="#certificats-de-signature">Certificats de signature</a>
+</h2>
+<p>Certissuer, valides pour 18 mois.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+    
+
+
+
+    
+    
+
+    
+        
+    
+
+    
+        
+    
+
+    
+
+    
+
+
+<h2  class="h5"  id="certificats-système" >
+    <a class="text-body text-decoration-none" href="#certificats-syst%c3%a8me">Certificats système</a>
+</h2>
+<p>Roles et domaines. Valids 31 jours.</p>
+<p>CN = instance id
+OU = domaine ou role
+O = IDMG</p>
+<p>Exemple de certificat système</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">-----BEGIN CERTIFICATE-----
+</span></span><span class="line"><span class="cl">MIIClDCCAkagAwIBAgIUexnJEGh1J5fMKO2fPRtkAZ5yY8MwBQYDK2VwMHIxLTAr
+</span></span><span class="line"><span class="cl">BgNVBAMTJGFhZDg3NWE1LTBiNzQtNDhiMC1hZDBmLWNlMTQ1NDNiZDJkNzFBMD8G
+</span></span><span class="line"><span class="cl">A1UEChM4elVCR0VydDREYzg0QjVIbnVRUmJZdFpSZ2pGZ2hFV2drNWNTczFheGQy
+</span></span><span class="line"><span class="cl">VGZaWEZtWVRnZGZHZEUwHhcNMjMwNDI4MjMwODA5WhcNMjMwNTI5MjMwODI5WjCB
+</span></span><span class="line"><span class="cl">gTEtMCsGA1UEAwwkYWFkODc1YTUtMGI3NC00OGIwLWFkMGYtY2UxNDU0M2JkMmQ3
+</span></span><span class="line"><span class="cl">MQ0wCwYDVQQLDARjb3JlMUEwPwYDVQQKDDh6VUJHRXJ0NERjODRCNUhudVFSYll0
+</span></span><span class="line"><span class="cl">WlJnakZnaEVXZ2s1Y1NzMWF4ZDJUZlpYRm1ZVGdkZkdkRTAqMAUGAytlcAMhAGfL
+</span></span><span class="line"><span class="cl">67cl0RAU3vGGmXi5vgqQxte7zHfAQ40bZGYhVvvro4HdMIHaMCsGBCoDBAAEIzQu
+</span></span><span class="line"><span class="cl">c2VjdXJlLDMucHJvdGVnZSwyLnByaXZlLDEucHVibGljMAwGBCoDBAEEBGNvcmUw
+</span></span><span class="line"><span class="cl">TAYEKgMEAgREQ29yZUJhY2t1cCxDb3JlQ2F0YWxvZ3VlcyxDb3JlTWFpdHJlRGVz
+</span></span><span class="line"><span class="cl">Q29tcHRlcyxDb3JlUGtpLENvcmVUb3BvbG9naWUwDwYDVR0RBAgwBoIEY29yZTAf
+</span></span><span class="line"><span class="cl">BgNVHSMEGDAWgBQFFVqof7c3Dm7hxeRUpbr+EScHGTAdBgNVHQ4EFgQU6zE4DvHG
+</span></span><span class="line"><span class="cl">DOC9p1Mc8hdCSD46GhUwBQYDK2VwA0EAASkgmgyDx14vrYzMpZze2oLtbIlrqOqh
+</span></span><span class="line"><span class="cl">fk2IGV7jIxfFTVVfbNgCKx/g/iEMwY+/TiIWM1L0xjtfF0YJ/QgsBQ==
+</span></span><span class="line"><span class="cl">-----END CERTIFICATE-----
+</span></span></code></pre></div><p>Paramètres inclus dans le certificat</p>
+<ul>
+<li>sujet:
+<ul>
+<li>commonName (CN): aad875a5-0b74-48b0-ad0f-ce14543bd2d7</li>
+<li>organizationalUnitName (OU): core</li>
+<li>organizationName (O): zUBGErt4Dc84B5HnuQRbYtZRgjFghEWgk5cSs1axd2TfZXFmYTgdfGdE</li>
+</ul>
+</li>
+<li>clé publique : 67cbebb725d11014def1869978b9be0a90c6d7bbcc77c0438d1b64662156fbeb</li>
+<li>not_valid_after : 2023-05-29T23:08:29.000Z</li>
+<li>not_valid_before : 2023-04-28T23:08:09.000Z</li>
+<li>extensions MilleGrilles
+<ul>
+<li>domaines : CoreBackup,CoreCatalogues,CoreMaitreDesComptes,CorePki,CoreTopologie</li>
+<li>exchanges : 4.secure,3.protege,2.prive,1.public</li>
+<li>roles: core</li>
+</ul>
+</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+    
+
+
+
+    
+    
+
+    
+        
+    
+
+    
+        
+    
+
+    
+
+    
+
+
+<h2  class="h5"  id="certificats-usager" >
+    <a class="text-body text-decoration-none" href="#certificats-usager">Certificats usager</a>
+</h2>
+<p>Role usager ou navigateur, userId.</p>
+<p>CN = nom usager
+OU = valeur &lsquo;usager&rsquo;
+O = IDMG</p>
+<p>Exemple de certificat usager</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">-----BEGIN CERTIFICATE-----
+</span></span><span class="line"><span class="cl">MIICUTCCAgOgAwIBAgIUMbWRLdadSzcfg/ERR+YBexQOr5AwBQYDK2VwMHIxLTAr
+</span></span><span class="line"><span class="cl">BgNVBAMTJGYzYTY4ZDM4LTFjZTYtNGM1MS1hNjI4LWZiODhhOTVkMjJhZTFBMD8G
+</span></span><span class="line"><span class="cl">A1UEChM4emJhVGVNRlhwdnVBTEdjUEx4N1VZRmpXMm9DejhmYkRweXlzZTVib1pC
+</span></span><span class="line"><span class="cl">MjJWWDhOdlNRZk1hU1IwHhcNMjUwMzE5MTIyOTQ3WhcNMjUwNDE5MTIzMDA3WjBr
+</span></span><span class="line"><span class="cl">MRUwEwYDVQQDDAxwcm9wcmlldGFpcmUxDzANBgNVBAsMBnVzYWdlcjFBMD8GA1UE
+</span></span><span class="line"><span class="cl">Cgw4emJhVGVNRlhwdnVBTEdjUEx4N1VZRmpXMm9DejhmYkRweXlzZTVib1pCMjJW
+</span></span><span class="line"><span class="cl">WDhOdlNRZk1hU1IwKjAFBgMrZXADIQBmEN2MZmVrkYAEcye2DRvb5iz2jeN+96ti
+</span></span><span class="line"><span class="cl">OsTfFsXAv6OBsTCBrjAZBgQqAwQBBBF1c2FnZXIsbmF2aWdhdGV1cjA7BgQqAwQD
+</span></span><span class="line"><span class="cl">BDN6MmkzWGp4SmlXM01ldmNWY3ozaGhocEU5NXd5bm1qNEd6TVJNaEVDenNQMmM5
+</span></span><span class="line"><span class="cl">U052ZXEwFAYEKgMEBAQMcHJvcHJpZXRhaXJlMB8GA1UdIwQYMBaAFGpi0Sr1J/MS
+</span></span><span class="line"><span class="cl">Ed6tXceKx+zcqpsFMB0GA1UdDgQWBBS82q3hBHyqlgFtMlaRQY+W5IHoKzAFBgMr
+</span></span><span class="line"><span class="cl">ZXADQQCZS19+uiUV6UvxKKqUOewYStk0kn4ufIYzaXQYx2UgXDnL64oyb37yKZd2
+</span></span><span class="line"><span class="cl">lzHVAWHXwcXYwLRVzir6ubzy7TcD
+</span></span><span class="line"><span class="cl">-----END CERTIFICATE-----
+</span></span></code></pre></div><p>Paramètres inclus dans le certificat</p>
+<ul>
+<li>sujet
+<ul>
+<li>commonName (CN) : proprietaire</li>
+<li>organizationalUnitName (OU) : usager</li>
+<li>organizationName (O) : zbaTeMFXpvuALGcPLx7UYFjW2oCz8fbDpyyse5boZB22VX8NvSQfMaSR</li>
+</ul>
+</li>
+<li>clé publique : 6610dd8c66656b9180047327b60d1bdbe62cf68de37ef7ab623ac4df16c5c0bf</li>
+<li>not_valid_after : 2025-04-19T12:30:07.000Z</li>
+<li>not_valid_before : 2025-03-19T12:29:47.000Z</li>
+<li>extensions MilleGrilles
+<ul>
+<li>user id : z2i3XjxJiW3MevcVcz3hhhpE95wynmj4GzMRMhECzsP2c9SNveq</li>
+<li>roles : usager,navigateur</li>
+<li>delegation globale : proprietaire</li>
+</ul>
+</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+    
+
+
+
+    
+    
+
+    
+        
+    
+
+    
+        
+    
+
+    
+
+    
+
+
+<h2  class="h5"  id="extensions-custom" >
+    <a class="text-body text-decoration-none" href="#extensions-custom">Extensions custom</a>
+</h2>
+<p>Des extensions X.509 v3 sont ajoutées aux certificats pour permettre l&rsquo;autorisation de l&rsquo;accès aux ressources sans
+accéder à un composant de permission externe dans bien des cas. Ces extensions remplacent un serveur LDAP avec forte
+granularité de permissions.</p>
+<p>Noter que les permissions usagers sont gérées avec des permissions particulières à chaque domaine. Ces permissions
+sont vérifiées avec le userId conservé dans le certificat.</p>
+<p>Les extensions d&rsquo;un composant serveur ne sont pas appelées à changer durant la période de validité d&rsquo;un certificat. Les
+certificats usagers sont remplacés si les permissions de l&rsquo;usager changent (e.g. role public ou privé).</p>
+<p>Niveaux de sécurité sur le bus (exchanges MQ)</p>
+<ul>
+<li>Id : 1.2.3.4.0</li>
+<li>Valeurs possibles : 4.secure,3.protege,2.prive,1.public</li>
+<li>Notes
+<ul>
+<li>la première valeur de la liste est utilisée comme référence par défaut pour le niveau de sécurité
+du certificat. Il est préférable de mettre le plus haut niveau de sécurité en premier. Par exemple : 2.prive,1.public.</li>
+<li>les exchanges ne communique pas entre-eux. Si un module doit se connecter aux exchanges 3.protege et 1.public,
+il faut les inclure dans la liste.</li>
+<li>les niveaux 3.protege et 4.secure, lorsque combinés à un attribut Domaine (1.2.3.4.2) dans le même certificat,
+donnent le droit d&rsquo;accéder à toutes les clés de chiffrage de ce domaine auprès du Maitre des clés.</li>
+</ul>
+</li>
+</ul>
+<p>Liste de roles internes</p>
+<ul>
+<li>Id : 1.2.3.4.1</li>
+</ul>
+<p>Liste des domaines</p>
+<ul>
+<li>Id : 1.2.3.4.2</li>
+<li>Exemple de valeurs : SenseursPassifs,GrosFichiers,CoreMaitredescomptes</li>
+<li>Notes :
+<ul>
+<li>Lorsque combiné à un attribut de sécurité (1.2.3.4.0) 3.protege ou 4.secure, donne accès à toutes les clés du domaine dans
+le Maitre des clés.</li>
+</ul>
+</li>
+</ul>
+<p>ID unique de l&rsquo;usager (userId)</p>
+<ul>
+<li>Id : 1.2.3.4.3</li>
+<li>Exemple de valeur : z2i3XjxCG211bY3F4WL4c1cAtrrZZPkriKRWBDXWudg8NkzgZ4h</li>
+</ul>
+<p>Role usager &lsquo;administrateur&rsquo; qui s&rsquo;applique a toute la MilleGrille.</p>
+<ul>
+<li>Id : 1.2.3.4.4</li>
+<li>Valeur : proprietaire</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+    
+
+
+
+    
+    
+
+    
+        
+    
+
+    
+        
+    
+
+    
+
+    
+
+
+<h2  class="h5"  id="création-des-certificats" >
+    <a class="text-body text-decoration-none" href="#cr%c3%a9ation-des-certificats">Création des certificats</a>
+</h2>
+<p>Le certificat de MilleGrille (CA) est créé durant l&rsquo;installation d&rsquo;une nouvelle MilleGrille.</p>
+<p>Les certificats de signature sont crées lors de la configuration des instances de serveurs 3.protege et 4.secure. Ces
+certificats sont bons pour 18 mois et doivent être renouvelés manuellement en utilisant la clé de Millegrille. Les
+certificats de signature sont installés dans le module certissuer et servent à créer tous les autres certificats
+d&rsquo;une MilleGrille.</p>
+<p>Les autres certificats sont générés par le module certissuer lors d&rsquo;une demande de signature d&rsquo;un Certificate Signing
+Request (CSR). La requête CSR peut être faite par un gestionnaire d&rsquo;instance (mginstance) 3.protege ou 4.secure pour
+installer ou renouveler les modules d&rsquo;un serveur ou par le domaine CorePki au nom d&rsquo;un usager qui relai une demande à
+partir du bus MQ. L&rsquo;accès au certissuer est local et connecté via http non sécurisé.</p>
+<p>Discussion : la connexion http ne cause pas de problèmes de sécurité. L&rsquo;information qui transite est publique (CSR
+et certificat) et la signature du document demandeur est utilisée comme autorisation pour procéder à la signature
+du certificat.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+    
+
+
+
+    
+    
+
+    
+        
+    
+
+    
+        
+    
+
+    
+
+    
+
+
+<h3  class="h6"  id="autorisation-de-création-de-certificats" >
+    <a class="text-body text-decoration-none" href="#autorisation-de-cr%c3%a9ation-de-certificats">Autorisation de création de certificats</a>
+</h3>
+<p>Par exemple, un module mginstance est autorisé à demander des certificats avec un niveau de sécurité
+égal ou inférieur à son propre niveau et toujours associés à son instanceId (CN).</p>
+<p>Attention :</p>
+<ul>
+<li>La clé de signature du certissuer permet de créer tous les certificats de module et d&rsquo;usager du système.</li>
+<li>Les instances 3.protege et 4.secure peuvent demander un certificat pour installer un Maitre des clés. Ces
+certificats donnent accès à toutes les clés chiffrées du système.</li>
+</ul>
+<p>Les clés privées des modules nommés précédemment doivent être traitées avec attention. MilleGrilles offre plusieurs
+topologies de déploiement qui permettent de réduire l&rsquo;exposition de ces clés pour augmenter la sécurité du système.</p>
 
             
 
@@ -1680,7 +2215,7 @@
         
     
 
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","abstract":" ","articleSection":"Documentation","dateCreated":"2025-03-14T12:20:48Z","dateModified":"2025-03-14T12:20:48Z","headline":"Certificats","inLanguage":"fr","name":"Certificats","timeRequired":"PT1M","url":"https://www.millegrilles.com/fr/documentation/certificates/","wordCount":6}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","abstract":" ","articleSection":"Documentation","dateCreated":"2025-03-19T07:00:00Z","dateModified":"2025-03-19T07:00:00Z","headline":"Certificats","inLanguage":"fr","name":"Certificats","timeRequired":"PT5M","url":"https://www.millegrilles.com/fr/documentation/certificates/","wordCount":1001}</script>
 
 
 

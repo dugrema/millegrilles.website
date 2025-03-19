@@ -129,23 +129,21 @@
 <meta property="og:url" content="https://www.millegrilles.com/fr/documentation/messages/">
   <meta property="og:site_name" content="MilleGrilles">
   <meta property="og:title" content="Structure des messages">
-  <meta property="og:description" content="Messages MilleGrilles Le bus MQ (RabbitMQ) permet d’échanger des messages entre les composants d’une MilleGrille. Ce bus est sécurisé et génère les permissions de chaque client en fonction de son certificat système.
-Note : Les certificats usagers ne sont pas autorisés à se connecter au bus de la MilleGrille.
-Les messages et autres documents signés (documents, transactions) ont tous la même structure qui est inspirée par Nostr .
-Exemple de message { &#34;id&#34;: &#34;b9fead6eef87d8400cbc1a5621600b360438affb9760a6a043cc0bddea21dab6&#34;, &#34;pubkey&#34;: &#34;6e468422dfb74a5738702a8823b9b28168abab8655faacb6853cd0ee15deee93&#34;, &#34;estampille&#34;: 1681650062, &#34;kind&#34;: 4, &#34;routage&#34;: {&#34;action&#34;: &#34;fichePublique&#34;, &#34;domaine&#34;: &#34;CoreTopologie&#34;, &#34;partition&#34;: &#34;ZABC1&#34;}, &#34;origine&#34;: &#34;zeYncRqEqZ6eTEmUZ8whJFuHG796eSvCTWE4M432izXrp22bAtwGm7Jf&#34;, &#34;dechiffrage&#34;: { &#34;cles&#34;: {&#34;6e468422dfb74a5738702a8823b9b28168abab8655faacb6853cd0ee15deee93&#34;: &#34;jSNQFfzeHPq3DoFaj8YMkCdnd4GzCc2qZDUdywFZlDQ&#34;}, &#34;cle_id&#34;: &#34;z4KD61h3yH7jyJBmYYytzCj3Ni6DDW7iSDkuBw9wSUFRo&#34;, &#34;format&#34;: &#34;mgs4&#34;, &#34;nonce&#34;: &#34;EjQ8MmAx5VY12vtJ3ag8rA9j8DMjzuiS&#34; }, &#34;pre-migration&#34;: { &#34;estampille&#34;: 1671554193, &#34;id&#34;: &#34;5d0ef4c0-94de-4141-8954-7f006cbbbcfd&#34;, &#34;pubkey&#34;: &#34;10319064594e3990f78a35b288c83b33029ebab0e14206ea92908985022905a9&#34; }, &#34;contenu&#34;: &#34;{\&#34;Champ\&#34;:\&#34;valeur\&#34;}&#34;, &#34;sig&#34;: &#34;908a15e46fb4d8675bab026fc230a0e3542bfade63da02d542fb78b2a8513fcd0092619a2c8c1221e581946e0191f2af505dfdf8657a414dbca329186f009262&#34;, &#34;certificat&#34;: [ &#34;-----BEGIN CERTIFICATE-----\nMIIClDCCAkagAwIBAgIUdkc2yl6WSpl ... &#43;GFuCp92IBw==\n-----END CERTIFICATE-----\n&#34;, &#34;-----BEGIN CERTIFICATE-----\nMIIBozCCAVWgAwIBAgIKBBdSWFdJiDN ... A6bAfGc7dGHsL\n-----END CERTIFICATE-----\n&#34; ], &#34;millegrille&#34;: &#34;-----BEGIN CERTIFICATE-----\nMIIBQzCB9qADAgECAgo ... H94CH4d1VCPwI\n-----END CERTIFICATE-----&#34;, &#34;attachements&#34;: { &#34;cles&#34;: { &#34;pubkey cert destinataire 1&#34;: &#34;cle dechiffrage&#34;, &#34;pubkey cert destinataire 2&#34;: &#34;cle dechiffrage&#34; } } } Cet exemple inclus tous les champs possibles pour un message. Le type de message (kind) détermine quelle combinaison d’éléments sont supportés.">
+  <meta property="og:description" content="Enveloppe de document MilleGrilles établi une structure d’enveloppe sécurisée par un hachage et une signature cryptographique pour ses documents.
+Les messages sont un type de document particulier qui peuvent transiter sur le bus MQ d’une MilleGrille.
+Les autres types de document sont le document de base (kind:0) et la transaction (kind:3 et kind:7). Ces documents ne sont pas faits pour transiter directement sur le bus mais peuvent être inclus dans un message, conservés sur disque ou dans une base de données.">
   <meta property="og:locale" content="fr">
   <meta property="og:type" content="article">
     <meta property="article:section" content="documentation">
-    <meta property="article:published_time" content="2025-03-14T12:20:48+00:00">
-    <meta property="article:modified_time" content="2025-03-14T12:20:48+00:00">
+    <meta property="article:published_time" content="2025-03-17T13:16:48+00:00">
+    <meta property="article:modified_time" content="2025-03-17T13:16:48+00:00">
 
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Structure des messages">
-  <meta name="twitter:description" content="Messages MilleGrilles Le bus MQ (RabbitMQ) permet d’échanger des messages entre les composants d’une MilleGrille. Ce bus est sécurisé et génère les permissions de chaque client en fonction de son certificat système.
-Note : Les certificats usagers ne sont pas autorisés à se connecter au bus de la MilleGrille.
-Les messages et autres documents signés (documents, transactions) ont tous la même structure qui est inspirée par Nostr .
-Exemple de message { &#34;id&#34;: &#34;b9fead6eef87d8400cbc1a5621600b360438affb9760a6a043cc0bddea21dab6&#34;, &#34;pubkey&#34;: &#34;6e468422dfb74a5738702a8823b9b28168abab8655faacb6853cd0ee15deee93&#34;, &#34;estampille&#34;: 1681650062, &#34;kind&#34;: 4, &#34;routage&#34;: {&#34;action&#34;: &#34;fichePublique&#34;, &#34;domaine&#34;: &#34;CoreTopologie&#34;, &#34;partition&#34;: &#34;ZABC1&#34;}, &#34;origine&#34;: &#34;zeYncRqEqZ6eTEmUZ8whJFuHG796eSvCTWE4M432izXrp22bAtwGm7Jf&#34;, &#34;dechiffrage&#34;: { &#34;cles&#34;: {&#34;6e468422dfb74a5738702a8823b9b28168abab8655faacb6853cd0ee15deee93&#34;: &#34;jSNQFfzeHPq3DoFaj8YMkCdnd4GzCc2qZDUdywFZlDQ&#34;}, &#34;cle_id&#34;: &#34;z4KD61h3yH7jyJBmYYytzCj3Ni6DDW7iSDkuBw9wSUFRo&#34;, &#34;format&#34;: &#34;mgs4&#34;, &#34;nonce&#34;: &#34;EjQ8MmAx5VY12vtJ3ag8rA9j8DMjzuiS&#34; }, &#34;pre-migration&#34;: { &#34;estampille&#34;: 1671554193, &#34;id&#34;: &#34;5d0ef4c0-94de-4141-8954-7f006cbbbcfd&#34;, &#34;pubkey&#34;: &#34;10319064594e3990f78a35b288c83b33029ebab0e14206ea92908985022905a9&#34; }, &#34;contenu&#34;: &#34;{\&#34;Champ\&#34;:\&#34;valeur\&#34;}&#34;, &#34;sig&#34;: &#34;908a15e46fb4d8675bab026fc230a0e3542bfade63da02d542fb78b2a8513fcd0092619a2c8c1221e581946e0191f2af505dfdf8657a414dbca329186f009262&#34;, &#34;certificat&#34;: [ &#34;-----BEGIN CERTIFICATE-----\nMIIClDCCAkagAwIBAgIUdkc2yl6WSpl ... &#43;GFuCp92IBw==\n-----END CERTIFICATE-----\n&#34;, &#34;-----BEGIN CERTIFICATE-----\nMIIBozCCAVWgAwIBAgIKBBdSWFdJiDN ... A6bAfGc7dGHsL\n-----END CERTIFICATE-----\n&#34; ], &#34;millegrille&#34;: &#34;-----BEGIN CERTIFICATE-----\nMIIBQzCB9qADAgECAgo ... H94CH4d1VCPwI\n-----END CERTIFICATE-----&#34;, &#34;attachements&#34;: { &#34;cles&#34;: { &#34;pubkey cert destinataire 1&#34;: &#34;cle dechiffrage&#34;, &#34;pubkey cert destinataire 2&#34;: &#34;cle dechiffrage&#34; } } } Cet exemple inclus tous les champs possibles pour un message. Le type de message (kind) détermine quelle combinaison d’éléments sont supportés.">
+  <meta name="twitter:description" content="Enveloppe de document MilleGrilles établi une structure d’enveloppe sécurisée par un hachage et une signature cryptographique pour ses documents.
+Les messages sont un type de document particulier qui peuvent transiter sur le bus MQ d’une MilleGrille.
+Les autres types de document sont le document de base (kind:0) et la transaction (kind:3 et kind:7). Ces documents ne sont pas faits pour transiter directement sur le bus mais peuvent être inclus dans un message, conservés sur disque ou dans une base de données.">
 
 
 
@@ -886,7 +884,7 @@ Exemple de message { &#34;id&#34;: &#34;b9fead6eef87d8400cbc1a5621600b360438affb
 
                 
                     <p class="paige-row-short text-secondary" id="paige-page-date">
-                        <time datetime="2025-03-14" >14 mars 2025</time>
+                        <time datetime="2025-03-17" >17 mars 2025</time>
                     </p>
                 
 
@@ -903,15 +901,18 @@ Exemple de message { &#34;id&#34;: &#34;b9fead6eef87d8400cbc1a5621600b360438affb
                 <div class="border rounded" style="padding: 1rem 2rem 0 1rem">
                     <nav id="TableOfContents">
   <ul>
-    <li><a href="#exemple-de-message">Exemple de message</a></li>
-    <li><a href="#champs">Champs</a></li>
+    <li><a href="#exemple-denveloppe-de-message">Exemple d&rsquo;enveloppe de message</a></li>
+    <li><a href="#champs-dune-enveloppe-de-document">Champs d&rsquo;une enveloppe de document</a></li>
     <li><a href="#calcul-du-hachage">Calcul du hachage</a></li>
     <li><a href="#signature-électronique">Signature électronique</a></li>
+    <li><a href="#vérification-dun-document">Vérification d&rsquo;un document</a></li>
   </ul>
 
   <ul>
+    <li><a href="#documents-avec-contenu-chiffré">Documents avec contenu chiffré</a></li>
     <li><a href="#chiffrage-des-réponses">Chiffrage des réponses</a></li>
     <li><a href="#chiffrage-des-requêtes-ou-commandes">Chiffrage des requêtes ou commandes</a></li>
+    <li><a href="#format-json-serializé-en-texte">Format json serializé en texte</a></li>
   </ul>
 </nav>
                 </div>
@@ -1076,6 +1077,60 @@ Exemple de message { &#34;id&#34;: &#34;b9fead6eef87d8400cbc1a5621600b360438affb
     
         
     
+        
+    
+        
+    
+        
+    
+        
+    
+
+    
+
+
+
+    
+
+
+
+    
+    
+
+    
+        
+    
+
+    
+        
+    
+
+    
+
+    
+
+
+<h1  class="h5"  id="enveloppe-de-document" >
+    <a class="text-body text-decoration-none" href="#enveloppe-de-document">Enveloppe de document</a>
+</h1>
+<p>MilleGrilles établi une structure d&rsquo;enveloppe sécurisée par un hachage et une signature cryptographique pour ses
+documents.</p>
+<p>Les messages sont un type de document particulier qui peuvent transiter sur le bus MQ d&rsquo;une MilleGrille.</p>
+<p>Les autres types de document sont le document de base (kind:0) et la transaction (kind:3 et kind:7). Ces documents ne sont
+pas faits pour transiter directement sur le bus mais peuvent être inclus dans un message, conservés sur disque ou
+dans une base de données.</p>
+
+
+
+
+
+
+
+
+
+
+
+
 
     
 
@@ -1107,9 +1162,10 @@ Exemple de message { &#34;id&#34;: &#34;b9fead6eef87d8400cbc1a5621600b360438affb
 <p>Le bus MQ (RabbitMQ) permet d&rsquo;échanger des messages entre les composants d&rsquo;une MilleGrille. Ce bus est sécurisé et
 génère les permissions de chaque client en fonction de son certificat système.</p>
 <p>Note : Les certificats usagers ne sont pas autorisés à se connecter au bus de la MilleGrille.</p>
-<p>Les messages et autres documents signés (documents, transactions) ont tous la même structure qui est inspirée
+<p>L&rsquo;enveloppe des messages et autres documents signés (documents, transactions) utilise une structure est inspirée
 par <a  href="https://nostr.com/protocol"   rel="external"   >Nostr</a>
 .</p>
+<p>La taille maximale d&rsquo;une enveloppe de message sur le bus MQ est 10 méga-octets.</p>
 
 
 
@@ -1147,8 +1203,8 @@ par <a  href="https://nostr.com/protocol"   rel="external"   >Nostr</a>
     
 
 
-<h2  class="h6"  id="exemple-de-message" >
-    <a class="text-body text-decoration-none" href="#exemple-de-message">Exemple de message</a>
+<h2  class="h6"  id="exemple-denveloppe-de-message" >
+    <a class="text-body text-decoration-none" href="#exemple-denveloppe-de-message">Exemple d&rsquo;enveloppe de message</a>
 </h2>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&#34;id&#34;</span><span class="p">:</span> <span class="s2">&#34;b9fead6eef87d8400cbc1a5621600b360438affb9760a6a043cc0bddea21dab6&#34;</span><span class="p">,</span>
@@ -1221,8 +1277,8 @@ d&rsquo;éléments sont supportés.</p>
     
 
 
-<h2  class="h6"  id="champs" >
-    <a class="text-body text-decoration-none" href="#champs">Champs</a>
+<h2  class="h6"  id="champs-dune-enveloppe-de-document" >
+    <a class="text-body text-decoration-none" href="#champs-dune-enveloppe-de-document">Champs d&rsquo;une enveloppe de document</a>
 </h2>
 <ul>
 <li>id : Hachage blake2s en format hexadécimal des éléments du message. Le kind détermine les champs et l&rsquo;ordre utilisé
@@ -1400,8 +1456,60 @@ alphabétique pour obtenir la bonne valeur de hachage. Les éléments dans l&rsq
 <h2  class="h6"  id="signature-électronique" >
     <a class="text-body text-decoration-none" href="#signature-%c3%a9lectronique">Signature électronique</a>
 </h2>
-<p>Le champ <strong>sig</strong> contient une signature électronique du champ <strong>id</strong>. La signature peut être vérifiée en usilisant le
-champ <strong>pubkey</strong> (hex) comme clé ed25519 et le champ <strong>id</strong> (hex) comme contenu.</p>
+<p>Le champ <strong>sig</strong> contient une signature électronique du champ <strong>id</strong>.</p>
+<p>La signature est générée en utilisant la clé privée ed25519 qui correspond à <strong>pubkey</strong> et la valeur binaire de <strong>id</strong>
+comme contenu.</p>
+<p>La signature peut être vérifiée en utilisant le champ <strong>pubkey</strong> (hex) comme clé ed25519 et la valeur binaire de <strong>id</strong>
+comme contenu.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+    
+
+
+
+    
+    
+
+    
+        
+    
+
+    
+        
+    
+
+    
+
+    
+
+
+<h2  class="h6"  id="vérification-dun-document" >
+    <a class="text-body text-decoration-none" href="#v%c3%a9rification-dun-document">Vérification d&rsquo;un document</a>
+</h2>
+<p>Pour vérifier la validité d&rsquo;un message, il faut recalculer le id pour s&rsquo;assurer qu&rsquo;il correspond puis valider la
+signature en utilisant le hachage puis pubkey.</p>
+<p>Une fois le message validé, il est généralement utile de charger le certificat correspondant à pubkey pour extraire
+l&rsquo;information d&rsquo;autorisation comme le userId, instance, les domaines, etc. Ces valeurs doivent être privilégiées par
+rapport au contenu du message pour autoriser une requête ou une commande lorsque c&rsquo;est possible. Lorsque ce n&rsquo;est pas
+possible, les domaines, userId peuvent être placés dans le contenu du message - par exemple pour permettre à un
+administrateur d&rsquo;exécuter une commande au nom d&rsquo;un usager.</p>
+<p>Note : si le certificat est inclus dans le document, s&rsquo;assurer qu&rsquo;il est valide (validation X.509) que sa clé
+publique correspond au champ <strong>pubkey</strong> du document.</p>
 
 
 
@@ -1443,6 +1551,72 @@ champ <strong>pubkey</strong> (hex) comme clé ed25519 et le champ <strong>id</s
     <a class="text-body text-decoration-none" href="#chiffrage-du-contenu">Chiffrage du contenu</a>
 </h1>
 
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+    
+
+
+
+    
+    
+
+    
+        
+    
+
+    
+        
+    
+
+    
+
+    
+
+
+<h2  class="h6"  id="documents-avec-contenu-chiffré" >
+    <a class="text-body text-decoration-none" href="#documents-avec-contenu-chiffr%c3%a9">Documents avec contenu chiffré</a>
+</h2>
+<p>Les documents peuvent contenir un ou plusieurs des éléments chiffrés.</p>
+<p>Exemple</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="err">tuuid:</span> <span class="err">&#39;a4a3397e8002c5beabcd03e25f46c4334c8eeceee49b02d3528c1a4b758a888d&#39;,</span>
+</span></span><span class="line"><span class="cl">    <span class="err">user_id:</span> <span class="err">&#39;z2i3XjxLmXHZZyfWszu4Kui7Nv6dKWaujpYTcJ9dSHZJCJ5sTm6&#39;,</span>
+</span></span><span class="line"><span class="cl">    <span class="err">type_node:</span> <span class="err">&#39;Fichier&#39;,</span>
+</span></span><span class="line"><span class="cl">    <span class="err">&#39;_mg-derniere-modification&#39;:</span> <span class="err">ISODate(&#39;2025-03-16T17:04:30.571Z&#39;),</span>
+</span></span><span class="line"><span class="cl">    <span class="err">&#39;_mg-creation&#39;:</span> <span class="err">ISODate(&#39;2025-02-24T23:55:46.652Z&#39;),</span>
+</span></span><span class="line"><span class="cl">    <span class="err">flag_index:</span> <span class="err">true,</span>
+</span></span><span class="line"><span class="cl">    <span class="err">supprime:</span> <span class="err">false,</span>
+</span></span><span class="line"><span class="cl">    <span class="err">supprime_indirect:</span> <span class="err">false,</span>
+</span></span><span class="line"><span class="cl">    <span class="err">metadata:</span> <span class="err">{</span>
+</span></span><span class="line"><span class="cl">        <span class="err">data_chiffre:</span> <span class="err">&#39;vjp8jo04zC4lTGfevDm91y8LsqNw31lze1A8f7+Qesyel4/5jMqOOLAbZZKnzM83GoJfre4XlEq3yPl0KXOMGHanAxtNmiQM9ehFXAUsdxXxpLR2WD6FR/iAndJH5nssp5Sghsqtu2TkoUa3FJboMV7lw2CPzg6p4ezP5WMRBFd3oMITl09WRY+IjtWogLczyorbvKB8frjUkRpc0Ym1obH9dpY9pg==&#39;,</span>
+</span></span><span class="line"><span class="cl">        <span class="err">cle_id:</span> <span class="err">&#39;z59EzgDUKK68RVT1MpBH3eF6VD9cJkMgV3aznaKaGrp2W&#39;,</span>
+</span></span><span class="line"><span class="cl">        <span class="err">format:</span> <span class="err">&#39;mgs4&#39;,</span>
+</span></span><span class="line"><span class="cl">        <span class="err">nonce:</span> <span class="err">&#39;Ej72ZPe5FYamAjPvVObkdr6PMAmoGuJ3&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span><span class="err">,</span>
+</span></span><span class="line"><span class="cl">    <span class="err">mimetype:</span> <span class="err">&#39;image/png&#39;,</span>
+</span></span><span class="line"><span class="cl">    <span class="err">fuuids_versions:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">        <span class="err">&#39;zSEfXUDjM</span><span class="mi">1</span><span class="err">yQz</span><span class="mi">23</span><span class="err">RnFiCmdN</span><span class="mi">2</span><span class="err">RgjNHBTV</span><span class="mi">1</span><span class="err">DC</span><span class="mi">2</span><span class="err">R</span><span class="mi">6</span><span class="err">LFj</span><span class="mi">8</span><span class="err">qwFJbtZiEhXKc</span><span class="mi">1</span><span class="err">AnsW</span><span class="mi">7</span><span class="err">NiptSVzpK</span><span class="mi">59</span><span class="err">pnyqsmyDCzsLGsBdw</span><span class="mi">7</span><span class="err">R</span><span class="mi">5</span><span class="err">mn&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">]</span><span class="err">,</span>
+</span></span><span class="line"><span class="cl">    <span class="err">path_cuuids:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">        <span class="err">&#39;</span><span class="mi">8</span><span class="err">bd</span><span class="mi">9</span><span class="err">d</span><span class="mi">3</span><span class="err">c</span><span class="mi">477</span><span class="err">a</span><span class="mi">818</span><span class="err">b</span><span class="mi">42292</span><span class="err">cc</span><span class="mf">39003e18</span><span class="err">ac</span><span class="mi">9861</span><span class="err">d</span><span class="mi">38</span><span class="err">c</span><span class="mi">7</span><span class="err">b</span><span class="mi">3811384</span><span class="err">acfb</span><span class="mi">4983178</span><span class="err">f</span><span class="mi">83</span><span class="err">e&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="err">&#39;b</span><span class="mi">6</span><span class="err">ba</span><span class="mi">87</span><span class="err">ecb</span><span class="mi">3</span><span class="err">b</span><span class="mi">96</span><span class="err">fbe</span><span class="mi">8</span><span class="err">ce</span><span class="mi">173457648517346119</span><span class="err">fcad</span><span class="mi">1</span><span class="err">a</span><span class="mi">3</span><span class="err">f</span><span class="mi">555</span><span class="err">d</span><span class="mf">724948e4223254</span><span class="err">e&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">}</span>
+</span></span></code></pre></div>
 
 
 
@@ -1529,6 +1703,54 @@ le composant requérant (e.g. navigateur de l&rsquo;usager).</p>
 <h2  class="h6"  id="chiffrage-des-requêtes-ou-commandes" >
     <a class="text-body text-decoration-none" href="#chiffrage-des-requ%c3%aates-ou-commandes">Chiffrage des requêtes ou commandes</a>
 </h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+    
+
+
+
+    
+    
+
+    
+        
+    
+
+    
+        
+    
+
+    
+
+    
+
+
+<h2  class="h6"  id="format-json-serializé-en-texte" >
+    <a class="text-body text-decoration-none" href="#format-json-serializ%c3%a9-en-texte">Format json serializé en texte</a>
+</h2>
+<p>Le champ <strong>contenu</strong> utilise un message json serializé en text UTF-8. Le choix de ce format est pour garantir
+l&rsquo;intégrité du message lors de la vérification.</p>
+<p>La première version de message pour MilleGrilles (2019-2022) utilisait un format pur JSON pour les valeurs.
+L&rsquo;utilisation de certains parsers en C et Rust ont montré une approche différente entre le traitement des floats 32-64
+bits comparé à Python 3 et JavaScript. Cette différence causait des erreurs de vérifications inopinées et purement
+dues à la dé-sérialisation à la réception puis re-sérialisation du même message pour la vérification.</p>
+<p>L&rsquo;utilisation du format texte a réglé ces problèmes puisqu&rsquo;il n&rsquo;y a aucune interprétation requise durant la
+désérialisation de l&rsquo;enveloppe d&rsquo;un type de document MilleGrille (aucunes valeurs float).</p>
 
             
 
@@ -2142,7 +2364,7 @@ le composant requérant (e.g. navigateur de l&rsquo;usager).</p>
         
     
 
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","abstract":" ","articleSection":"Documentation","dateCreated":"2025-03-14T12:20:48Z","dateModified":"2025-03-14T12:20:48Z","headline":"Structure des messages","inLanguage":"fr","name":"Structure des messages","timeRequired":"PT4M","url":"https://www.millegrilles.com/fr/documentation/messages/","wordCount":736}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","abstract":" ","articleSection":"Documentation","dateCreated":"2025-03-17T13:16:48Z","dateModified":"2025-03-17T13:16:48Z","headline":"Structure des messages","inLanguage":"fr","name":"Structure des messages","timeRequired":"PT6M","url":"https://www.millegrilles.com/fr/documentation/messages/","wordCount":1170}</script>
 
 
 
